@@ -1,0 +1,132 @@
+{
+    "release": "Oxygen.1a",
+    "tag": "Oxygen.1a",
+    "features": {
+        "JDT": {
+            "version": "4.7",
+            "source": "ep.aggrcon",
+            "repository_url": "http://download.eclipse.org/eclipse/updates/4.7-M-builds/M-4.7.1aRC2-201709281310/",
+            "note": "from repository URL"
+        },
+        "PDE": {
+            "version": "4.7",
+            "source": "ep.aggrcon",
+            "repository_url": "http://download.eclipse.org/eclipse/updates/4.7-M-builds/M-4.7.1aRC2-201709281310/",
+            "note": "from repository URL"
+        },
+        "CVS": {
+            "version": "4.7",
+            "source": "ep.aggrcon",
+            "repository_url": "http://download.eclipse.org/eclipse/updates/4.7-M-builds/M-4.7.1aRC2-201709281310/",
+            "note": "from repository URL"
+        },
+        "MAVEN": {
+            "version": "1.8.2",
+            "source": "m2e.aggrcon",
+            "repository_url": "http://download.eclipse.org/technology/m2e/milestones/1.8/1.8.2.20171005-1923",
+            "note": "from feature versionRange"
+        },
+        "SCOUT": {
+            "version": "7.0.150",
+            "source": "scout.aggrcon",
+            "repository_url": "http://download.eclipse.org/scout/releases/7.0/7.0.150/004_Oxygen_1a",
+            "note": "from feature versionRange"
+        },
+        "EMF": {
+            "version": "2.13.0",
+            "source": "emf-emf.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "GMF": {
+            "version": "1.11.0.201706061437",
+            "source": "gmp-gmf-runtime.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "DATATOOLS": {
+            "version": "1.14.0.201701131441",
+            "source": "dtp.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "BIRT": {
+            "version": "4.7.0",
+            "source": "birt.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "GEF": {
+            "version": "3.11.0.201606061308",
+            "source": "gef.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "CDT": {
+            "version": "9.3.2",
+            "source": "cdt.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "manually resolved: Oxygen.1a release train bundled CDT 9.3.2"
+        },
+        "WEBTOOLS": {
+            "version": "3.7",
+            "source": "webtools.aggrcon",
+            "repository_url": "http://download.eclipse.org/webtools/downloads/drops/R3.9.1a/S-3.9.1aRC2a-20171004113814/repository/",
+            "note": "from description"
+        },
+        "SVN": {
+            "version": "4.0.0",
+            "source": "subversive.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "MYLYN": {
+            "version": "3.23.1",
+            "source": "mylyn.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "PTP": {
+            "version": "9.1.0",
+            "source": "ptp.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "JUBULA": {
+            "version": "5.0.0",
+            "source": "jubula.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "RAP": {
+            "version": "3.3.0",
+            "source": "rap.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "EGIT": {
+            "version": "4.8.0.201706111038",
+            "source": "egit.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from feature versionRange"
+        },
+        "RSE": {
+            "version": "4.2",
+            "source": "tm.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from description"
+        },
+        "ECLIPSELINK": {
+            "version": "3.7",
+            "source": "webtools.aggrcon",
+            "repository_url": "http://download.eclipse.org/webtools/downloads/drops/R3.9.1a/S-3.9.1aRC2a-20171004113814/repository/",
+            "note": "from WebTools (contains eclipselink features)"
+        },
+        "WINDOWBUILDER": {
+            "version": "1.2.0",
+            "source": "windowbuilder.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/oxygen/201709271000/",
+            "note": "from first versionRange in file"
+        }
+    }
+}

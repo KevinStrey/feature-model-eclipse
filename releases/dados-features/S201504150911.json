@@ -1,0 +1,132 @@
+{
+    "release":  "S201504150911",
+    "tag":  "S201504150911",
+    "features":  {
+                     "JDT":  {
+                                 "version":  "4.5",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.5milestones/S-4.5M6-201503200800/",
+                                 "note":  "from repository URL"
+                             },
+                     "PDE":  {
+                                 "version":  "4.5",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.5milestones/S-4.5M6-201503200800/",
+                                 "note":  "from repository URL"
+                             },
+                     "CVS":  {
+                                 "version":  "4.5",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.5milestones/S-4.5M6-201503200800/",
+                                 "note":  "from repository URL"
+                             },
+                     "MAVEN":  {
+                                   "version":  "1.6.0",
+                                   "source":  "m2e.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/technology/m2e/milestones/1.6/",
+                                   "note":  "from feature versionRange"
+                               },
+                     "SCOUT":  {
+                                   "version":  "4.0.0",
+                                   "source":  "scout.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/scout/releases/4.3/4.3.0/scout.main/M6-20150325-0939",
+                                   "note":  "from feature versionRange"
+                               },
+                     "EMF":  {
+                                 "version":  "2.11.0",
+                                 "source":  "emf-emf.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/emf/emf/updates/2.11milestones/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "GMF":  {
+                                 "version":  "1.9.0.201503261653",
+                                 "source":  "gmp-gmf-runtime.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201503261653",
+                                 "note":  "from feature versionRange"
+                             },
+                     "DATATOOLS":  {
+                                       "version":  "1.12.0",
+                                       "source":  "dtp.b3aggrcon",
+                                       "repository_url":  "http://download.eclipse.org/datatools/downloads/drops/M_updates_1.12.0",
+                                       "note":  "from feature versionRange"
+                                   },
+                     "BIRT":  {
+                                  "version":  "4.5.0",
+                                  "source":  "birt.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/birt/update-site/mars-interim/",
+                                  "note":  "from feature versionRange"
+                              },
+                     "GEF":  {
+                                 "version":  "3.10.0.201502020307",
+                                 "source":  "gef.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/gef/updates/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "CDT":  {
+                                 "version":  "8.0.0.201106081058",
+                                 "source":  "cdt.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/cdt/builds/mars/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "WEBTOOLS":  {
+                                      "version":  "3.7.0",
+                                      "source":  "webtools.b3aggrcon",
+                                      "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.7.0/S-3.7.0M6-20150324000117/repository/",
+                                      "note":  "from repository URL"
+                                  },
+                     "SVN":  {
+                                 "version":  "3.0.0",
+                                 "source":  "subversive.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/technology/subversive/3.0/mars-site/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "MYLYN":  {
+                                   "version":  "3.15.0",
+                                   "source":  "mylyn.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/mylyn/snapshots/3.15",
+                                   "note":  "from feature versionRange"
+                               },
+                     "PTP":  {
+                                 "version":  "9.0.0",
+                                 "source":  "ptp.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/ptp/builds/mars/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "JUBULA":  {
+                                    "version":  "3.0.0",
+                                    "source":  "jubula.b3aggrcon",
+                                    "repository_url":  "http://download.eclipse.org/jubula/milestones/mars-m6",
+                                    "note":  "from feature versionRange"
+                                },
+                     "RAP":  {
+                                 "version":  "3.0.0",
+                                 "source":  "rap.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/rt/rap/3.0/M6-20150324-0943/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "EGIT":  {
+                                  "version":  "4.0.0.201503231230",
+                                  "source":  "egit.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/egit/staging/v4.0.0.201503231230-m1",
+                                  "note":  "from feature versionRange"
+                              },
+                     "RSE":  {
+                                 "version":  "3.7.0",
+                                 "source":  "tm.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tm/updates/4.0milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "ECLIPSELINK":  {
+                                         "version":  "3.7.0",
+                                         "source":  "webtools.b3aggrcon",
+                                         "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.7.0/S-3.7.0M6-20150324000117/repository/",
+                                         "note":  "from WebTools (contains eclipselink features)"
+                                     },
+                     "WINDOWBUILDER":  {
+                                           "version":  "1.2.0",
+                                           "source":  "windowbuilder.b3aggrcon",
+                                           "repository_url":  "http://download.eclipse.org/windowbuilder/WB/milestone/M4/4.5",
+                                           "note":  "from first versionRange in file"
+                                       }
+                 }
+}

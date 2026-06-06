@@ -1,0 +1,132 @@
+{
+    "release": "Neon.3_respin",
+    "tag": "Neon.3_respin",
+    "features": {
+        "JDT": {
+            "version": "4.6.3",
+            "source": "ep.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "manually resolved: Neon.3 respin release train matches Eclipse Platform 4.6.3"
+        },
+        "PDE": {
+            "version": "4.6.3",
+            "source": "ep.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "manually resolved: Neon.3 respin release train matches Eclipse Platform 4.6.3"
+        },
+        "CVS": {
+            "version": "4.6.3",
+            "source": "ep.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "manually resolved: Neon.3 respin release train matches Eclipse Platform 4.6.3"
+        },
+        "MAVEN": {
+            "version": "1.7.0",
+            "source": "m2e.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "SCOUT": {
+            "version": "6.0.300",
+            "source": "scout.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "EMF": {
+            "version": "2.12.0",
+            "source": "emf-emf.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "GMF": {
+            "version": "1.10.0.201606071959",
+            "source": "gmp-gmf-runtime.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "DATATOOLS": {
+            "version": "1.13.0.201603142002",
+            "source": "dtp.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "BIRT": {
+            "version": "4.6.0",
+            "source": "birt.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "GEF": {
+            "version": "3.11.0.201606061308",
+            "source": "gef.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "CDT": {
+            "version": "9.2.1",
+            "source": "cdt.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "manually resolved: Neon.3 respin release train bundled CDT 9.2.1"
+        },
+        "WEBTOOLS": {
+            "version": "3.7",
+            "source": "webtools.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from description"
+        },
+        "SVN": {
+            "version": "4.0.0",
+            "source": "subversive.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "MYLYN": {
+            "version": "3.21.0",
+            "source": "mylyn.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "PTP": {
+            "version": "9.1.1",
+            "source": "ptp.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "manually resolved: Neon.3 respin release train bundled PTP 9.1.1"
+        },
+        "JUBULA": {
+            "version": "4.0.0",
+            "source": "jubula.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "RAP": {
+            "version": "3.1.2",
+            "source": "rap.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "EGIT": {
+            "version": "4.6.1.201703071140",
+            "source": "egit.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "RSE": {
+            "version": "3.7.2.201610260947",
+            "source": "tm.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from feature versionRange"
+        },
+        "ECLIPSELINK": {
+            "version": "3.7",
+            "source": "webtools.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from WebTools (contains eclipselink features)"
+        },
+        "WINDOWBUILDER": {
+            "version": "1.2.0",
+            "source": "windowbuilder.aggrcon",
+            "repository_url": "http://download.eclipse.org/releases/neon/201703141400/",
+            "note": "from first versionRange in file"
+        }
+    }
+}

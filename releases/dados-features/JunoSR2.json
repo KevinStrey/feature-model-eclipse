@@ -1,0 +1,132 @@
+{
+    "release": "JunoSR2",
+    "tag": "JunoSR2",
+    "features": {
+        "JDT": {
+            "version": "4.2",
+            "source": "ep.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/eclipse/updates/4.2-M-builds/M20130204-1200/",
+            "note": "from repository URL"
+        },
+        "PDE": {
+            "version": "4.2",
+            "source": "ep.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/eclipse/updates/4.2-M-builds/M20130204-1200/",
+            "note": "from repository URL"
+        },
+        "CVS": {
+            "version": "4.2",
+            "source": "ep.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/eclipse/updates/4.2-M-builds/M20130204-1200/",
+            "note": "from repository URL"
+        },
+        "MAVEN": {
+            "version": "1.3.0",
+            "source": "m2e.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/technology/m2e/milestones/1.3",
+            "note": "from feature versionRange"
+        },
+        "SCOUT": {
+            "version": "3.8.2",
+            "source": "scout.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/scout/releases/3.8/3.8.2/RC420130211-1336/update",
+            "note": "from feature versionRange"
+        },
+        "EMF": {
+            "version": "2.8.3",
+            "source": "emf-emf.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/modeling/emf/emf/updates/2.8.x/",
+            "note": "from feature versionRange"
+        },
+        "GMF": {
+            "version": "1.6.2.201302122140",
+            "source": "gmp-gmf-runtime.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/maintenance",
+            "note": "from feature versionRange"
+        },
+        "DATATOOLS": {
+            "version": "1.10.2",
+            "source": "dtp.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/datatools/downloads/drops/M_updates_1.10.2",
+            "note": "from feature versionRange"
+        },
+        "BIRT": {
+            "version": "4.2.2",
+            "source": "birt.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/birt/update-site/4.2-interim/",
+            "note": "from feature versionRange"
+        },
+        "GEF": {
+            "version": "3.8.2.201301141834",
+            "source": "gef.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/tools/gef/updates/milestones",
+            "note": "from feature versionRange"
+        },
+        "CDT": {
+            "version": "8.0.0.201106081058",
+            "source": "cdt.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/tools/cdt/builds/juno/milestones",
+            "note": "from feature versionRange"
+        },
+        "WEBTOOLS": {
+            "version": "3.4.2",
+            "source": "webtools.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/webtools/downloads/drops/R3.4.2/M-3.4.2RC4-20130208151217/repository/",
+            "note": "from repository URL"
+        },
+        "SVN": {
+            "version": "1.0.0",
+            "source": "subversive.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/technology/subversive/1.0/juno-site/",
+            "note": "from feature versionRange"
+        },
+        "MYLYN": {
+            "version": "3.8.3",
+            "source": "mylyn.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/mylyn/snapshots/3.8",
+            "note": "from feature versionRange"
+        },
+        "PTP": {
+            "version": "6.0.4",
+            "source": "ptp.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/tools/ptp/builds/juno/milestones/SR2",
+            "note": "manually resolved: Juno SR2 release train bundled PTP 6.0.4"
+        },
+        "JUBULA": {
+            "version": "1.2.2",
+            "source": "jubula.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/jubula/release/juno-sr1",
+            "note": "from feature versionRange"
+        },
+        "RAP": {
+            "version": "1.5.0",
+            "source": "rap.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/rt/rap/1.5/tooling/SR2-RC3-20130205-2030/",
+            "note": "from feature versionRange"
+        },
+        "EGIT": {
+            "version": "2.2.0.201212191850",
+            "source": "egit.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/egit/updates-2.2",
+            "note": "from feature versionRange"
+        },
+        "RSE": {
+            "version": "3.4.0",
+            "source": "tm.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/tm/updates/3.4milestones/SR2_RC4b",
+            "note": "from feature versionRange"
+        },
+        "ECLIPSELINK": {
+            "version": "2.4.1",
+            "source": "eclipseLink.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/rt/eclipselink/updates/2.4.1.v20121003-ad44345",
+            "note": "from repository URL"
+        },
+        "WINDOWBUILDER": {
+            "version": "1.2.0",
+            "source": "windowbuilder.b3aggrcon",
+            "repository_url": "http://download.eclipse.org/windowbuilder/WB/release/R201302221200/4.2",
+            "note": "from first versionRange in file"
+        }
+    }
+}
