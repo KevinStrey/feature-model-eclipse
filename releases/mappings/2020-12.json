@@ -1,0 +1,158 @@
+{
+    "release": "2020-12",
+    "mappings": {
+        "JDT": {
+            "version": "4.18",
+            "status": "SUCCESS",
+            "commit": "92d33b49059ac5880a87d8b64016293328c56a92",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R4_18",
+            "repository": "eclipse.jdt.core"
+        },
+        "PDE": {
+            "version": "4.18",
+            "status": "SUCCESS",
+            "commit": "45686ed5662c60a0b1bafb7ee8d1309a05a54d3c",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R4_18",
+            "repository": "eclipse.pde"
+        },
+        "CDT": {
+            "version": "10.1.0.202012020953",
+            "status": "SUCCESS",
+            "commit": "05322656c66a375c541b1f4775960d408f5f6f52",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2020-12-02 09:53:00",
+            "repository": "cdt"
+        },
+        "GEF": {
+            "version": "3.11.0.201606061308",
+            "status": "SUCCESS",
+            "commit": "bcd6206f6c014e0d895ed30ae4d69afa1321af44",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2016-06-06 13:08:00",
+            "repository": "gef-classic"
+        },
+        "EMF": {
+            "version": "2.24",
+            "status": "SUCCESS",
+            "commit": "5a81b9548a1e4696fe41374d532fdd2b2e7f87fa",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R2_24_0",
+            "repository": "org.eclipse.emf"
+        },
+        "BIRT": {
+            "version": "4.7.0",
+            "status": "SUCCESS",
+            "commit": "a236af00e0f69aea13572ca6c7eece736094a75d",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "4.7.0",
+            "repository": "birt"
+        },
+        "DATATOOLS": {
+            "version": "1.14.200",
+            "status": "SUCCESS",
+            "commit": "f46d1b9e7375e311f2b1db2e40ed189f3c1e1d86",
+            "heuristic_id": "H_MANUAL",
+            "heuristic_description": "Inferred via related Timestamp (2020-12-02 09:53:00)",
+            "matched_value": "2020-12-02 09:53:00",
+            "repository": null
+        },
+        "ECLIPSELINK": {
+            "version": "3.20.0",
+            "status": "SUCCESS",
+            "commit": "29e9635d80800d4620f5752a3896f58078d995f8",
+            "heuristic_id": "H_MANUAL",
+            "heuristic_description": "Copied from WEBTOOLS",
+            "matched_value": "3.20.0",
+            "repository": null
+        },
+        "EGIT": {
+            "version": "5.10.0.202012080955",
+            "status": "SUCCESS",
+            "commit": "e8ec501a36af4869203065afb2ec09e0ac64f6a7",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2020-12-08 09:55:00",
+            "repository": "egit"
+        },
+        "GMF": {
+            "version": "1.13.0.202004160913",
+            "status": "SUCCESS",
+            "commit": "8da7f095bcf01fde08a3f8f704546327119adb4e",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2020-04-16 09:13:00",
+            "repository": "gmf-runtime"
+        },
+        "MYLYN": {
+            "version": "3.25.2",
+            "status": "SUCCESS",
+            "commit": "c578027817b0d4e2e830f847ee88cb896e1d5791",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R_3_25_2",
+            "repository": "org.eclipse.mylyn"
+        },
+        "RAP": {
+            "version": "3.15.0",
+            "status": "SUCCESS",
+            "commit": "f4e750b5acafd568eb2e79e376ee56534b303f4f",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "3.15.0",
+            "repository": "org.eclipse.rap"
+        },
+        "PTP": {
+            "version": "9.4.0",
+            "status": "SUCCESS",
+            "commit": "208017c36b06ae47db590886e07a6faf184cdfdb",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "9.4.0",
+            "repository": "ptp"
+        },
+        "SCOUT": {
+            "version": "10.0.0",
+            "status": "SUCCESS",
+            "commit": "24413cd970998f743f6167ea86941a8cf1b613bd",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "10.0.0",
+            "repository": "scout.rt"
+        },
+        "WEBTOOLS": {
+            "version": "3.20.0",
+            "status": "SUCCESS",
+            "commit": "29e9635d80800d4620f5752a3896f58078d995f8",
+            "heuristic_id": "H_MANUAL",
+            "heuristic_description": "Inferred via related Timestamp (2020-12-02 09:53:00)",
+            "matched_value": "2020-12-02 09:53:00",
+            "repository": null
+        },
+        "WINDOWBUILDER": {
+            "version": "1.9.4",
+            "status": "SUCCESS",
+            "commit": "a249717d5a7d05ee8991902d29abf2e2a62f78bb",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "1.9.4",
+            "repository": "windowbuilder"
+        },
+        "MAVEN": {
+            "version": "1.17.1",
+            "status": "SUCCESS",
+            "commit": "980a2fbeb9529132fde510c528714cec51621924",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "1.17.1",
+            "repository": "m2e-core"
+        }
+    }
+}
