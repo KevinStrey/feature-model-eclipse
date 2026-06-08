@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 import re
+import datetime
 
 base_dir = r"c:\Users\Kevin Strey\Desktop\Feature-models"
 json_dir = os.path.join(base_dir, "releases", "dados-features")
@@ -9,27 +10,60 @@ out_dir = os.path.join(base_dir, "releases", "mappings")
 
 os.makedirs(out_dir, exist_ok=True)
 
-target_files = ["Neon.json", "Oxygen.json", "2018-09.json", "2026-03.json"]
-target_features = ["JDT", "PDE", "CDT", "GEF", "EMF"]
-
+# 17 Repositories mapped
 repo_map = {
     "JDT": ["eclipse.jdt.core"],
     "PDE": ["eclipse.pde"],
     "CDT": ["cdt"],
     "GEF": ["gef-classic", "gef"],
-    "EMF": ["org.eclipse.emf"]
+    "EMF": ["org.eclipse.emf"],
+    "BIRT": ["birt"],
+    "DATATOOLS": ["datatools"],
+    "ECLIPSELINK": ["eclipselink"],
+    "EGIT": ["egit"],
+    "GMF": ["gmf-runtime"],
+    "MYLYN": ["org.eclipse.mylyn"],
+    "RAP": ["org.eclipse.rap"],
+    "PTP": ["ptp"],
+    "SCOUT": ["scout.rt"],
+    "WEBTOOLS": ["webtools.javaee"],
+    "WINDOWBUILDER": ["windowbuilder"]
 }
+
+target_features = list(repo_map.keys())
 
 def run_git(cmd, cwd):
     try:
-        result = subprocess.run(["git"] + cmd, cwd=cwd, capture_output=True, text=True, check=True)
+        result = subprocess.run(["git"] + cmd, cwd=cwd, capture_output=True, text=True, check=True, timeout=30)
         return result.stdout.strip().split('\n')
+    except subprocess.TimeoutExpired:
+        print(f"    -> Timeout no Git ({cmd})", flush=True)
+        return []
     except Exception as e:
         return []
 
 def get_commit(tag, cwd):
     res = run_git(["rev-list", "-n", "1", tag], cwd)
     return res[0] if res else None
+
+def heuristic_0_timestamp(version, repo_dir):
+    """
+    Time-Travel Heuristic (The Silver Bullet for Eclipse builds)
+    Extracts YYYYMMDDHHMM from version (e.g. 12.4.0.202603041756)
+    and asks git for the latest commit before that exact second.
+    """
+    match = re.search(r'\.(\d{12})$', version)
+    if match:
+        ts = match.group(1)
+        # Format: YYYYMMDDHHMM to YYYY-MM-DD HH:MM:00
+        dt_str = f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]} {ts[8:10]}:{ts[10:12]}:00"
+        
+        # Look for the last commit on any branch up to that date
+        res = run_git(["log", f"--until={dt_str}", "--format=%H", "-1", "--all"], cwd=repo_dir)
+        if res and res[0]:
+            return dt_str, res[0]
+            
+    return None
 
 def heuristic_1_tags(version, repo_dir):
     tags = run_git(["tag"], cwd=repo_dir)
@@ -92,15 +126,24 @@ def heuristic_3_train_tags(release_name, repo_dir):
                 
     return None
 
+# Process all .json files in the directory
+target_files = [f for f in os.listdir(json_dir) if f.endswith('.json')]
+
+print(f"Encontrados {len(target_files)} arquivos de release para mapear.")
+
 for file in target_files:
     filepath = os.path.join(json_dir, file)
-    if not os.path.exists(filepath): continue
+    print(f"Processando {file}...")
     
     mapping_data = {
         "release": "",
         "mappings": {}
     }
-    
+    out_filepath = os.path.join(out_dir, file)
+    if os.path.exists(out_filepath):
+        print(f"Skipping {file}, já processado.", flush=True)
+        continue
+        
     with open(filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
         release = data.get("release", file.replace(".json", ""))
@@ -108,18 +151,14 @@ for file in target_files:
         
         for feat in target_features:
             feature_data = data.get("features", {}).get(feat)
-            if not feature_data: continue
+            if not feature_data: 
+                continue
             
             version = feature_data.get("version")
             if not version or version == "N/A": 
                 mapping_data["mappings"][feat] = {
-                    "version": version, 
-                    "status": "SKIPPED", 
-                    "commit": None, 
-                    "heuristic_id": None,
-                    "heuristic_description": None,
-                    "matched_value": None,
-                    "repository": None
+                    "version": version, "status": "SKIPPED", "commit": None, 
+                    "heuristic_id": None, "heuristic_description": None, "matched_value": None, "repository": None
                 }
                 continue
                 
@@ -128,64 +167,50 @@ for file in target_files:
                 repo_dir = os.path.join(base_dir, repo_name)
                 if not os.path.exists(repo_dir): continue
                 
-                # Heuristic 1
+                print(f"  Buscando {feat} ({version}) no repositório {repo_name}...", flush=True)
+                
+                h0 = heuristic_0_timestamp(version, repo_dir)
+                if h0 and h0[1]:
+                    mapping_data["mappings"][feat] = {
+                        "version": version, "status": "SUCCESS", "commit": h0[1], 
+                        "heuristic_id": "H0", "heuristic_description": "Timestamp Time-Travel", "matched_value": h0[0], "repository": repo_name
+                    }
+                    found = True; break
+                
                 h1 = heuristic_1_tags(version, repo_dir)
                 if h1 and h1[1]:
                     mapping_data["mappings"][feat] = {
-                        "version": version, 
-                        "status": "SUCCESS", 
-                        "commit": h1[1], 
-                        "heuristic_id": "H1",
-                        "heuristic_description": "Fuzzy Tag Matching",
-                        "matched_value": h1[0],
-                        "repository": repo_name
+                        "version": version, "status": "SUCCESS", "commit": h1[1], 
+                        "heuristic_id": "H1", "heuristic_description": "Fuzzy Tag Matching", "matched_value": h1[0], "repository": repo_name
                     }
-                    found = True
-                    break
+                    found = True; break
                     
-                # Heuristic 3
                 h3 = heuristic_3_train_tags(release, repo_dir)
                 if h3 and h3[1]:
                     mapping_data["mappings"][feat] = {
-                        "version": version, 
-                        "status": "SUCCESS", 
-                        "commit": h3[1], 
-                        "heuristic_id": "H3",
-                        "heuristic_description": "Release Train Tagging",
-                        "matched_value": h3[0],
-                        "repository": repo_name
+                        "version": version, "status": "SUCCESS", "commit": h3[1], 
+                        "heuristic_id": "H3", "heuristic_description": "Release Train Tagging", "matched_value": h3[0], "repository": repo_name
                     }
-                    found = True
-                    break
+                    found = True; break
                     
-                # Heuristic 2
+                print(f"    -> Fallback para Pickaxe (lento)...", flush=True)
                 h2 = heuristic_2_pickaxe(version, repo_dir)
                 if h2:
                     mapping_data["mappings"][feat] = {
-                        "version": version, 
-                        "status": "SUCCESS", 
-                        "commit": h2, 
-                        "heuristic_id": "H2",
-                        "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
-                        "matched_value": version,
-                        "repository": repo_name
+                        "version": version, "status": "SUCCESS", "commit": h2, 
+                        "heuristic_id": "H2", "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)", "matched_value": version, "repository": repo_name
                     }
-                    found = True
-                    break
+                    found = True; break
                     
             if not found:
+                print(f"    -> NOT FOUND", flush=True)
                 mapping_data["mappings"][feat] = {
-                    "version": version, 
-                    "status": "NOT FOUND", 
-                    "commit": None, 
-                    "heuristic_id": None,
-                    "heuristic_description": None,
-                    "matched_value": None,
-                    "repository": None
+                    "version": version, "status": "NOT FOUND", "commit": None, 
+                    "heuristic_id": None, "heuristic_description": None, "matched_value": None, "repository": None
                 }
 
     out_filepath = os.path.join(out_dir, file)
     with open(out_filepath, "w", encoding="utf-8") as out_f:
         json.dump(mapping_data, out_f, indent=4, ensure_ascii=False)
 
-print(f"Mapeamento concluído. Resultados salvos em {out_dir}")
+print(f"Mapeamento concluído em {len(target_files)} releases. Resultados salvos em {out_dir}")
