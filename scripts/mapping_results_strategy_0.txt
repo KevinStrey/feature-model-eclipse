@@ -1,0 +1,87 @@
+MAPPED FEATURES (1):
+[2026-03] CDT (12.4.0.202603041756) -> Commit: 19a9edabda (Source: https://download.eclipse.org/tools/cdt/releases/12.4/cdt-12.4.0/ci-and-git-info.txt)
+
+UNMAPPED FEATURES (83):
+[Neon] CDT (9.0.0) -> Not Found/Error for http://download.eclipse.org/tools/cdt/builds/neon/milestones/rc4/ci-and-git-info.txt
+[Neon] JUBULA (4.0.0) -> Not Found/Error for http://download.eclipse.org/jubula/milestones/neon-rc2/ci-and-git-info.txt
+[Neon] PDE (4.6) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.6milestones/S-4.6RC4a-201606061100/ci-and-git-info.txt
+[Neon] DATATOOLS (1.13.0.201603142002) -> Not Found/Error for http://download.eclipse.org/datatools/updates/1.13/1.13.0.201603142002/repository/ci-and-git-info.txt
+[Neon] SVN (4.0.0) -> Not Found/Error for http://download.eclipse.org/technology/subversive/4.0/neon-site/ci-and-git-info.txt
+[Neon] ECLIPSELINK (3.8.0) -> Not Found/Error for http://download.eclipse.org/webtools/downloads/drops/R3.8.0/R-3.8.0-20160608130753/repository/ci-and-git-info.txt
+[Neon] RSE (3.7.0.201505221634) -> Not Found/Error for http://download.eclipse.org/tm/updates/4.1milestones/20160321/ci-and-git-info.txt
+[Neon] GEF (3.11.0.201606061308) -> Not Found/Error for http://download.eclipse.org/tools/gef/updates/legacy/milestones/4.0.0RC4_gef-master_1952/ci-and-git-info.txt
+[Neon] PTP (9.0.0) -> Not Found/Error for http://download.eclipse.org/tools/ptp/builds/neon/milestones/RC3/ci-and-git-info.txt
+[Neon] BIRT (4.6.0) -> Not Found/Error for http://download.eclipse.org/birt/update-site/neon-interim/ci-and-git-info.txt
+[Neon] EMF (2.12.0) -> Not Found/Error for http://download.eclipse.org/modeling/emf/emf/updates/2.12/ci-and-git-info.txt
+[Neon] JDT (4.6) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.6milestones/S-4.6RC4a-201606061100/ci-and-git-info.txt
+[Neon] SCOUT (6.0.0) -> Not Found/Error for http://download.eclipse.org/scout/releases/6.0/6.0.0/RC4/ci-and-git-info.txt
+[Neon] RAP (3.1.0) -> Not Found/Error for http://download.eclipse.org/rt/rap/3.1/RC4-20160607-1451/ci-and-git-info.txt
+[Neon] MYLYN (3.20.0) -> Not Found/Error for http://download.eclipse.org/mylyn/drops/3.20.0/v20160608-1917/ci-and-git-info.txt
+[Neon] MAVEN (1.7.0) -> Not Found/Error for http://download.eclipse.org/technology/m2e/releases/1.7/1.7.0.20160603-1933/ci-and-git-info.txt
+[Neon] EGIT (4.4.0.201606070830) -> Not Found/Error for http://download.eclipse.org/egit/updates-4.4/ci-and-git-info.txt
+[Neon] GMF (1.10.0.201606071959) -> Not Found/Error for http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/ci-and-git-info.txt
+[Neon] CVS (4.6) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.6milestones/S-4.6RC4a-201606061100/ci-and-git-info.txt
+[Neon] WEBTOOLS (3.8.0) -> Not Found/Error for http://download.eclipse.org/webtools/downloads/drops/R3.8.0/R-3.8.0-20160608130753/repository/ci-and-git-info.txt
+[Neon] WINDOWBUILDER (1.2.0) -> Not Found/Error for http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/4.5/ci-and-git-info.txt
+[Oxygen] CVS (4.7) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.7milestones/S-4.7RC4a-201706120950/ci-and-git-info.txt
+[Oxygen] SVN (4.0.0) -> Not Found/Error for http://download.eclipse.org/technology/subversive/4.0/neon-site/ci-and-git-info.txt
+[Oxygen] MAVEN (1.8.0) -> Not Found/Error for http://download.eclipse.org/technology/m2e/milestones/1.8/1.8.0.20170516-2043/ci-and-git-info.txt
+[Oxygen] BIRT (4.7.0) -> Not Found/Error for http://download.eclipse.org/birt/update-site/oxygen-interim/ci-and-git-info.txt
+[2026-03] CVS (N/A) -> No repository_url
+[Oxygen] GEF (3.11.0.201606061308) -> Not Found/Error for http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952/ci-and-git-info.txt
+[Oxygen] DATATOOLS (1.14.0.201701131441) -> Not Found/Error for http://download.eclipse.org/datatools/1.14.0.201701131441/repository/ci-and-git-info.txt
+[Oxygen] CDT (9.3.0) -> Not Found/Error for http://download.eclipse.org/tools/cdt/builds/oxygen/milestones/rc4/ci-and-git-info.txt
+[Oxygen] JUBULA (5.0.0) -> Not Found/Error for http://download.eclipse.org/jubula/milestones/oxygen-rc1/ci-and-git-info.txt
+[Oxygen] WEBTOOLS (3.9.0) -> Not Found/Error for http://download.eclipse.org/webtools/downloads/drops/R3.9.0/R-3.9.0-20170613094504/repository/ci-and-git-info.txt
+[Oxygen] EMF (2.13.0) -> Not Found/Error for http://download.eclipse.org/modeling/emf/emf/updates/2.13/ci-and-git-info.txt
+[Oxygen] PTP (9.1.0) -> Not Found/Error for http://download.eclipse.org/tools/ptp/builds/oxygen/milestones/M7/ci-and-git-info.txt
+[Oxygen] GMF (1.11.0.201706061437) -> Not Found/Error for http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R201706061437/ci-and-git-info.txt
+[Oxygen] MYLYN (3.23.0) -> Not Found/Error for http://download.eclipse.org/mylyn/drops/3.23.0/v20170614-2003/ci-and-git-info.txt
+[2026-03] SVN (N/A) -> No repository_url
+[Oxygen] RAP (3.2.0) -> Not Found/Error for http://download.eclipse.org/rt/rap/3.2/RC4-20170614-1509/ci-and-git-info.txt
+[2026-03] PTP (N/A) -> No repository_url
+[2026-03] JUBULA (N/A) -> No repository_url
+[2026-03] RAP (N/A) -> No repository_url
+[Oxygen] SCOUT (7.0.0) -> Not Found/Error for http://download.eclipse.org/scout/releases/7.0/7.0.0/008_Oxygen/ci-and-git-info.txt
+[2026-03] RSE (N/A) -> No repository_url
+[Oxygen] JDT (4.7) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.7milestones/S-4.7RC4a-201706120950/ci-and-git-info.txt
+[Oxygen] EGIT (4.8.0.201706111038) -> Not Found/Error for http://download.eclipse.org/egit/updates-4.8/ci-and-git-info.txt
+[Oxygen] PDE (4.7) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.7milestones/S-4.7RC4a-201706120950/ci-and-git-info.txt
+[Oxygen] RSE (4.3) -> Not Found/Error for http://download.eclipse.org/tm/updates/4.3milestones/20170425/ci-and-git-info.txt
+[2026-03] JDT (4.39) -> Not Found/Error for https://download.eclipse.org/eclipse/updates/4.39/R-4.39-202602260420/ci-and-git-info.txt
+[2026-03] EMF (2.45.0) -> Not Found/Error for https://download.eclipse.org/modeling/emf/emf/builds/release/2.45.0/ci-and-git-info.txt
+[2026-03] PDE (4.39) -> Not Found/Error for https://download.eclipse.org/eclipse/updates/4.39/R-4.39-202602260420/ci-and-git-info.txt
+[2026-03] SCOUT (14.0.29) -> Not Found/Error for https://download.eclipse.org/scout/releases/14.0/29/ci-and-git-info.txt
+[2026-03] BIRT (4.13.0) -> Not Found/Error for https://download.eclipse.org/mat/2025-03/M2/update-site/ci-and-git-info.txt
+[2026-03] MAVEN (2.11.0) -> Not Found/Error for https://download.eclipse.org/technology/m2e/releases/2.11.0/ci-and-git-info.txt
+[2026-03] WEBTOOLS (3.41.0) -> Not Found/Error for https://download.eclipse.org/webtools/downloads/drops/R3.41.0/S-3.41RC1-20260225091541/repository/ci-and-git-info.txt
+[2026-03] GMF (1.16.8) -> Not Found/Error for https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202512020858/ci-and-git-info.txt
+[2026-03] GEF (3.27.0) -> Not Found/Error for https://download.eclipse.org/tools/gef/classic/release/3.27.0/ci-and-git-info.txt
+[2026-03] DATATOOLS (1.16.3) -> Not Found/Error for https://download.eclipse.org/datatools/updates/release/1.16.3/ci-and-git-info.txt
+[2026-03] EGIT (7.6.0.202603022253) -> Not Found/Error for https://download.eclipse.org/egit/updates-7.6/ci-and-git-info.txt
+[2026-03] MYLYN (4.10.0) -> Not Found/Error for https://download.eclipse.org/mylyn/updates/release/4.10.0/ci-and-git-info.txt
+[2026-03] ECLIPSELINK (3.41.0) -> Not Found/Error for https://download.eclipse.org/webtools/downloads/drops/R3.41.0/S-3.41RC1-20260225091541/repository/ci-and-git-info.txt
+[Oxygen] ECLIPSELINK (3.9.0) -> Not Found/Error for http://download.eclipse.org/webtools/downloads/drops/R3.9.0/R-3.9.0-20170613094504/repository/ci-and-git-info.txt
+[Oxygen] WINDOWBUILDER (1.2.0) -> Not Found/Error for http://download.eclipse.org/windowbuilder/WB/integration/4.7/ci-and-git-info.txt
+[2026-03] WINDOWBUILDER (1.23.0) -> Not Found/Error for https://download.eclipse.org/windowbuilder/updates/milestone/S202602241821/ci-and-git-info.txt
+[2018-09] PDE (4.9) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.9milestones/S-4.9RC2-201809060745/ci-and-git-info.txt
+[2018-09] JDT (4.9) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.9milestones/S-4.9RC2-201809060745/ci-and-git-info.txt
+[2018-09] CVS (4.9) -> Not Found/Error for http://download.eclipse.org/eclipse/updates/4.9milestones/S-4.9RC2-201809060745/ci-and-git-info.txt
+[2018-09] MAVEN (1.9.1) -> Not Found/Error for http://download.eclipse.org/technology/m2e/milestones/1.9/1.9.1.20180912-1601/ci-and-git-info.txt
+[2018-09] SCOUT (8.0.0) -> Not Found/Error for http://download.eclipse.org/scout/releases/8.0/8.0.0/021_Simrel_2018_09/ci-and-git-info.txt
+[2018-09] EMF (2.15) -> Not Found/Error for http://download.eclipse.org/modeling/emf/emf/builds/release/2.15/ci-and-git-info.txt
+[2018-09] GMF (1.12.0.201806010809) -> Not Found/Error for http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809/ci-and-git-info.txt
+[2018-09] CDT (9.5.3.201809121146) -> Not Found/Error for http://download.eclipse.org/tools/cdt/builds/9.5/cdt-9.5.3-simrel-2018-09-rc2/ci-and-git-info.txt
+[2018-09] GEF (3.11.0.201606061308) -> Not Found/Error for http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952/ci-and-git-info.txt
+[2018-09] SVN (4.0.0) -> Not Found/Error for http://download.eclipse.org/technology/subversive/4.0/neon-site/ci-and-git-info.txt
+[2018-09] DATATOOLS (1.14.102) -> Not Found/Error for http://download.eclipse.org/datatools/updates/1.14.102/repository/ci-and-git-info.txt
+[2018-09] WEBTOOLS (3.11.0) -> Not Found/Error for http://download.eclipse.org/webtools/downloads/drops/R3.11.0/S-3.11.0.RC1-20180910170749/repository/ci-and-git-info.txt
+[2018-09] MYLYN (3.24.2) -> Not Found/Error for http://download.eclipse.org/mylyn/drops/3.24.2/v20180905-2014/ci-and-git-info.txt
+[2018-09] BIRT (4.7.0) -> Not Found/Error for http://download.eclipse.org/birt/update-site/oxygen-interim/ci-and-git-info.txt
+[2018-09] PTP (9.2.0) -> Not Found/Error for http://download.eclipse.org/tools/ptp/builds/photon/milestones/RC2/ci-and-git-info.txt
+[2018-09] RAP (3.6.0) -> Not Found/Error for http://download.eclipse.org/rt/rap/3.6/RC2-20180912-1017/ci-and-git-info.txt
+[2018-09] JUBULA (7.0.0) -> Not Found/Error for http://download.eclipse.org/jubula/milestones/2018-09-rc2/ci-and-git-info.txt
+[2018-09] EGIT (5.1.0.201809111528) -> Not Found/Error for http://download.eclipse.org/egit/updates-5.1/ci-and-git-info.txt
+[2018-09] RSE (4.5.0) -> Not Found/Error for http://download.eclipse.org/tm/updates/4.5.0-SNAPSHOT/repository/ci-and-git-info.txt
+[2018-09] ECLIPSELINK (3.11.0) -> Not Found/Error for http://download.eclipse.org/webtools/downloads/drops/R3.11.0/S-3.11.0.RC1-20180910170749/repository/ci-and-git-info.txt
+[2018-09] WINDOWBUILDER (1.9.1) -> Not Found/Error for http://download.eclipse.org/windowbuilder/1.9.1/ci-and-git-info.txt
