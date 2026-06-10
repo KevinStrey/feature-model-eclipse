@@ -10,10 +10,11 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.HashSet;
+import java.util.concurrent.Semaphore;
 
 public class FeatureEvolutorTask implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(FeatureEvolutorTask.class);
@@ -23,18 +24,23 @@ public class FeatureEvolutorTask implements Runnable {
     private final String basePath;
     private final List<String> orderedReleases;
     private final Map<String, String> releaseToCommitMap; // Map release name -> commit hash for this feature
+    private final Semaphore availableMemory;
+    private final int requiredMemoryGB;
 
     // Internal state
     private final Map<String, MethodState> globalMethodStates = new HashMap<>();
     private int globalCommitIndex = 0;
 
     public FeatureEvolutorTask(String featureName, String repositoryName, String basePath, 
-                               List<String> orderedReleases, Map<String, String> releaseToCommitMap) {
+                               List<String> orderedReleases, Map<String, String> releaseToCommitMap,
+                               Semaphore availableMemory, int requiredMemoryGB) {
         this.featureName = featureName;
         this.repositoryName = repositoryName;
         this.basePath = basePath;
         this.orderedReleases = orderedReleases;
         this.releaseToCommitMap = releaseToCommitMap;
+        this.availableMemory = availableMemory;
+        this.requiredMemoryGB = requiredMemoryGB;
     }
 
     @Override
@@ -44,39 +50,68 @@ public class FeatureEvolutorTask implements Runnable {
             return;
         }
 
-        String repoPath = basePath + File.separator + repositoryName;
-        try (Repository repo = GitEngine.openRepository(repoPath)) {
-            if (repo == null) return;
+        try {
+            log.info("[{}] Waiting for {}GB memory permits to start...", featureName, requiredMemoryGB);
+            ProgressTracker.updateStatus(featureName, "Waiting for " + requiredMemoryGB + "GB memory permits...");
+            availableMemory.acquire(requiredMemoryGB);
+            log.info("[{}] Acquired {}GB memory permits. Starting execution.", featureName, requiredMemoryGB);
+            ProgressTracker.updateStatus(featureName, "Starting execution...");
+        } catch (InterruptedException e) {
+            log.error("[{}] Interrupted while waiting for memory permits: {}", featureName, e.getMessage());
+            ProgressTracker.updateStatus(featureName, "Interrupted while waiting for memory permits.");
+            Thread.currentThread().interrupt();
+            return;
+        }
 
-            log.info("[{}] Starting evolution analysis on {}", featureName, repoPath);
-            String previousTargetCommit = null;
-
-            for (String release : orderedReleases) {
-                String targetCommitHash = releaseToCommitMap.get(release);
-                if (targetCommitHash == null || targetCommitHash.isEmpty() || targetCommitHash.equals("null")) {
-                    log.info("[{}] Release {} has no valid commit mapped. Skipping.", featureName, release);
-                    continue;
+        try {
+            String repoPath = basePath + File.separator + repositoryName;
+            try (Repository repo = GitEngine.openRepository(repoPath)) {
+                if (repo == null) {
+                    ProgressTracker.updateStatus(featureName, "Failed to open repository.");
+                    return;
                 }
 
-                log.info("[{}] Fetching commits for release {} up to {}", featureName, release, targetCommitHash);
-                List<RevCommit> commitsToProcess = GitEngine.getCommitsBetween(repo, previousTargetCommit, targetCommitHash);
+                log.info("[{}] Starting evolution analysis on {}", featureName, repoPath);
+                ProgressTracker.updateStatus(featureName, "Analyzing repository...");
+                String previousTargetCommit = null;
 
-                for (RevCommit commit : commitsToProcess) {
-                    globalCommitIndex++;
-                    processCommit(repo, commit, globalCommitIndex);
+                for (String release : orderedReleases) {
+                    String targetCommitHash = releaseToCommitMap.get(release);
+                    if (targetCommitHash == null || targetCommitHash.isEmpty() || targetCommitHash.equals("null")) {
+                        log.info("[{}] Release {} has no valid commit mapped. Skipping.", featureName, release);
+                        continue;
+                    }
+
+                    log.info("[{}] Fetching commits for release {} up to {}", featureName, release, targetCommitHash);
+                    ProgressTracker.updateStatus(featureName, "Fetching commits for release " + release + "...");
+                    List<RevCommit> commitsToProcess = GitEngine.getCommitsBetween(repo, previousTargetCommit, targetCommitHash);
+
+                    for (RevCommit commit : commitsToProcess) {
+                        globalCommitIndex++;
+                        if (globalCommitIndex % 50 == 0) {
+                            ProgressTracker.updateStatus(featureName, "Processing release " + release + " (" + globalCommitIndex + " commits)");
+                        }
+                        processCommit(repo, commit, globalCommitIndex);
+                    }
+
+                    // End of release -> Export CSV
+                    log.info("[{}] Generating CSV for release {} (Processed {} commits so far)", featureName, release, globalCommitIndex);
+                    ProgressTracker.updateStatus(featureName, "Exporting CSV for release " + release + "...");
+                    CsvExporter.export(release, featureName, globalMethodStates, globalCommitIndex);
+
+                    previousTargetCommit = targetCommitHash;
                 }
 
-                // End of release -> Export CSV
-                log.info("[{}] Generating CSV for release {} (Processed {} commits so far)", featureName, release, globalCommitIndex);
-                CsvExporter.export(release, featureName, globalMethodStates, globalCommitIndex);
+                log.info("[{}] Evolution analysis completed.", featureName);
+                ProgressTracker.updateStatus(featureName, "Completed! Processed " + globalCommitIndex + " commits.");
 
-                previousTargetCommit = targetCommitHash;
+            } catch (Exception e) {
+                log.error("[{}] Unhandled error in FeatureEvolutorTask: {}", featureName, e.getMessage(), e);
+                ProgressTracker.updateStatus(featureName, "Error: " + e.getMessage());
             }
-
-            log.info("[{}] Evolution analysis completed.", featureName);
-
-        } catch (Exception e) {
-            log.error("[{}] Unhandled error in FeatureEvolutorTask: {}", featureName, e.getMessage(), e);
+        } finally {
+            availableMemory.release(requiredMemoryGB);
+            log.info("[{}] Released {}GB memory permits.", featureName, requiredMemoryGB);
         }
     }
 
@@ -109,18 +144,13 @@ public class FeatureEvolutorTask implements Runnable {
                         int loc = MethodDiffEngine.countLines(methodCode);
                         state.onChange(commitIndex, diff.tach, loc);
                         state.currentCode = methodCode;
-                    } else {
-                        state.onNoChange(commitIndex);
                     }
+                    // onNoChange has been removed for O(1) lazy padding in onChange / getWch
                 }
             }
         }
 
-        // Handle methods that weren't modified in this commit
-        for (MethodState state : globalMethodStates.values()) {
-            if (!processedMethodsInCommit.contains(state.getMethodId()) && state.isAlive) {
-                state.onNoChange(commitIndex);
-            }
-        }
+        // Methods not modified will be lazily evaluated through ensureCapacity in MethodState.onChange
+        // or effectively skipped in getWch/getWcd which avoids O(N * M) performance bottleneck!
     }
 }
