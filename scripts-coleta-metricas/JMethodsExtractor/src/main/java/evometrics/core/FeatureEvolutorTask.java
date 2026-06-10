@@ -30,6 +30,7 @@ public class FeatureEvolutorTask implements Runnable {
     // Internal state
     private final Map<String, MethodState> globalMethodStates = new HashMap<>();
     private int globalCommitIndex = 0;
+    private String currentRelease = null; // tracks the release being processed
 
     public FeatureEvolutorTask(String featureName, String repositoryName, String basePath, 
                                List<String> orderedReleases, Map<String, String> releaseToCommitMap,
@@ -75,31 +76,29 @@ public class FeatureEvolutorTask implements Runnable {
                 ProgressTracker.updateStatus(featureName, "Analyzing repository...");
                 String previousTargetCommit = null;
 
-                for (String release : orderedReleases) {
-                    String targetCommitHash = releaseToCommitMap.get(release);
-                    if (targetCommitHash == null || targetCommitHash.isEmpty() || targetCommitHash.equals("null")) {
-                        log.info("[{}] Release {} has no valid commit mapped. Skipping.", featureName, release);
-                        continue;
-                    }
-
-                    log.info("[{}] Fetching commits for release {} up to {}", featureName, release, targetCommitHash);
-                    ProgressTracker.updateStatus(featureName, "Fetching commits for release " + release + "...");
-                    List<RevCommit> commitsToProcess = GitEngine.getCommitsBetween(repo, previousTargetCommit, targetCommitHash);
-
-                    for (RevCommit commit : commitsToProcess) {
-                        globalCommitIndex++;
-                        if (globalCommitIndex % 50 == 0) {
-                            ProgressTracker.updateStatus(featureName, "Processing release " + release + " (" + globalCommitIndex + " commits)");
+                try (CsvExporter csvExporter = new CsvExporter(featureName)) {
+                    for (String release : orderedReleases) {
+                        String targetCommitHash = releaseToCommitMap.get(release);
+                        if (targetCommitHash == null || targetCommitHash.isEmpty() || targetCommitHash.equals("null")) {
+                            log.info("[{}] Release {} has no valid commit mapped. Skipping.", featureName, release);
+                            continue;
                         }
-                        processCommit(repo, commit, globalCommitIndex);
+
+                        log.info("[{}] Fetching commits for release {} up to {}", featureName, release, targetCommitHash);
+                        ProgressTracker.updateStatus(featureName, "Fetching commits for release " + release + "...");
+                        List<RevCommit> commitsToProcess = GitEngine.getCommitsBetween(repo, previousTargetCommit, targetCommitHash);
+
+                        currentRelease = release;
+                        for (RevCommit commit : commitsToProcess) {
+                            globalCommitIndex++;
+                            if (globalCommitIndex % 50 == 0) {
+                                ProgressTracker.updateStatus(featureName, "Processing release " + release + " (" + globalCommitIndex + " commits)");
+                            }
+                            processCommit(repo, commit, globalCommitIndex, release, csvExporter);
+                        }
+
+                        previousTargetCommit = targetCommitHash;
                     }
-
-                    // End of release -> Export CSV
-                    log.info("[{}] Generating CSV for release {} (Processed {} commits so far)", featureName, release, globalCommitIndex);
-                    ProgressTracker.updateStatus(featureName, "Exporting CSV for release " + release + "...");
-                    CsvExporter.export(release, featureName, globalMethodStates, globalCommitIndex);
-
-                    previousTargetCommit = targetCommitHash;
                 }
 
                 log.info("[{}] Evolution analysis completed.", featureName);
@@ -115,9 +114,9 @@ public class FeatureEvolutorTask implements Runnable {
         }
     }
 
-    private void processCommit(Repository repo, RevCommit commit, int commitIndex) {
+    private void processCommit(Repository repo, RevCommit commit, int commitIndex, String release, CsvExporter csvExporter) {
         List<String> modifiedJavaFiles = GitEngine.getModifiedJavaFiles(repo, commit);
-        
+        String commitHash = commit.getName();
         Set<String> processedMethodsInCommit = new HashSet<>();
 
         for (String filePath : modifiedJavaFiles) {
@@ -133,24 +132,26 @@ public class FeatureEvolutorTask implements Runnable {
 
                 MethodState state = globalMethodStates.get(methodId);
                 if (state == null) {
+                    // Method seen for the first time (created)
                     state = new MethodState(methodId);
                     int loc = MethodDiffEngine.countLines(methodCode);
                     state.onSeen(commitIndex, loc);
                     state.currentCode = methodCode;
                     globalMethodStates.put(methodId, state);
+                    csvExporter.writeMethodState(state, commitIndex, commitHash, release, loc);
                 } else {
                     if (!state.currentCode.equals(methodCode)) {
+                        // Method was modified in this commit
                         MethodDiffEngine.DiffResult diff = MethodDiffEngine.computeDiff(state.currentCode, methodCode);
                         int loc = MethodDiffEngine.countLines(methodCode);
                         state.onChange(commitIndex, diff.tach, loc);
                         state.currentCode = methodCode;
+                        csvExporter.writeMethodState(state, commitIndex, commitHash, release, loc);
                     }
-                    // onNoChange has been removed for O(1) lazy padding in onChange / getWch
                 }
             }
         }
 
-        // Methods not modified will be lazily evaluated through ensureCapacity in MethodState.onChange
-        // or effectively skipped in getWch/getWcd which avoids O(N * M) performance bottleneck!
+        // Methods not in modified files are simply skipped (sparse history — only record changes)
     }
 }

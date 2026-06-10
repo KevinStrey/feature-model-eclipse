@@ -24,6 +24,7 @@ public class MethodState {
     // Additional info to track if it's currently alive
     public boolean isAlive = true;
     public String currentCode = "";
+    public int loc = 0;
     
     public MethodState(String methodId) {
         this.methodId = methodId;
@@ -38,6 +39,7 @@ public class MethodState {
             this.bom = commitIndex;
             this.csbsBase = nloc;
         }
+        this.loc = nloc;
     }
 
     public void onChange(int commitIndex, int tach, int locCurrent) {
@@ -62,6 +64,7 @@ public class MethodState {
         this.lca = tach;
         this.lcd = chd;
         this.acdfSum += chd;
+        this.loc = locCurrent;
     }
 
     public void onNoChange(int commitIndex) {

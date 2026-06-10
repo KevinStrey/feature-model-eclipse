@@ -2,6 +2,8 @@ import evometrics.core.FeatureEvolutorTask;
 import evometrics.core.MappingLoader;
 import evometrics.core.ProgressTracker;
 import evometrics.git.GitEngine;
+import evometrics.gui.CollectionConfig;
+import evometrics.gui.CollectorConfigDialog;
 import evometrics.models.FeatureMapping;
 import evometrics.models.ReleaseMapping;
 import org.slf4j.Logger;
@@ -51,7 +53,7 @@ public class Main {
         REPO_MEMORY_COST.put("eclipse.jdt.core", 6);
         REPO_MEMORY_COST.put("eclipse.pde", 4);
         REPO_MEMORY_COST.put("org.eclipse.emf", 4);
-        // Outros repositórios usarão o custo padrão de 2GB
+        // Other repositories use the default cost of 2 GB
     }
 
     // Hardcoded release order extracted from simrel.build tags
@@ -67,11 +69,9 @@ public class Main {
             "2023-12", "2024-03", "2024-06", "2024-09", "2024-12", "2025-03", "2025-06",
             "2025-09", "2025-12", "2026-03");
 
-    // Test mode limit
-    private static final int MAX_RELEASES_TEST_MODE = 3;
-
+    // ─────────────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
-        log.info("Starting EvoMetrics Collector in Java...");
+        log.info("Starting EvoMetrics Collector...");
 
         String basePath = System.getProperty("user.dir");
         if (!new java.io.File(basePath + "/releases/mappings").exists()) {
@@ -82,30 +82,34 @@ public class Main {
         }
         String mappingsDirPath = basePath + "/releases/mappings";
 
-
-
-        boolean testMode = true; // Set to true to stop after JunoSR0 and JunoSR1
-
-
-
         MappingLoader loader = new MappingLoader();
         Map<String, ReleaseMapping> allMappings = loader.loadAllMappings(mappingsDirPath);
 
-        List<String> releasesToProcess = ORDERED_RELEASES;
-        // int oxygenIdx = ORDERED_RELEASES.indexOf("Oxygen");
-        // if (oxygenIdx != -1) {
-        //     // Cut the list from 0 up to (but not including) Oxygen
-        //     releasesToProcess = ORDERED_RELEASES.subList(0, oxygenIdx);
-        // }
+        // ── Show configuration GUI ─────────────────────────────────────────────
+        CollectionConfig config = CollectorConfigDialog.show(ORDERED_RELEASES, allMappings);
 
-        if (testMode) {
-            releasesToProcess = releasesToProcess.subList(0,
-                    Math.min(MAX_RELEASES_TEST_MODE, releasesToProcess.size()));
-            log.info("TEST MODE ACTIVE: Only processing the first {} releases.", releasesToProcess.size());
+        if (config == null) {
+            log.info("User cancelled. Exiting.");
+            System.exit(0);
         }
 
-        // We want to pivot the data from Release->Feature to Feature->Releases
-        // This allows us to run one Thread per Feature.
+        log.info("Configuration received: {} releases, {} features selected, memory={}",
+                config.selectedReleases.size(),
+                config.selectedFeatures.size(),
+                config.unlimitedMemory ? "UNLIMITED" : config.maxMemoryGB + " GB");
+
+        startCollection(config, allMappings, basePath);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    static void startCollection(CollectionConfig config,
+                                Map<String, ReleaseMapping> allMappings,
+                                String basePath) {
+
+        List<String> releasesToProcess = config.selectedReleases;
+        Set<String> featureFilter      = config.selectedFeatures; // null → all
+
+        // Pivot data: Feature → (Release → CommitHash)
         Map<String, Map<String, String>> featureEvolutionMap = new HashMap<>();
         Map<String, String> featureRepositoryMap = new HashMap<>();
 
@@ -118,6 +122,10 @@ public class Main {
             if (mapping.getMappings() != null) {
                 for (Map.Entry<String, FeatureMapping> featureEntry : mapping.getMappings().entrySet()) {
                     String featureName = featureEntry.getKey();
+
+                    // Apply feature filter
+                    if (featureFilter != null && !featureFilter.contains(featureName)) continue;
+
                     FeatureMapping fmap = featureEntry.getValue();
 
                     featureEvolutionMap.putIfAbsent(featureName, new HashMap<>());
@@ -130,59 +138,64 @@ public class Main {
             }
         }
 
-        log.info("Found {} independent features to process.", featureEvolutionMap.size());
+        log.info("Found {} features to process.", featureEvolutionMap.size());
 
-        // Verify and clone repositories if they don't exist
+        // Verify / clone repositories
         for (String repoName : new HashSet<>(featureRepositoryMap.values())) {
-            if (repoName == null || repoName.isEmpty())
-                continue;
+            if (repoName == null || repoName.isEmpty()) continue;
             java.io.File repoDir = new java.io.File(basePath, repoName);
             if (!repoDir.exists() || !new java.io.File(repoDir, ".git").exists()) {
                 String cloneUrl = REPO_URL_MAP.get(repoName);
                 if (cloneUrl != null) {
-                    log.info("Repository '{}' not found or incomplete. Auto-cloning from {}...", repoName, cloneUrl);
+                    log.info("Repository '{}' not found. Auto-cloning from {}...", repoName, cloneUrl);
                     boolean cloned = GitEngine.cloneRepository(cloneUrl, repoDir.getAbsolutePath());
                     if (!cloned) {
-                        log.error(
-                                "Failed to clone repository: {}. Extraction for features using this repository might fail.",
-                                repoName);
+                        log.error("Failed to clone repository: {}. Extraction may fail.", repoName);
                     }
                 } else {
                     log.warn("No clone URL configured for repository: {}", repoName);
                 }
             } else {
-                log.info("Repository '{}' already exists and is initialized.", repoName);
+                log.info("Repository '{}' already exists.", repoName);
             }
         }
 
-        // Dynamically calculate pool size based on available resources to avoid OutOfMemoryError
-        int cores = Runtime.getRuntime().availableProcessors();
-        long maxMemoryGB = Runtime.getRuntime().maxMemory() / (1024 * 1024 * 1024);
-        int totalPermits = (int) Math.max(2, maxMemoryGB); // Minimum 2GB
-
-        log.info("Available Cores: {}, Max Heap Memory: {} GB. Starting Semaphore with {} permits.", cores, maxMemoryGB,
-                totalPermits);
+        // ── Memory / concurrency setup ────────────────────────────────────────
+        int totalPermits;
+        if (config.unlimitedMemory) {
+            // Effectively unlimited: each task acquires 1 permit from a pool of Integer.MAX_VALUE
+            totalPermits = Integer.MAX_VALUE;
+            log.info("Memory mode: UNLIMITED (all features run in parallel with no memory cap).");
+        } else {
+            totalPermits = config.maxMemoryGB;
+            log.info("Memory mode: LIMITED to {} GB (Semaphore with {} permits).", totalPermits, totalPermits);
+        }
 
         Semaphore availableMemory = new Semaphore(totalPermits, true);
         ExecutorService executor = Executors.newCachedThreadPool();
 
         ProgressTracker.showGUI();
 
-        // Ordenar as features pelo custo de memória do seu repositório (maior custo
-        // primeiro)
+        // Sort features by memory cost (heaviest first for better scheduling)
         List<String> sortedFeatures = new ArrayList<>(featureEvolutionMap.keySet());
         sortedFeatures.sort((f1, f2) -> {
             String repo1 = featureRepositoryMap.get(f1);
             String repo2 = featureRepositoryMap.get(f2);
-            int cost1 = REPO_MEMORY_COST.getOrDefault(repo1, 2);
-            int cost2 = REPO_MEMORY_COST.getOrDefault(repo2, 2);
-            return Integer.compare(cost2, cost1); // descending order
+            int cost1 = resolveMemoryCost(repo1, config, totalPermits);
+            int cost2 = resolveMemoryCost(repo2, config, totalPermits);
+            return Integer.compare(cost2, cost1); // descending
         });
 
         for (String featureName : sortedFeatures) {
             String repoName = featureRepositoryMap.get(featureName);
             Map<String, String> releaseToCommitMap = featureEvolutionMap.get(featureName);
-            int requiredMemoryGB = Math.min(totalPermits, REPO_MEMORY_COST.getOrDefault(repoName, 2));
+
+            int requiredMemoryGB;
+            if (config.unlimitedMemory) {
+                requiredMemoryGB = 1; // acquire 1 permit each — always succeeds instantly
+            } else {
+                requiredMemoryGB = Math.min(totalPermits, REPO_MEMORY_COST.getOrDefault(repoName, 2));
+            }
 
             ProgressTracker.initializeFeature(featureName, repoName);
 
@@ -205,5 +218,10 @@ public class Main {
         }
 
         log.info("All metrics collected successfully.");
+    }
+
+    private static int resolveMemoryCost(String repoName, CollectionConfig config, int totalPermits) {
+        if (config.unlimitedMemory) return 1;
+        return Math.min(totalPermits, REPO_MEMORY_COST.getOrDefault(repoName, 2));
     }
 }
