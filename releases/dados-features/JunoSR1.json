@@ -1,0 +1,132 @@
+{
+    "release":  "JunoSR1",
+    "tag":  "JunoSR1",
+    "features":  {
+                     "JDT":  {
+                                 "version":  "4.2",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.2-M-builds/M20120914-1800/",
+                                 "note":  "from repository URL"
+                             },
+                     "PDE":  {
+                                 "version":  "4.2",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.2-M-builds/M20120914-1800/",
+                                 "note":  "from repository URL"
+                             },
+                     "CVS":  {
+                                 "version":  "4.2",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.2-M-builds/M20120914-1800/",
+                                 "note":  "from repository URL"
+                             },
+                     "MAVEN":  {
+                                   "version":  "1.2.0",
+                                   "source":  "m2e.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/technology/m2e/milestones/1.2",
+                                   "note":  "from feature versionRange"
+                               },
+                     "SCOUT":  {
+                                   "version":  "3.8.1",
+                                   "source":  "scout.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/scout/releases/3.8/3.8.1/RC420120917-1521/update",
+                                   "note":  "from feature versionRange"
+                               },
+                     "EMF":  {
+                                 "version":  "2.8.1",
+                                 "source":  "emf-emf.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/emf/emf/updates/2.8.x/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "GMF":  {
+                                 "version":  "1.5.0",
+                                 "source":  "gmp-gmf-runtime.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/gmp/updates/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "DATATOOLS":  {
+                                       "version":  "1.10.1",
+                                       "source":  "dtp.b3aggrcon",
+                                       "repository_url":  "http://download.eclipse.org/datatools/downloads/drops/M_updates_1.10.1",
+                                       "note":  "from feature versionRange"
+                                   },
+                     "BIRT":  {
+                                  "version":  "4.2.1",
+                                  "source":  "birt.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/birt/update-site/4.2-interim/",
+                                  "note":  "from feature versionRange"
+                              },
+                     "GEF":  {
+                                 "version":  "3.8.1.201208200205",
+                                 "source":  "gef.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/gef/updates/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "CDT":  {
+                                 "version":  "8.0.0.201106081058",
+                                 "source":  "cdt.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/cdt/builds/juno/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "WEBTOOLS":  {
+                                      "version":  "3.4.1",
+                                      "source":  "webtools.b3aggrcon",
+                                      "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.4.1/R-3.4.1-20120917174803/repository/",
+                                      "note":  "from repository URL"
+                                  },
+                     "SVN":  {
+                                 "version":  "1.0.0",
+                                 "source":  "subversive.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/technology/subversive/1.0/juno-site/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "MYLYN":  {
+                                   "version":  "3.8.2",
+                                   "source":  "mylyn.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/mylyn/snapshots/3.8",
+                                   "note":  "from feature versionRange"
+                               },
+                     "PTP":  {
+                                 "version":  "6.0.0.201205252205",
+                                 "source":  "ptp.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/ptp/builds/juno/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "JUBULA":  {
+                                    "version":  "1.2.2",
+                                    "source":  "jubula.b3aggrcon",
+                                    "repository_url":  "http://download.eclipse.org/jubula/release/juno-sr1",
+                                    "note":  "from feature versionRange"
+                                },
+                     "RAP":  {
+                                 "version":  "1.5.0",
+                                 "source":  "rap.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/rt/rap/1.5/tooling/SR1-RC4-20120917-1138/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "EGIT":  {
+                                  "version":  "2.1.0.201209190230",
+                                  "source":  "egit.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/egit/updates-2.1",
+                                  "note":  "from feature versionRange"
+                              },
+                     "RSE":  {
+                                 "version":  "3.4.0",
+                                 "source":  "tm.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tm/updates/3.4milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "ECLIPSELINK":  {
+                                         "version":  "2.4.0",
+                                         "source":  "eclipseLink.b3aggrcon",
+                                         "repository_url":  "http://download.eclipse.org/rt/eclipselink/updates/2.4.0.v20120608-r11652",
+                                         "note":  "from repository URL"
+                                     },
+                     "WINDOWBUILDER":  {
+                                           "version":  "1.2.0",
+                                           "source":  "windowbuilder.b3aggrcon",
+                                           "repository_url":  "http://download.eclipse.org/windowbuilder/WB/release/R201209281200/4.2",
+                                           "note":  "from first versionRange in file"
+                                       }
+                 }
+}

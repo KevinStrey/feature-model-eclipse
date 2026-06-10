@@ -1,0 +1,158 @@
+{
+    "release": "2019-12",
+    "mappings": {
+        "JDT": {
+            "version": "4.14",
+            "status": "SUCCESS",
+            "commit": "9c0cf52f3525e62dc2c7dbd9ccbcf3edd9f8ab89",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R4_14",
+            "repository": "eclipse.jdt.core"
+        },
+        "PDE": {
+            "version": "4.14",
+            "status": "SUCCESS",
+            "commit": "d55948b32e9dbcbfee7aaa428adf79b38a752c16",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R4_14",
+            "repository": "eclipse.pde"
+        },
+        "CDT": {
+            "version": "9.10.0.201912051559",
+            "status": "SUCCESS",
+            "commit": "45585fcbbf9e051d76afdd3a96374cc394f624e5",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2019-12-05 15:59:00",
+            "repository": "cdt"
+        },
+        "GEF": {
+            "version": "3.11.0.201606061308",
+            "status": "SUCCESS",
+            "commit": "bcd6206f6c014e0d895ed30ae4d69afa1321af44",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2016-06-06 13:08:00",
+            "repository": "gef-classic"
+        },
+        "EMF": {
+            "version": "2.20",
+            "status": "SUCCESS",
+            "commit": "a7ba562016ddb958e4844ac73f8a80f480e7dbd6",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R2_20_0",
+            "repository": "org.eclipse.emf"
+        },
+        "BIRT": {
+            "version": "4.7.0",
+            "status": "SUCCESS",
+            "commit": "a236af00e0f69aea13572ca6c7eece736094a75d",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "4.7.0",
+            "repository": "birt"
+        },
+        "DATATOOLS": {
+            "version": "1.14.105",
+            "status": "SUCCESS",
+            "commit": "74cac893e323b283527b22ce3823ba462344aba2",
+            "heuristic_id": "H_MANUAL",
+            "heuristic_description": "Inferred via related Timestamp (2019-12-05 15:59:00)",
+            "matched_value": "2019-12-05 15:59:00",
+            "repository": null
+        },
+        "ECLIPSELINK": {
+            "version": "3.16.0",
+            "status": "SUCCESS",
+            "commit": "bfb7ef4f2e3f60d30ea56253ce502ef9fb180832",
+            "heuristic_id": "H_MANUAL",
+            "heuristic_description": "Copied from WEBTOOLS",
+            "matched_value": "3.16.0",
+            "repository": null
+        },
+        "EGIT": {
+            "version": "5.6.0.201912101111",
+            "status": "SUCCESS",
+            "commit": "0a7c760f1ab994c76a55b4b77ca59a7d75e1b91e",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2019-12-10 11:11:00",
+            "repository": "egit"
+        },
+        "GMF": {
+            "version": "1.12.2.201912020813",
+            "status": "SUCCESS",
+            "commit": "e22fa3b5b0749567f23aa597185ae52872de59a2",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2019-12-02 08:13:00",
+            "repository": "gmf-runtime"
+        },
+        "MYLYN": {
+            "version": "3.24.2",
+            "status": "SUCCESS",
+            "commit": "42e49c1b452677984c306f60996b1fa2ce9e2b9c",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching",
+            "matched_value": "R_3_24_2",
+            "repository": "org.eclipse.mylyn"
+        },
+        "RAP": {
+            "version": "3.11.0",
+            "status": "SUCCESS",
+            "commit": "1b4469b98ba859cea1b39bb6d29f83e03a89fc70",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "3.11.0",
+            "repository": "org.eclipse.rap"
+        },
+        "PTP": {
+            "version": "9.3.1",
+            "status": "SUCCESS",
+            "commit": "244dae6e1b4c7ab0d70ab60465b8a1cb387c1007",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "9.3.1",
+            "repository": "ptp"
+        },
+        "SCOUT": {
+            "version": "9.0.0",
+            "status": "SUCCESS",
+            "commit": "ab9c2c6b090895851aeb657db6efb5b1ff278900",
+            "heuristic_id": "H_MANUAL",
+            "heuristic_description": "Inferred via related Timestamp (2019-12-05 15:59:00)",
+            "matched_value": "2019-12-05 15:59:00",
+            "repository": null
+        },
+        "WEBTOOLS": {
+            "version": "3.16.0",
+            "status": "SUCCESS",
+            "commit": "bfb7ef4f2e3f60d30ea56253ce502ef9fb180832",
+            "heuristic_id": "H_MANUAL",
+            "heuristic_description": "Inferred via related Timestamp (2019-12-05 15:59:00)",
+            "matched_value": "2019-12-05 15:59:00",
+            "repository": null
+        },
+        "WINDOWBUILDER": {
+            "version": "1.9.2",
+            "status": "SUCCESS",
+            "commit": "9402850c0a711fff37f8aeb269fd9a9e5ee01307",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "1.9.2",
+            "repository": "windowbuilder"
+        },
+        "MAVEN": {
+            "version": "1.14.0",
+            "status": "SUCCESS",
+            "commit": "2e98e91b296eba3c712aa3f7160ebfd667edb833",
+            "heuristic_id": "H2",
+            "heuristic_description": "Git Log Pickaxe (MANIFEST.MF)",
+            "matched_value": "1.14.0",
+            "repository": "m2e-core"
+        }
+    }
+}

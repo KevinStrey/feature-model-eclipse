@@ -1,0 +1,132 @@
+{
+    "release":  "2019-03",
+    "tag":  "2019-03",
+    "features":  {
+                     "JDT":  {
+                                 "version":  "4.11",
+                                 "source":  "ep.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.11milestones/S-4.11RC2-201903070500/",
+                                 "note":  "from repository URL"
+                             },
+                     "PDE":  {
+                                 "version":  "4.11",
+                                 "source":  "ep.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.11milestones/S-4.11RC2-201903070500/",
+                                 "note":  "from repository URL"
+                             },
+                     "CVS":  {
+                                 "version":  "4.11",
+                                 "source":  "ep.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.11milestones/S-4.11RC2-201903070500/",
+                                 "note":  "from repository URL"
+                             },
+                     "MAVEN":  {
+                                   "version":  "1.11.0",
+                                   "source":  "m2e.aggrcon",
+                                   "repository_url":  "https://download.eclipse.org/technology/m2e/milestones/1.11/1.11.0.20190220-2119",
+                                   "note":  "from feature versionRange"
+                               },
+                     "SCOUT":  {
+                                   "version":  "9.0.0",
+                                   "source":  "scout.aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/scout/releases/9.0/9.0.0/009_Simrel_2019_03/",
+                                   "note":  "from feature versionRange"
+                               },
+                     "EMF":  {
+                                 "version":  "2.17",
+                                 "source":  "emf-emf.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/emf/emf/builds/release/2.17",
+                                 "note":  "from repository URL"
+                             },
+                     "GMF":  {
+                                 "version":  "1.12.0.201806010809",
+                                 "source":  "gmp-gmf-runtime.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R201806010809",
+                                 "note":  "from feature versionRange"
+                             },
+                     "DATATOOLS":  {
+                                       "version":  "1.14.104",
+                                       "source":  "dtp.aggrcon",
+                                       "repository_url":  "http://download.eclipse.org/datatools/updates/1.14.104-SNAPSHOT/repository/",
+                                       "note":  "from repository URL"
+                                   },
+                     "BIRT":  {
+                                  "version":  "4.7.0",
+                                  "source":  "birt.aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/birt/update-site/oxygen-interim/",
+                                  "note":  "from feature versionRange"
+                              },
+                     "GEF":  {
+                                 "version":  "3.11.0.201606061308",
+                                 "source":  "gef.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952",
+                                 "note":  "from feature versionRange"
+                             },
+                     "CDT":  {
+                                 "version":  "9.7.0.201903092251",
+                                 "source":  "cdt.aggrcon",
+                                 "repository_url":  "https://download.eclipse.org/tools/cdt/builds/9.7/cdt-9.7.0-simrel-2019-03-rc2a/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "WEBTOOLS":  {
+                                      "version":  "3.13.0",
+                                      "source":  "webtools.aggrcon",
+                                      "repository_url":  "https://download.eclipse.org/webtools/downloads/drops/R3.13.0/S-3.13.0.RC2-20190308131645/repository/",
+                                      "note":  "from repository URL"
+                                  },
+                     "SVN":  {
+                                 "version":  "N/A",
+                                 "source":  null,
+                                 "repository_url":  null,
+                                 "note":  "SVN not found"
+                             },
+                     "MYLYN":  {
+                                   "version":  "3.24.2",
+                                   "source":  "mylyn.aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/mylyn/drops/3.24.2/v20180905-2014",
+                                   "note":  "from feature versionRange"
+                               },
+                     "PTP":  {
+                                 "version":  "9.2.0",
+                                 "source":  "ptp.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/ptp/builds/photon/milestones/2019-03-M2",
+                                 "note":  "from feature versionRange"
+                             },
+                     "JUBULA":  {
+                                    "version":  "7.0.2",
+                                    "source":  "jubula.aggrcon",
+                                    "repository_url":  "http://download.eclipse.org/jubula/release/2019-03",
+                                    "note":  "from feature versionRange"
+                                },
+                     "RAP":  {
+                                 "version":  "3.8.0",
+                                 "source":  "rap.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/rt/rap/3.8/RC2-20190313-1010/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "EGIT":  {
+                                  "version":  "5.3.0.201903130848",
+                                  "source":  "egit.aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/egit/updates-5.3",
+                                  "note":  "from feature versionRange"
+                              },
+                     "RSE":  {
+                                 "version":  "4.5.100",
+                                 "source":  "tm.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tm/updates/4.5.100-SNAPSHOT/repository/",
+                                 "note":  "from repository URL"
+                             },
+                     "ECLIPSELINK":  {
+                                         "version":  "3.13.0",
+                                         "source":  "webtools.aggrcon",
+                                         "repository_url":  "https://download.eclipse.org/webtools/downloads/drops/R3.13.0/S-3.13.0.RC2-20190308131645/repository/",
+                                         "note":  "from WebTools (contains eclipselink features)"
+                                     },
+                     "WINDOWBUILDER":  {
+                                           "version":  "1.9.2",
+                                           "source":  "windowbuilder.aggrcon",
+                                           "repository_url":  "http://download.eclipse.org/windowbuilder/1.9.2",
+                                           "note":  "from first versionRange in file"
+                                       }
+                 }
+}

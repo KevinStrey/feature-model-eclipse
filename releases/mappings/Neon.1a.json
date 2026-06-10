@@ -1,0 +1,158 @@
+{
+    "release": "Neon.1a",
+    "mappings": {
+        "JDT": {
+            "version": "4.6.1",
+            "status": "SUCCESS",
+            "commit": "57d8554469857f1c8455151694c14ef66b1eb294",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "R4_6",
+            "repository": "eclipse.jdt.core"
+        },
+        "PDE": {
+            "version": "4.6.1",
+            "status": "SUCCESS",
+            "commit": "3f476c9430ebbc3c1096311e65e0e1fc6118ace9",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "R4_6",
+            "repository": "eclipse.pde"
+        },
+        "CDT": {
+            "version": "9.1.0",
+            "status": "SUCCESS",
+            "commit": "4a425ec5dd00f23c722a5694009808c389c8e467",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "CDT_9_1_0",
+            "repository": "cdt"
+        },
+        "GEF": {
+            "version": "3.11.0.201606061308",
+            "status": "SUCCESS",
+            "commit": "bcd6206f6c014e0d895ed30ae4d69afa1321af44",
+            "heuristic_id": "H0",
+            "heuristic_description": "Timestamp Time-Travel",
+            "matched_value": "2016-06-06 13:08:00",
+            "repository": "gef-classic"
+        },
+        "EMF": {
+            "version": "2.12.0",
+            "status": "SUCCESS",
+            "commit": "202158381376381c5c74347c875627acff4465a5",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "R2_12_0",
+            "repository": "org.eclipse.emf"
+        },
+        "BIRT": {
+            "version": "4.6.0",
+            "status": "SUCCESS",
+            "commit": "3f761def2cd6dca6cf509c9518d60a5d1fe42bfe",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "BIRT_4_6_0_Release_201606072112",
+            "repository": "birt"
+        },
+        "DATATOOLS": {
+            "version": "1.13.0.201603142002",
+            "status": "NOT FOUND",
+            "commit": null,
+            "heuristic_id": null,
+            "heuristic_description": null,
+            "matched_value": null,
+            "repository": null
+        },
+        "ECLIPSELINK": {
+            "version": "3.7",
+            "status": "NOT FOUND",
+            "commit": null,
+            "heuristic_id": null,
+            "heuristic_description": null,
+            "matched_value": null,
+            "repository": null
+        },
+        "EGIT": {
+            "version": "4.4.1.201607150455",
+            "status": "SUCCESS",
+            "commit": "1ac94c7d68e1f3b66d4bab126ee53ff401dbd459",
+            "heuristic_id": "H0b",
+            "heuristic_description": "Tag with Timestamp in Name",
+            "matched_value": "v4.4.1.201607150455-r",
+            "repository": "egit"
+        },
+        "GMF": {
+            "version": "1.10.0.201606071959",
+            "status": "SUCCESS",
+            "commit": "bdbbd73219912fd66978d198d7fef9ddbe35ab90",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "R1_10",
+            "repository": "gmf-runtime"
+        },
+        "MYLYN": {
+            "version": "3.20.0",
+            "status": "SUCCESS",
+            "commit": "d2232515eee80368bf7a1c8d66bb6b7e408224d0",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "R_3_20_0",
+            "repository": "org.eclipse.mylyn"
+        },
+        "RAP": {
+            "version": "3.1.1",
+            "status": "NOT FOUND",
+            "commit": null,
+            "heuristic_id": null,
+            "heuristic_description": null,
+            "matched_value": null,
+            "repository": null
+        },
+        "PTP": {
+            "version": "9.0.0",
+            "status": "NOT FOUND",
+            "commit": null,
+            "heuristic_id": null,
+            "heuristic_description": null,
+            "matched_value": null,
+            "repository": null
+        },
+        "SCOUT": {
+            "version": "6.0.100",
+            "status": "NOT FOUND",
+            "commit": null,
+            "heuristic_id": null,
+            "heuristic_description": null,
+            "matched_value": null,
+            "repository": null
+        },
+        "WEBTOOLS": {
+            "version": "3.7",
+            "status": "SUCCESS",
+            "commit": "d75b8db9274e06a9e220df91c765e1e0a45a7982",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "R3_7_0",
+            "repository": "webtools.javaee"
+        },
+        "WINDOWBUILDER": {
+            "version": "1.2.0",
+            "status": "NOT FOUND",
+            "commit": null,
+            "heuristic_id": null,
+            "heuristic_description": null,
+            "matched_value": null,
+            "repository": null
+        },
+        "MAVEN": {
+            "version": "1.7.0",
+            "status": "SUCCESS",
+            "commit": "3aedff2d984ad5cca2b7e407a137ead339250a4d",
+            "heuristic_id": "H1",
+            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "matched_value": "releases/1.7/1.7.0.20160603-1933",
+            "repository": "m2e-core"
+        }
+    }
+}

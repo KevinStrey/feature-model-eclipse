@@ -1,0 +1,132 @@
+{
+    "release":  "z20140805-2300",
+    "tag":  "z20140805-2300",
+    "features":  {
+                     "JDT":  {
+                                 "version":  "4.4",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.4/R-4.4-201406061215/",
+                                 "note":  "from repository URL"
+                             },
+                     "PDE":  {
+                                 "version":  "4.4",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.4/R-4.4-201406061215/",
+                                 "note":  "from repository URL"
+                             },
+                     "CVS":  {
+                                 "version":  "4.4",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.4/R-4.4-201406061215/",
+                                 "note":  "from repository URL"
+                             },
+                     "MAVEN":  {
+                                   "version":  "1.5.0",
+                                   "source":  "m2e.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/technology/m2e/releases/1.5/",
+                                   "note":  "from feature versionRange"
+                               },
+                     "SCOUT":  {
+                                   "version":  "4.0.0",
+                                   "source":  "scout.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/scout/releases/4.0/4.0.0/scout.main/RC4-20140611-0950",
+                                   "note":  "from feature versionRange"
+                               },
+                     "EMF":  {
+                                 "version":  "2.10.0",
+                                 "source":  "emf-emf.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/emf/emf/updates/milestones/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "GMF":  {
+                                 "version":  "1.8.0.201405281701",
+                                 "source":  "gmp-gmf-runtime.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "DATATOOLS":  {
+                                       "version":  "1.12.0",
+                                       "source":  "dtp.b3aggrcon",
+                                       "repository_url":  "http://download.eclipse.org/datatools/downloads/drops/M_updates_1.12.0",
+                                       "note":  "from feature versionRange"
+                                   },
+                     "BIRT":  {
+                                  "version":  "4.4.0",
+                                  "source":  "birt.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/birt/update-site/4.4/",
+                                  "note":  "from feature versionRange"
+                              },
+                     "GEF":  {
+                                 "version":  "3.9.100.201405261516",
+                                 "source":  "gef.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/gef/updates/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "CDT":  {
+                                 "version":  "8.0.0.201106081058",
+                                 "source":  "cdt.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/cdt/builds/luna/milestones",
+                                 "note":  "from feature versionRange"
+                             },
+                     "WEBTOOLS":  {
+                                      "version":  "3.6.0",
+                                      "source":  "webtools.b3aggrcon",
+                                      "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.6.0/R-3.6.0-20140602160322/repository/",
+                                      "note":  "from repository URL"
+                                  },
+                     "SVN":  {
+                                 "version":  "2.0.0",
+                                 "source":  "subversive.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/technology/subversive/2.0/luna-site/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "MYLYN":  {
+                                   "version":  "3.12.0",
+                                   "source":  "mylyn.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/mylyn/snapshots/3.12",
+                                   "note":  "from feature versionRange"
+                               },
+                     "PTP":  {
+                                 "version":  "8.0.0",
+                                 "source":  "ptp.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/ptp/builds/luna/milestones/RC4",
+                                 "note":  "from feature versionRange"
+                             },
+                     "JUBULA":  {
+                                    "version":  "2.3.0",
+                                    "source":  "jubula.b3aggrcon",
+                                    "repository_url":  "http://download.eclipse.org/jubula/release/luna",
+                                    "note":  "from feature versionRange"
+                                },
+                     "RAP":  {
+                                 "version":  "2.3.0",
+                                 "source":  "rap.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/rt/rap/2.3/R-20140610-0925/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "EGIT":  {
+                                  "version":  "3.4.0.201406110918",
+                                  "source":  "egit.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/egit/updates-3.4",
+                                  "note":  "from feature versionRange"
+                              },
+                     "RSE":  {
+                                 "version":  "3.4.0",
+                                 "source":  "tm.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tm/updates/3.6milestones/RC4",
+                                 "note":  "from feature versionRange"
+                             },
+                     "ECLIPSELINK":  {
+                                         "version":  "2.6.0",
+                                         "source":  "eclipseLink.b3aggrcon",
+                                         "repository_url":  "http://download.eclipse.org/rt/eclipselink/milestone-updates/2.6.0.v20130815-a4708b6_M2",
+                                         "note":  "from repository URL"
+                                     },
+                     "WINDOWBUILDER":  {
+                                           "version":  "1.2.0",
+                                           "source":  "windowbuilder.b3aggrcon",
+                                           "repository_url":  "http://download.eclipse.org/windowbuilder/WB/release/R201406251200/4.4",
+                                           "note":  "from first versionRange in file"
+                                       }
+                 }
+}

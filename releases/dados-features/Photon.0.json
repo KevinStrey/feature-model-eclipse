@@ -1,0 +1,132 @@
+{
+    "release":  "Photon.0",
+    "tag":  "Photon.0",
+    "features":  {
+                     "JDT":  {
+                                 "version":  "4.8",
+                                 "source":  "ep.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.8milestones/S-4.8RC4a-201806110500/",
+                                 "note":  "from repository URL"
+                             },
+                     "PDE":  {
+                                 "version":  "4.8",
+                                 "source":  "ep.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.8milestones/S-4.8RC4a-201806110500/",
+                                 "note":  "from repository URL"
+                             },
+                     "CVS":  {
+                                 "version":  "4.8",
+                                 "source":  "ep.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.8milestones/S-4.8RC4a-201806110500/",
+                                 "note":  "from repository URL"
+                             },
+                     "MAVEN":  {
+                                   "version":  "1.9.0",
+                                   "source":  "m2e.aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/technology/m2e/milestones/1.9/1.9.0.20180606-2036",
+                                   "note":  "from feature versionRange"
+                               },
+                     "SCOUT":  {
+                                   "version":  "8.0.0",
+                                   "source":  "scout.aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/scout/releases/8.0/8.0.0/010_Photon/",
+                                   "note":  "from feature versionRange"
+                               },
+                     "EMF":  {
+                                 "version":  "2.14",
+                                 "source":  "emf-emf.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/emf/emf/builds/milestone/S201805310718",
+                                 "note":  "from description"
+                             },
+                     "GMF":  {
+                                 "version":  "1.12.0.201806010809",
+                                 "source":  "gmp-gmf-runtime.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809",
+                                 "note":  "from feature versionRange"
+                             },
+                     "DATATOOLS":  {
+                                       "version":  "1.14.100.201805031905",
+                                       "source":  "dtp.aggrcon",
+                                       "repository_url":  "http://download.eclipse.org/datatools/updates/1.14.100.201805031905/repository/",
+                                       "note":  "from repository URL"
+                                   },
+                     "BIRT":  {
+                                  "version":  "4.7.0",
+                                  "source":  "birt.aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/birt/update-site/oxygen-interim/",
+                                  "note":  "from feature versionRange"
+                              },
+                     "GEF":  {
+                                 "version":  "3.11.0.201606061308",
+                                 "source":  "gef.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952",
+                                 "note":  "from feature versionRange"
+                             },
+                     "CDT":  {
+                                 "version":  "9.5.0.201806170908",
+                                 "source":  "cdt.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/cdt/builds/9.5/cdt-9.5.0-photon-rc4c/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "WEBTOOLS":  {
+                                      "version":  "3.10.0",
+                                      "source":  "webtools.aggrcon",
+                                      "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.10.0/S-3.10.0.RC4-20180611164516/repository/",
+                                      "note":  "from repository URL"
+                                  },
+                     "SVN":  {
+                                 "version":  "4.0.0",
+                                 "source":  "subversive.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/technology/subversive/4.0/neon-site/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "MYLYN":  {
+                                   "version":  "3.24.0",
+                                   "source":  "mylyn.aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/mylyn/drops/3.24.0/v20180613-1723",
+                                   "note":  "from feature versionRange"
+                               },
+                     "PTP":  {
+                                 "version":  "9.2.0",
+                                 "source":  "ptp.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/ptp/builds/photon/milestones/RC2",
+                                 "note":  "from feature versionRange"
+                             },
+                     "JUBULA":  {
+                                    "version":  "6.0.0",
+                                    "source":  "jubula.aggrcon",
+                                    "repository_url":  "http://download.eclipse.org/jubula/milestones/photon-m6",
+                                    "note":  "from feature versionRange"
+                                },
+                     "RAP":  {
+                                 "version":  "3.5.0",
+                                 "source":  "rap.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/rt/rap/3.5/RC4-20180613-1725/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "EGIT":  {
+                                  "version":  "5.0.0.201806131550",
+                                  "source":  "egit.aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/egit/updates-5.0",
+                                  "note":  "from feature versionRange"
+                              },
+                     "RSE":  {
+                                 "version":  "3.7.100",
+                                 "source":  "tm.aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tm/updates/3.7.100/repository/",
+                                 "note":  "from repository URL"
+                             },
+                     "ECLIPSELINK":  {
+                                         "version":  "3.10.0",
+                                         "source":  "webtools.aggrcon",
+                                         "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.10.0/S-3.10.0.RC4-20180611164516/repository/",
+                                         "note":  "from WebTools (contains eclipselink features)"
+                                     },
+                     "WINDOWBUILDER":  {
+                                           "version":  "1.2.0",
+                                           "source":  "windowbuilder.aggrcon",
+                                           "repository_url":  "http://download.eclipse.org/windowbuilder/WB/integration/4.7",
+                                           "note":  "from first versionRange in file"
+                                       }
+                 }
+}

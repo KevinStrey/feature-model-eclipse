@@ -1,0 +1,48 @@
+@startwbs
+title Feature Model - Eclipse IDE Release: Neon
+
+<style>
+wbsDiagram {
+    node {
+        RoundCorner 10
+        Padding 8
+        FontSize 12
+        HorizontalAlignment center
+    }
+    :depth(0) {
+        BackgroundColor #E3F2FD
+        FontSize 16
+        FontStyle bold
+    }
+    :depth(1) {
+        BackgroundColor #FFF9C4
+        FontSize 14
+        FontStyle bold
+    }
+}
+</style>
+
+*[#E3F2FD] EclipseIDE
+**[#FFF9C4] RCP_Platform
+***[#C8E6C9] JDT (v4.6)
+****[#C8E6C9] PDE (v4.6)
+*****[#C8E6C9] Scout (v6.0.0)
+****[#C8E6C9] Maven (v1.7.0)
+****[#C8E6C9] GMF (v1.10.0.201606071959)
+*****[#C8E6C9] BIRT (v4.6.0)
+****[#C8E6C9] Datatools (v1.13.0.201603142002)
+***[#C8E6C9] EMF (v2.12.0)
+***[#C8E6C9] GEF (v3.11.0.201606061308)
+***[#FFCDD2] CDT (?)
+***[#C8E6C9] CVS (v4.6)
+***[#C8E6C9] WebTools (v3.8.0)
+***[#C8E6C9] SVN (v4.0.0)
+***[#C8E6C9] Mylyn (v3.20.0)
+***[#C8E6C9] PTP (v9.0.0)
+***[#C8E6C9] Jubula (v4.0.0)
+***[#C8E6C9] RAP (v3.1.0)
+***[#C8E6C9] EGit (v4.4.0.201606070830)
+***[#C8E6C9] RSE (v3.7.0.201505221634)
+***[#C8E6C9] EclipseLink (v3.8.0)
+***[#C8E6C9] WindowBuilder (v1.2.0)
+@endwbs

@@ -1,0 +1,132 @@
+{
+    "release":  "OxygenPreRienaRemoval_9-8-2016",
+    "tag":  "OxygenPreRienaRemoval_9-8-2016",
+    "features":  {
+                     "JDT":  {
+                                 "version":  "4.7",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.7milestones/S-4.7M1-201608032000/",
+                                 "note":  "from repository URL"
+                             },
+                     "PDE":  {
+                                 "version":  "4.7",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.7milestones/S-4.7M1-201608032000/",
+                                 "note":  "from repository URL"
+                             },
+                     "CVS":  {
+                                 "version":  "4.7",
+                                 "source":  "ep.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/eclipse/updates/4.7milestones/S-4.7M1-201608032000/",
+                                 "note":  "from repository URL"
+                             },
+                     "MAVEN":  {
+                                   "version":  "1.8.0",
+                                   "source":  "m2e.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/technology/m2e/releases/1.8/1.8.0.20160809-1624",
+                                   "note":  "from feature versionRange"
+                               },
+                     "SCOUT":  {
+                                   "version":  "6.0.0",
+                                   "source":  "scout.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/scout/releases/6.0/6.0.0/RC4/",
+                                   "note":  "from feature versionRange"
+                               },
+                     "EMF":  {
+                                 "version":  "2.12.0",
+                                 "source":  "emf-emf.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/emf/emf/updates/2.12/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "GMF":  {
+                                 "version":  "1.10.0.201606071959",
+                                 "source":  "gmp-gmf-runtime.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases",
+                                 "note":  "from feature versionRange"
+                             },
+                     "DATATOOLS":  {
+                                       "version":  "1.13.0.201603142002",
+                                       "source":  "dtp.b3aggrcon",
+                                       "repository_url":  "http://download.eclipse.org/datatools/updates/1.13/1.13.0.201603142002/repository",
+                                       "note":  "from feature versionRange"
+                                   },
+                     "BIRT":  {
+                                  "version":  "4.6.0",
+                                  "source":  "birt.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/birt/update-site/4.6/",
+                                  "note":  "from feature versionRange"
+                              },
+                     "GEF":  {
+                                 "version":  "3.11.0.201606061308",
+                                 "source":  "gef.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952",
+                                 "note":  "from feature versionRange"
+                             },
+                     "CDT":  {
+                                 "version":  "9.0",
+                                 "source":  "cdt.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/cdt/releases/9.0/r",
+                                 "note":  "from repository URL"
+                             },
+                     "WEBTOOLS":  {
+                                      "version":  "3.8.0",
+                                      "source":  "webtools.b3aggrcon",
+                                      "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.8.0/R-3.8.0-20160608130753/repository/",
+                                      "note":  "from repository URL"
+                                  },
+                     "SVN":  {
+                                 "version":  "4.0.0",
+                                 "source":  "subversive.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/technology/subversive/4.0/neon-site/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "MYLYN":  {
+                                   "version":  "3.21.0",
+                                   "source":  "mylyn.b3aggrcon",
+                                   "repository_url":  "http://download.eclipse.org/mylyn/drops/3.21.0/v20160907-0318",
+                                   "note":  "from feature versionRange"
+                               },
+                     "PTP":  {
+                                 "version":  "9.0.0",
+                                 "source":  "ptp.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tools/ptp/builds/oxygen/milestones/M1",
+                                 "note":  "from feature versionRange"
+                             },
+                     "JUBULA":  {
+                                    "version":  "4.0.0",
+                                    "source":  "jubula.b3aggrcon",
+                                    "repository_url":  "http://download.eclipse.org/jubula/release/neon",
+                                    "note":  "from feature versionRange"
+                                },
+                     "RAP":  {
+                                 "version":  "3.2.0",
+                                 "source":  "rap.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/rt/rap/3.2/M1-20160811-0917/",
+                                 "note":  "from feature versionRange"
+                             },
+                     "EGIT":  {
+                                  "version":  "4.4.1.201607150455",
+                                  "source":  "egit.b3aggrcon",
+                                  "repository_url":  "http://download.eclipse.org/egit/updates-4.4.1",
+                                  "note":  "from feature versionRange"
+                              },
+                     "RSE":  {
+                                 "version":  "3.7.0.201505221634",
+                                 "source":  "tm.b3aggrcon",
+                                 "repository_url":  "http://download.eclipse.org/tm/updates/4.1milestones/20160321",
+                                 "note":  "from feature versionRange"
+                             },
+                     "ECLIPSELINK":  {
+                                         "version":  "3.8.0",
+                                         "source":  "webtools.b3aggrcon",
+                                         "repository_url":  "http://download.eclipse.org/webtools/downloads/drops/R3.8.0/R-3.8.0-20160608130753/repository/",
+                                         "note":  "from WebTools (contains eclipselink features)"
+                                     },
+                     "WINDOWBUILDER":  {
+                                           "version":  "1.2.0",
+                                           "source":  "windowbuilder.b3aggrcon",
+                                           "repository_url":  "http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/4.5",
+                                           "note":  "from first versionRange in file"
+                                       }
+                 }
+}
