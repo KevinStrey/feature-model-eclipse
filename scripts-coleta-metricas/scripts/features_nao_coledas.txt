@@ -1,6 +1,0 @@
-as features abaixo não foram coletadas, pois estão em sistemas de controle de versão diferentes do Github
-
-CVS
-SVN
-JUBULA
-RSE
