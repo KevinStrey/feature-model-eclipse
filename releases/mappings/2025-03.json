@@ -5,55 +5,67 @@
             "version": "4.35",
             "status": "SUCCESS",
             "commit": "4d5b78631454da002130f609615dcca34b635574",
-            "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
-            "matched_value": "R4_35",
-            "repository": "eclipse.jdt.core"
+            "heuristic_id": "H4",
+            "heuristic_description": "VOTE(H1(6) + H4(8)): Maintenance Branch Time-Travel (origin/R4_35_maintenance)",
+            "matched_value": "origin/R4_35_maintenance",
+            "repository": "eclipse.jdt.core",
+            "vote_total_weight": 14,
+            "vote_candidates": 1
         },
         "PDE": {
             "version": "4.35",
             "status": "SUCCESS",
             "commit": "515f99602838c4f7a7bf848a4f6a719044a7d212",
-            "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
-            "matched_value": "R4_35",
-            "repository": "eclipse.pde"
+            "heuristic_id": "H4",
+            "heuristic_description": "VOTE(H1(6) + H4(8)): Maintenance Branch Time-Travel (origin/R4_35_maintenance)",
+            "matched_value": "origin/R4_35_maintenance",
+            "repository": "eclipse.pde",
+            "vote_total_weight": 14,
+            "vote_candidates": 1
         },
         "CDT": {
             "version": "12.0.0.202502260302",
             "status": "SUCCESS",
             "commit": "d31e62aa3e3666a71c9199c4a4499f8274267832",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(10)): H1 exact tag",
             "matched_value": "CDT_12_0_0",
-            "repository": "cdt"
+            "repository": "cdt",
+            "vote_total_weight": 10,
+            "vote_candidates": 2
         },
         "GEF": {
             "version": "3.23.0",
             "status": "SUCCESS",
             "commit": "79ce421cd25b857e8bba6905e17237eebc9454d3",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(6)): H1 partial tag (major.minor)",
             "matched_value": "R_3_23",
-            "repository": "gef-classic"
+            "repository": "gef-classic",
+            "vote_total_weight": 6,
+            "vote_candidates": 1
         },
         "EMF": {
             "version": "2.41.0",
             "status": "SUCCESS",
             "commit": "69105256efc730c8a70e3b5c820ac68aeed3cd9d",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(10)): H1 exact tag",
             "matched_value": "R2_41_0",
-            "repository": "org.eclipse.emf"
+            "repository": "org.eclipse.emf",
+            "vote_total_weight": 10,
+            "vote_candidates": 1
         },
         "BIRT": {
             "version": "4.13.0",
             "status": "SUCCESS",
             "commit": "1263d9e8cc91bcc2964fc0c7beefae2f0d607beb",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(10)): H1 exact tag",
             "matched_value": "4.13.0",
-            "repository": "birt"
+            "repository": "birt",
+            "vote_total_weight": 10,
+            "vote_candidates": 1
         },
         "DATATOOLS": {
             "version": "1.16.3",
@@ -78,45 +90,55 @@
             "status": "SUCCESS",
             "commit": "d503a6d6e41e843cbabe340e2555c38fead9d750",
             "heuristic_id": "H0b",
-            "heuristic_description": "Tag with Timestamp in Name",
+            "heuristic_description": "VOTE(H0b(10) + H0(6) + H4(8)): Tag with Timestamp in Name",
             "matched_value": "v7.2.0.202503040940-r",
-            "repository": "egit"
+            "repository": "egit",
+            "vote_total_weight": 24,
+            "vote_candidates": 1
         },
         "GMF": {
             "version": "1.16.6",
             "status": "SUCCESS",
             "commit": "2bfabf401c62bd8fc825e3cc93ba04b27cc6a310",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(10)): H1 exact tag",
             "matched_value": "v1.16.6",
-            "repository": "gmf-runtime"
+            "repository": "gmf-runtime",
+            "vote_total_weight": 10,
+            "vote_candidates": 1
         },
         "MYLYN": {
             "version": "4.6.0",
             "status": "SUCCESS",
             "commit": "2cad31ba58a169086c280013198efe3afb752045",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(10)): H1 exact tag",
             "matched_value": "R_4_6_0",
-            "repository": "org.eclipse.mylyn"
+            "repository": "org.eclipse.mylyn",
+            "vote_total_weight": 10,
+            "vote_candidates": 1
         },
         "RAP": {
             "version": "4.2.0",
-            "status": "NOT FOUND",
-            "commit": null,
-            "heuristic_id": null,
-            "heuristic_description": null,
-            "matched_value": null,
-            "repository": null
+            "status": "SUCCESS",
+            "commit": "d4122cb4e68bc625f28699a4959551631547c64e",
+            "heuristic_id": "H1",
+            "heuristic_description": "VOTE(H1(9)): H1 exact-with-date-suffix tag",
+            "matched_value": "4.2.0-M1",
+            "repository": "org.eclipse.rap",
+            "vote_total_weight": 9,
+            "vote_candidates": 5
         },
         "PTP": {
             "version": "9.4.1",
-            "status": "SUCCESS",
+            "status": "UNCERTAIN",
             "commit": "47cda24d74701d40908ccffaf45cbb55a14aa387",
             "heuristic_id": "H2",
-            "heuristic_description": "Git Log Pickaxe (date-bounded, oldest-first)",
-            "matched_value": "9.4.1",
-            "repository": "ptp"
+            "heuristic_description": "VOTE(H2(4)): Pickaxe (date-bounded, oldest-first)",
+            "matched_value": "Bundle-Version: 9.4.1",
+            "repository": "ptp",
+            "vote_total_weight": 4,
+            "vote_candidates": 1
         },
         "SCOUT": {
             "version": "14.0.1",
@@ -132,27 +154,33 @@
             "status": "SUCCESS",
             "commit": "1663ddeb42dc415e9e9e9c3bbf874a30355e3c34",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(6)): H1 partial tag (major.minor)",
             "matched_value": "R3_37",
-            "repository": "webtools.javaee"
+            "repository": "webtools.javaee",
+            "vote_total_weight": 6,
+            "vote_candidates": 1
         },
         "WINDOWBUILDER": {
             "version": "1.19.0",
             "status": "SUCCESS",
             "commit": "085b69cac3262230582400776c4aaf02a07f85d3",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(10)): H1 exact tag",
             "matched_value": "V1.19.0",
-            "repository": "windowbuilder"
+            "repository": "windowbuilder",
+            "vote_total_weight": 10,
+            "vote_candidates": 1
         },
         "MAVEN": {
             "version": "2.8.0",
             "status": "SUCCESS",
             "commit": "11d08287ee79b75673a24584814627c546ab7577",
             "heuristic_id": "H1",
-            "heuristic_description": "Fuzzy Tag Matching (SR-aware)",
+            "heuristic_description": "VOTE(H1(10)): H1 exact tag",
             "matched_value": "2.8.0",
-            "repository": "m2e-core"
+            "repository": "m2e-core",
+            "vote_total_weight": 10,
+            "vote_candidates": 1
         }
     }
 }
