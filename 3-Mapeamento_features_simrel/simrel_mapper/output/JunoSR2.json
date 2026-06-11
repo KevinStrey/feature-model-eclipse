@@ -1,0 +1,110 @@
+{
+  "release": "JunoSR2",
+  "simrel_commit": "70ac315d084bc59641a7e57f6a9aad62201939bd",
+  "mappings": {
+    "BIRT": {
+      "version": "4.2.2.v201301281649-ClBI9nGZcVSofEz-Xuz0n-ruJtUm",
+      "timestamp": "201301281649",
+      "status": "SUCCESS",
+      "commit": "e1c2b6d23a7a81654288564db2e1491f1cbdc6be",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v201301281649",
+      "repository": "birt",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "CDT": {
+      "version": "8.0.0.201106081058",
+      "timestamp": "201106081058",
+      "status": "SUCCESS",
+      "commit": "550496d56c8b43521afbf92254a11df08f140d8b",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(81.2%)(81))",
+      "matched_value": "v201106081058",
+      "repository": "cdt",
+      "vote_total_weight": 81,
+      "vote_candidates": 2
+    },
+    "DataTools": {
+      "version": "1.10.2.v201209181447-7PAO7gFEpPZ58s9hZvnBQRrZbbiG",
+      "timestamp": "201209181447",
+      "status": "SUCCESS",
+      "commit": "bc3b501cfaaf627bc8c00fc3ea58403c1ad62c10",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v201209181447",
+      "repository": "datatools",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "EclipseLink": {
+      "version": "2.4.1.v20121003-ad44345",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "ad44345c6527162050f7b461945d581792538354",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "2.4.1",
+      "repository": "eclipselink",
+      "vote_total_weight": 100,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "2.2.0.201212191850-r",
+      "timestamp": "201212191850",
+      "status": "SUCCESS",
+      "commit": "408252a942b166e78dbdd8639a85e863a9782a4b",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v2.2.0.201212191850-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "GEF": {
+      "version": "3.8.2.201301141834",
+      "timestamp": "201301141834",
+      "status": "SUCCESS",
+      "commit": "9c4cc3294d34d814cdea873dfd76f497330d4039",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201301141834",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "GMF Runtime": {
+      "version": "1.6.2.201302122140",
+      "timestamp": "201302122140",
+      "status": "SUCCESS",
+      "commit": "ac2164b9f5ae2b906af37ed497d01236968f0182",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(83.3%)(83))",
+      "matched_value": "v1.16.2",
+      "repository": "gmf-runtime",
+      "vote_total_weight": 83,
+      "vote_candidates": 2
+    },
+    "Window Builder": {
+      "version": "1.2.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

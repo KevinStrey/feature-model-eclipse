@@ -1,0 +1,71 @@
+{
+  "release": "2022-03",
+  "simrel_commit": "68989fc6b509da352490efdcc52b8cfcb046691e",
+  "mappings": {
+    "CDT": {
+      "version": "10.6.0.202203091838",
+      "timestamp": "202203091838",
+      "status": "SUCCESS",
+      "commit": "96f928152f70c48029478356e104e90fb997ad02",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "CDT_10_6_0",
+      "repository": "cdt",
+      "vote_total_weight": 10,
+      "vote_candidates": 2
+    },
+    "EGit": {
+      "version": "6.1.0.202203080745-r",
+      "timestamp": "202203080745",
+      "status": "SUCCESS",
+      "commit": "a873b33884c94ac06fa2b4a977197e54c313dcc3",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v6.1.0.202203080745-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "GEF": {
+      "version": "3.11.0.201606061308",
+      "timestamp": "201606061308",
+      "status": "SUCCESS",
+      "commit": "bcd6206f6c014e0d895ed30ae4d69afa1321af44",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201606061308",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "PTP": {
+      "version": "9.4.1",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "ptp",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    },
+    "Window Builder": {
+      "version": "1.9.7",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "release": "2023-09",
+  "simrel_commit": "006e80d80d25b814a5cfbb84f866333bb7bc4378",
+  "mappings": {
+    "CDT": {
+      "version": "11.3.0.202309051907",
+      "timestamp": "202309051907",
+      "status": "SUCCESS",
+      "commit": "54a7f61a68c8815f78e706b0eb03a2a86779a269",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10) + H0-timestamp(6))",
+      "matched_value": "CDT_11_3_0",
+      "repository": "cdt",
+      "vote_total_weight": 16,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "6.7.0.202309050840-r",
+      "timestamp": "202309050840",
+      "status": "SUCCESS",
+      "commit": "cde67868a47430a9a97ac6dbe97353811faa8589",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v6.7.0.202309050840-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "GEF": {
+      "version": "5.0.5.202209120200",
+      "timestamp": "202209120200",
+      "status": "SUCCESS",
+      "commit": "691b10b78c5eb33a0e5d9ce9041430c4d90ad276",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=202209120200",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "PTP": {
+      "version": "9.4.1",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "ptp",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

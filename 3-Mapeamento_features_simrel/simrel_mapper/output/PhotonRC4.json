@@ -1,0 +1,110 @@
+{
+  "release": "PhotonRC4",
+  "simrel_commit": "412336346d919256ce6161f2f3d01527ee7f66db",
+  "mappings": {
+    "BIRT": {
+      "version": "4.7.0.v201706142203",
+      "timestamp": "201706142203",
+      "status": "SUCCESS",
+      "commit": "0ae7df0fec104086ba7695f44316e8bf4d35fe77",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(90.9%)(90))",
+      "matched_value": "4.17.0",
+      "repository": "birt",
+      "vote_total_weight": 90,
+      "vote_candidates": 2
+    },
+    "CDT": {
+      "version": "9.5.0.201806131938",
+      "timestamp": "201806131938",
+      "status": "SUCCESS",
+      "commit": "e6550c7a10b51ae7deeb78138277b69c2d6a9ec3",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "CDT_9_5_0",
+      "repository": "cdt",
+      "vote_total_weight": 10,
+      "vote_candidates": 2
+    },
+    "DataTools": {
+      "version": "1.14.100.201805031905",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "21692cc092dda37df2142942101fbaff423eebc4",
+      "extraction_heuristic": "A2",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(97.7%)(97))",
+      "matched_value": "1.14.100.201805031905",
+      "repository": "datatools",
+      "vote_total_weight": 97,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "5.0.0.201806131550-r",
+      "timestamp": "201806131550",
+      "status": "SUCCESS",
+      "commit": "ba0bcbfe69b2803c843c19b6e800b2525b227cb2",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v5.0.0.201806131550-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "GEF": {
+      "version": "3.11.0.201606061308",
+      "timestamp": "201606061308",
+      "status": "SUCCESS",
+      "commit": "bcd6206f6c014e0d895ed30ae4d69afa1321af44",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201606061308",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "GMF Runtime": {
+      "version": "1.12.0.201806010809",
+      "timestamp": "201806010809",
+      "status": "SUCCESS",
+      "commit": "1eede5a890d2c74536db4f4822c9bff426b8f895",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10) + H0-timestamp(6))",
+      "matched_value": "R1_12_0",
+      "repository": "gmf-runtime",
+      "vote_total_weight": 16,
+      "vote_candidates": 3
+    },
+    "PTP": {
+      "version": "9.2.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "ptp",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    },
+    "Window Builder": {
+      "version": "1.2.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

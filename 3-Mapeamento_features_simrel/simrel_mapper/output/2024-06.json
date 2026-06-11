@@ -1,0 +1,71 @@
+{
+  "release": "2024-06",
+  "simrel_commit": "c24a3d70dabb3f242a4a6a6836ed00e9c296e27f",
+  "mappings": {
+    "CDT": {
+      "version": "11.6.0.202406041555",
+      "timestamp": "202406041555",
+      "status": "SUCCESS",
+      "commit": "9f85daf44bf867ca951e536c5adba52b4f9a4a18",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10) + H0-timestamp(6))",
+      "matched_value": "CDT_11_6_0",
+      "repository": "cdt",
+      "vote_total_weight": 16,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "6.10.0.202406032230-r",
+      "timestamp": "202406032230",
+      "status": "SUCCESS",
+      "commit": "7c6177b14588f0dffc8fc894d6b7b9eadc4ab979",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100) + H4-branch(8) + H0-timestamp(6))",
+      "matched_value": "v6.10.0.202406032230-r",
+      "repository": "egit",
+      "vote_total_weight": 114,
+      "vote_candidates": 1
+    },
+    "GEF": {
+      "version": "5.0.5.202311221639",
+      "timestamp": "202311221639",
+      "status": "SUCCESS",
+      "commit": "da30f0618eec8e736bb74715b05f94fe1ece1b45",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=202311221639",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "PTP": {
+      "version": "9.4.1",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "ptp",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    },
+    "Window Builder": {
+      "version": "1.16.0",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "b7b7c51783004b38a711ddfb8402865853bd1904",
+      "extraction_heuristic": "A2",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "V1.16.0",
+      "repository": "windowbuilder",
+      "vote_total_weight": 10,
+      "vote_candidates": 1
+    }
+  }
+}

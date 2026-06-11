@@ -1,0 +1,84 @@
+{
+  "release": "LunaRC4",
+  "simrel_commit": "c9c127042e5a740a5d3dde4bc3bb2110ff467182",
+  "mappings": {
+    "BIRT": {
+      "version": "4.4.1.v201408290142-DPEq8eGixAot6Wst_F1wRaIdN1Ls",
+      "timestamp": "201408290142",
+      "status": "SUCCESS",
+      "commit": "1d0ffe24289732a871f371da61808c3beab1b47a",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v201408290142",
+      "repository": "birt",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "CDT": {
+      "version": "8.0.0.201106081058",
+      "timestamp": "201106081058",
+      "status": "SUCCESS",
+      "commit": "550496d56c8b43521afbf92254a11df08f140d8b",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(81.2%)(81))",
+      "matched_value": "v201106081058",
+      "repository": "cdt",
+      "vote_total_weight": 81,
+      "vote_candidates": 2
+    },
+    "DataTools": {
+      "version": "1.12.0.v201406061321-7PB21FEpPZQXdcX0z-_yMM0Hfz0w",
+      "timestamp": "201406061321",
+      "status": "SUCCESS",
+      "commit": "19adc396123c239e8bdde7409e6c08b712bce8c5",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v201406061321",
+      "repository": "datatools",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "EGit": {
+      "version": "3.4.1.201406201815-r",
+      "timestamp": "201406201815",
+      "status": "SUCCESS",
+      "commit": "02d111faf8563675d7983de013f6e7f9c0b2f664",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v3.4.1.201406201815-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 3
+    },
+    "PTP": {
+      "version": "8.0.0",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "8cdcedd424e23cc2f33bc122c306224bd92ec728",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "PTP_8_0_0",
+      "repository": "ptp",
+      "vote_total_weight": 10,
+      "vote_candidates": 1
+    },
+    "Window Builder": {
+      "version": "1.2.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

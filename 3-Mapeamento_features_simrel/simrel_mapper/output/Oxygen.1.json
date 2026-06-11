@@ -1,0 +1,97 @@
+{
+  "release": "Oxygen.1",
+  "simrel_commit": "b383ac3352ba5b3eb3cf9807ac44068fc40b4c02",
+  "mappings": {
+    "BIRT": {
+      "version": "4.7.0.v201706142203",
+      "timestamp": "201706142203",
+      "status": "SUCCESS",
+      "commit": "0ae7df0fec104086ba7695f44316e8bf4d35fe77",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(90.9%)(90))",
+      "matched_value": "4.17.0",
+      "repository": "birt",
+      "vote_total_weight": 90,
+      "vote_candidates": 2
+    },
+    "DataTools": {
+      "version": "1.14.0.201701131441",
+      "timestamp": "201701131441",
+      "status": "SUCCESS",
+      "commit": "bb07f75740622aa3210a9bc0ac783d38032feaff",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201701131441",
+      "repository": "datatools",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "4.8.0.201706111038-r",
+      "timestamp": "201706111038",
+      "status": "SUCCESS",
+      "commit": "3c3fc375aad191b07f06816a0d9035f67da94937",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v4.8.0.201706111038-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 3
+    },
+    "GEF": {
+      "version": "3.11.0.201606061308",
+      "timestamp": "201606061308",
+      "status": "SUCCESS",
+      "commit": "bcd6206f6c014e0d895ed30ae4d69afa1321af44",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201606061308",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "GMF Runtime": {
+      "version": "1.11.0.201706061437",
+      "timestamp": "201706061437",
+      "status": "SUCCESS",
+      "commit": "04cdebec0e43654d076bccc2157b2722a4405e44",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201706061437",
+      "repository": "gmf-runtime",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "PTP": {
+      "version": "9.1.0",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "9259d0a14a8278434420ecfa4cda76d738b3205f",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "PTP_9_1_0",
+      "repository": "ptp",
+      "vote_total_weight": 10,
+      "vote_candidates": 1
+    },
+    "Window Builder": {
+      "version": "1.2.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

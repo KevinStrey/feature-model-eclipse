@@ -1,0 +1,97 @@
+{
+  "release": "KeplerSR1",
+  "simrel_commit": "247dec83d7d46c5352246ec03a974c9989824827",
+  "mappings": {
+    "BIRT": {
+      "version": "4.3.1.v201308301349-DTDN8fGjtEqcbZz0BQWLW07D_cfT",
+      "timestamp": "201308301349",
+      "status": "SUCCESS",
+      "commit": "523f4578d12e5e12aac805ac46ab36a4e449d628",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v201308301349",
+      "repository": "birt",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "CDT": {
+      "version": "8.0.0.201106081058",
+      "timestamp": "201106081058",
+      "status": "SUCCESS",
+      "commit": "550496d56c8b43521afbf92254a11df08f140d8b",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(81.2%)(81))",
+      "matched_value": "v201106081058",
+      "repository": "cdt",
+      "vote_total_weight": 81,
+      "vote_candidates": 2
+    },
+    "DataTools": {
+      "version": "1.11.1.v201306041610-7PAi7MFEpPZFKkfVnxDcEbuYdosB",
+      "timestamp": "201306041610",
+      "status": "SUCCESS",
+      "commit": "68f7531098ed5fa9a89b0842e2f8e74da84e9b24",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v201306041610",
+      "repository": "datatools",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "EclipseLink": {
+      "version": "2.5.1.v20130913-5eaeb06",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "f2b9fc5cf7bc8b7a2794c892dfcc04baac67b456",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "2.5.1",
+      "repository": "eclipselink",
+      "vote_total_weight": 100,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "3.0.3.201309161630-r",
+      "timestamp": "201309161630",
+      "status": "SUCCESS",
+      "commit": "ee9d5828eb6f9ff6a746568b611bae0cf55d1473",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v3.0.3.201309161630-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "PTP": {
+      "version": "7.0.3",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "4fca4923e9c91bcc8cb33850ff0d7b5e1e4fd8ac",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "PTP_7_0_3",
+      "repository": "ptp",
+      "vote_total_weight": 10,
+      "vote_candidates": 1
+    },
+    "Window Builder": {
+      "version": "1.2.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

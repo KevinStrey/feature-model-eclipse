@@ -1,0 +1,123 @@
+{
+  "release": "JunoSR1",
+  "simrel_commit": "2dae0f6fd1efc56057188cb7a94be3aa267f67fd",
+  "mappings": {
+    "BIRT": {
+      "version": "4.2.1.v20120820-ChBG8UGYgRQlJ7y9Lz-wS7nDcRL4",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "48c612f152ba1dd3758865a825cb588b3291f9ea",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v20120820",
+      "repository": "birt",
+      "vote_total_weight": 100,
+      "vote_candidates": 1
+    },
+    "CDT": {
+      "version": "8.0.0.201106081058",
+      "timestamp": "201106081058",
+      "status": "SUCCESS",
+      "commit": "550496d56c8b43521afbf92254a11df08f140d8b",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(81.2%)(81))",
+      "matched_value": "v201106081058",
+      "repository": "cdt",
+      "vote_total_weight": 81,
+      "vote_candidates": 2
+    },
+    "DataTools": {
+      "version": "1.10.1.v201208161415-7PAO7MFEpPZ56X3j7z0oZGcDIWFs",
+      "timestamp": "201208161415",
+      "status": "SUCCESS",
+      "commit": "c6ea1d6d6371b79a0b982763804b62f39ff2092c",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100) + H0-timestamp(6))",
+      "matched_value": "v201208161415",
+      "repository": "datatools",
+      "vote_total_weight": 106,
+      "vote_candidates": 1
+    },
+    "EclipseLink": {
+      "version": "2.4.0.v20120613-r11652",
+      "timestamp": null,
+      "status": "SUCCESS",
+      "commit": "12d3cb06146fc611d39d3a449621859a3677851a",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "2.4.0",
+      "repository": "eclipselink",
+      "vote_total_weight": 100,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "2.1.0.201209190230-r",
+      "timestamp": "201209190230",
+      "status": "SUCCESS",
+      "commit": "ad8765e63ea49e09be8e158f11bcb059c16e6083",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v2.1.0.201209190230-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "GEF": {
+      "version": "3.8.1.201208200205",
+      "timestamp": "201208200205",
+      "status": "SUCCESS",
+      "commit": "fe66a08eb964a4685e53e406b3b65ddb5298801f",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201208200205",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "GMF Runtime": {
+      "version": "1.5.0.v20110607-1200-7d9Q7HFYnmMEynz0X0qrbsDiK281",
+      "timestamp": "201106071200",
+      "status": "SUCCESS",
+      "commit": "e0f396880fb74f00b7f833fcc8013683d053d5f7",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v20110607-1200",
+      "repository": "gmf-runtime",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "PTP": {
+      "version": "6.0.0.201205252205",
+      "timestamp": "201205252205",
+      "status": "SUCCESS",
+      "commit": "a0eaad858e9d40ca7318492d21db676e7aa41702",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "PTP_6_0_0",
+      "repository": "ptp",
+      "vote_total_weight": 10,
+      "vote_candidates": 2
+    },
+    "Window Builder": {
+      "version": "1.2.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "release": "2020-09",
+  "simrel_commit": "57437a30f05ce8a72e038eb80e1f30df2cd49b34",
+  "mappings": {
+    "BIRT": {
+      "version": "4.7.0.v201706142203",
+      "timestamp": "201706142203",
+      "status": "SUCCESS",
+      "commit": "0ae7df0fec104086ba7695f44316e8bf4d35fe77",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(90.9%)(90))",
+      "matched_value": "4.17.0",
+      "repository": "birt",
+      "vote_total_weight": 90,
+      "vote_candidates": 2
+    },
+    "CDT": {
+      "version": "10.0.0.202009071455",
+      "timestamp": "202009071455",
+      "status": "SUCCESS",
+      "commit": "65a4d1c4249b09d8f8101848ce711bbbca4659f9",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10) + H0-timestamp(6))",
+      "matched_value": "CDT_10_0_0",
+      "repository": "cdt",
+      "vote_total_weight": 16,
+      "vote_candidates": 1
+    },
+    "EGit": {
+      "version": "5.9.0.202009080501-r",
+      "timestamp": "202009080501",
+      "status": "SUCCESS",
+      "commit": "2bee4c71de9a7810faee15d61afaaa814475d3b1",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
+      "matched_value": "v5.9.0.202009080501-r",
+      "repository": "egit",
+      "vote_total_weight": 100,
+      "vote_candidates": 2
+    },
+    "GEF": {
+      "version": "3.11.0.201606061308",
+      "timestamp": "201606061308",
+      "status": "SUCCESS",
+      "commit": "bcd6206f6c014e0d895ed30ae4d69afa1321af44",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H0",
+      "heuristic_description": "VOTE(H0-timestamp(6))",
+      "matched_value": "timestamp=201606061308",
+      "repository": "gef-classic",
+      "vote_total_weight": 6,
+      "vote_candidates": 1
+    },
+    "PTP": {
+      "version": "9.4.0",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "ptp",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    },
+    "Window Builder": {
+      "version": "1.9.2",
+      "timestamp": null,
+      "status": "NOT FOUND",
+      "commit": null,
+      "extraction_heuristic": "A1",
+      "heuristic_id": null,
+      "heuristic_description": null,
+      "matched_value": null,
+      "repository": "windowbuilder",
+      "vote_total_weight": 0,
+      "vote_candidates": 0
+    }
+  }
+}
