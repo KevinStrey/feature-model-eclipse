@@ -26,6 +26,11 @@ public class MappingLoader {
         if (files == null) return allMappings;
 
         for (File file : files) {
+            // Ignorar o arquivo de resumo de erros
+            if (file.getName().equals("summary_not_found.json")) {
+                continue;
+            }
+
             try {
                 ReleaseMapping mapping = mapper.readValue(file, ReleaseMapping.class);
                 allMappings.put(mapping.getRelease(), mapping);

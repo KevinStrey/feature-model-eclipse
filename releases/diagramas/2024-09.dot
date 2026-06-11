@@ -27,27 +27,26 @@ digraph G {
     RCP_Platform [label="RCP_Platform", fillcolor="#FFF9C4", fontname="Arial bold", fontsize=11];
     
     // Feature nodes
-    JDT [label="JDT\n(v4.33)", fillcolor="#C8E6C9"];
-    PDE [label="PDE\n(v4.33)", fillcolor="#C8E6C9"];
+    JDT [label="JDT\n(v4.33.202409030240)", fillcolor="#C8E6C9"];
+    PDE [label="PDE\n(v4.33.202409030240)", fillcolor="#C8E6C9"];
     Scout [label="Scout\n(v13.0.41)", fillcolor="#C8E6C9"];
     Maven [label="Maven\n(v2.6.2)", fillcolor="#C8E6C9"];
     EMF [label="EMF\n(v2.39.0)", fillcolor="#C8E6C9"];
-    GMF [label="GMF\n(v1.16.4)", fillcolor="#C8E6C9"];
+    GMF [label="GMF\n(vUNKNOWN)", fillcolor="#C8E6C9"];
     Datatools [label="Datatools\n(v1.16.1)", fillcolor="#C8E6C9"];
-    BIRT [label="BIRT\n(v4.12.0)", fillcolor="#C8E6C9"];
-    GEF [label="GEF\n(v3.21.0)", fillcolor="#C8E6C9"];
+    BIRT [label="BIRT\n(RETIRED)", fillcolor="#E0E0E0", fontcolor="#888888", style="filled,rounded,dashed"];
+    GEF [label="GEF\n(v5.0.5.202311221639)", fillcolor="#C8E6C9"];
     CDT [label="CDT\n(v11.6.1.202407022008)", fillcolor="#C8E6C9"];
-    CVS [label="CVS\n(N/A)", fillcolor="#D3D3D3"];
-    WebTools [label="WebTools\n(v3.35.0)", fillcolor="#C8E6C9"];
-    SVN [label="SVN\n(N/A)", fillcolor="#D3D3D3"];
-    Mylyn [label="Mylyn\n(v4.4.0)", fillcolor="#C8E6C9"];
-    PTP [label="PTP\n(v9.4.1)", fillcolor="#FFE0B2"];
-    Jubula [label="Jubula\n(N/A)", fillcolor="#D3D3D3"];
-    RAP [label="RAP\n(v4.0.0)", fillcolor="#C8E6C9"];
-    EGit [label="EGit\n(v7.0.0.202409031743)", fillcolor="#C8E6C9"];
-    RSE [label="RSE\n(v4.5.700)", fillcolor="#C8E6C9"];
-    EclipseLink [label="EclipseLink\n(v3.35.0)", fillcolor="#C8E6C9"];
-    WindowBuilder [label="WindowBuilder\n(v1.17.0)", fillcolor="#C8E6C9"];
+    CVS [label="CVS\n(v4.33.202409030240)", fillcolor="#C8E6C9"];
+    WebTools [label="WebTools\n(v3.35)", fillcolor="#C8E6C9"];
+    SVN [label="SVN\n(RETIRED)", fillcolor="#E0E0E0", fontcolor="#888888", style="filled,rounded,dashed"];
+    Mylyn [label="Mylyn\n(v5.25.0.v20240617-1534.202406171534)", fillcolor="#C8E6C9"];
+    PTP [label="PTP\n(v9.4.1)", fillcolor="#C8E6C9"];
+    Jubula [label="Jubula\n(RETIRED)", fillcolor="#E0E0E0", fontcolor="#888888", style="filled,rounded,dashed"];
+    RAP [label="RAP\n(v4.0)", fillcolor="#C8E6C9"];
+    EGit [label="EGit\n(v7.0.0.202409031743-r)", fillcolor="#C8E6C9"];
+    EclipseLink [label="EclipseLink\n(v3.35)", fillcolor="#C8E6C9"];
+    WindowBuilder [label="WindowBuilder\n(vUNKNOWN)", fillcolor="#C8E6C9"];
     
     // Edges (Feature model constraints)
     EclipseIDE -> RCP_Platform [arrowhead=dot];
@@ -64,7 +63,6 @@ digraph G {
     RCP_Platform -> Jubula [arrowhead=odot];
     RCP_Platform -> RAP [arrowhead=odot];
     RCP_Platform -> EGit [arrowhead=odot];
-    RCP_Platform -> RSE [arrowhead=odot];
     RCP_Platform -> EclipseLink [arrowhead=odot];
     RCP_Platform -> WindowBuilder [arrowhead=odot];
     
@@ -79,7 +77,7 @@ digraph G {
     Datatools -> BIRT [arrowhead=odot];
     
     // Laying out elements to align horizontally
-    { rank=same; JDT; EMF; GEF; CDT; CVS; WebTools; SVN; Mylyn; PTP; Jubula; RAP; EGit; RSE; EclipseLink; WindowBuilder; }
+    { rank=same; JDT; EMF; GEF; CDT; CVS; WebTools; SVN; Mylyn; PTP; Jubula; RAP; EGit; EclipseLink; WindowBuilder; }
     { rank=same; PDE; Maven; GMF; Datatools; }
     { rank=same; Scout; BIRT; }
 }

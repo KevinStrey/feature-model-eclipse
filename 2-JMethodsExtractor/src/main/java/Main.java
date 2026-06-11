@@ -45,6 +45,8 @@ public class Main {
         REPO_URL_MAP.put("webtools.javaee", "https://github.com/eclipse-jeetools/webtools.javaee.git");
         REPO_URL_MAP.put("windowbuilder", "https://github.com/eclipse-windowbuilder/windowbuilder.git");
         REPO_URL_MAP.put("m2e-core", "https://github.com/eclipse-m2e/m2e-core.git");
+        REPO_URL_MAP.put("eclipse.cvs", "https://github.com/eclipse-platform/eclipse.platform.cvs.git");
+        REPO_URL_MAP.put("subclipse", "https://github.com/subclipse/subclipse.git");
     }
 
     private static final Map<String, Integer> REPO_MEMORY_COST = new HashMap<>();
@@ -73,14 +75,25 @@ public class Main {
     public static void main(String[] args) {
         log.info("Starting EvoMetrics Collector...");
 
-        String basePath = System.getProperty("user.dir");
-        if (!new java.io.File(basePath + "/releases/mappings").exists()) {
-            java.io.File parent = new java.io.File(basePath).getParentFile();
-            if (parent != null && new java.io.File(parent, "releases/mappings").exists()) {
-                basePath = parent.getAbsolutePath();
+        java.io.File currentDir = new java.io.File(System.getProperty("user.dir")).getAbsoluteFile();
+        java.io.File rootDir = currentDir;
+        while (rootDir != null && !rootDir.getName().equalsIgnoreCase("Feature-models")) {
+            rootDir = rootDir.getParentFile();
+        }
+        if (rootDir == null) {
+            // Fallback: assume run from 2-JMethodsExtractor or 2-JMethodsExtractor/target
+            if (currentDir.getName().equals("target")) {
+                rootDir = new java.io.File(currentDir, "../../").getAbsoluteFile();
+            } else {
+                rootDir = new java.io.File(currentDir, "../").getAbsoluteFile();
             }
         }
-        String mappingsDirPath = basePath + "/releases/mappings";
+        
+        String reposDirPath = new java.io.File(rootDir, "1-Repositorios").getAbsolutePath();
+        String mappingsDirPath = new java.io.File(rootDir, "3-Mapeamento_features_simrel/simrel_mapper/output").getAbsolutePath();
+        
+        log.info("Repositorios Directory: {}", reposDirPath);
+        log.info("Mappings Directory: {}", mappingsDirPath);
 
         MappingLoader loader = new MappingLoader();
         Map<String, ReleaseMapping> allMappings = loader.loadAllMappings(mappingsDirPath);
@@ -98,13 +111,13 @@ public class Main {
                 config.selectedFeatures.size(),
                 config.unlimitedMemory ? "UNLIMITED" : config.maxMemoryGB + " GB");
 
-        startCollection(config, allMappings, basePath);
+        startCollection(config, allMappings, reposDirPath);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
     static void startCollection(CollectionConfig config,
                                 Map<String, ReleaseMapping> allMappings,
-                                String basePath) {
+                                String reposDirPath) {
 
         List<String> releasesToProcess = config.selectedReleases;
         Set<String> featureFilter      = config.selectedFeatures; // null → all
@@ -143,7 +156,7 @@ public class Main {
         // Verify / clone repositories
         for (String repoName : new HashSet<>(featureRepositoryMap.values())) {
             if (repoName == null || repoName.isEmpty()) continue;
-            java.io.File repoDir = new java.io.File(basePath, repoName);
+            java.io.File repoDir = new java.io.File(reposDirPath, repoName);
             if (!repoDir.exists() || !new java.io.File(repoDir, ".git").exists()) {
                 String cloneUrl = REPO_URL_MAP.get(repoName);
                 if (cloneUrl != null) {
@@ -202,7 +215,7 @@ public class Main {
             FeatureEvolutorTask task = new FeatureEvolutorTask(
                     featureName,
                     repoName,
-                    basePath,
+                    reposDirPath,
                     releasesToProcess,
                     releaseToCommitMap,
                     availableMemory,

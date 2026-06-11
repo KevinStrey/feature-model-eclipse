@@ -61,6 +61,9 @@ def _find_repo_key(label: str) -> str | None:
         # label "CDT" → key "cdt"
         if label_lower == key_lower:
             return key
+        # Permite match de prefixo longo: label "WebTools 3.12..." → key "webtools"
+        if label_lower.startswith(key_lower):
+            return key
         # label "EMF (Core)" → key contém "emf"
         # Extrair apenas letras/números do label
         label_clean = "".join(c for c in label_lower if c.isalnum())
@@ -123,7 +126,7 @@ def _process_release(
 
             if ext.version is None:
                 log.warning("no_version", filename=filename, label=ext.label)
-                continue
+                # NOT CONTINUE! Allow heuristics to fallback or find other ways.
 
             # Evitar duplicação de labels (pegar a primeira ocorrência com versão)
             if ext.label in seen_labels:
@@ -138,46 +141,54 @@ def _process_release(
                 label=ext.label,
             )
 
-            # Encontrar repositório local correspondente
-            repo_key = _find_repo_key(ext.label)
-            if repo_key is None:
-                # Silenciosamente pular features sem repo local (conforme decisão do usuário)
-                continue
+            # Bifurcar a extração da plataforma para JDT e PDE
+            labels_to_evaluate = [ext.label]
+            if ext.label.lower() in ("eclipse", "eclipse platform", "eclipse sdk"):
+                labels_to_evaluate.extend(["JDT", "PDE", "CVS"])
+            if "webtools" in ext.label.lower() or "web tools" in ext.label.lower():
+                labels_to_evaluate.extend(["EclipseLink"])
 
-            try:
-                local_repo = repo_path(repo_key)
-            except KeyError:
-                continue
+            for label in labels_to_evaluate:
+                # Encontrar repositório local correspondente
+                repo_key = _find_repo_key(label)
+                if repo_key is None:
+                    # Silenciosamente pular features sem repo local (conforme decisão do usuário)
+                    continue
 
-            if not local_repo.exists():
-                log.warning("repo_missing", label=ext.label, path=str(local_repo))
-                continue
+                try:
+                    local_repo = repo_path(repo_key)
+                except KeyError:
+                    continue
 
-            # Resolver commit via votação
-            try:
-                mapping = engine.resolve(
-                    repo_path=local_repo,
-                    version=ext.version,
-                    timestamp=ext.timestamp,
-                    label=ext.label,
-                    release_name=release_name,
-                    simrel_date=simrel_date,
-                )
-                mapping.extraction_heuristic = ext.extraction_heuristic
-                mappings[ext.label] = mapping
-            except Exception as exc:
-                log.error(
-                    "resolve_error",
-                    label=ext.label,
-                    version=ext.version,
-                    error=str(exc),
-                )
-                mappings[ext.label] = MappingResult(
-                    version=ext.version,
-                    timestamp=ext.timestamp,
-                    status="NOT FOUND",
-                    extraction_heuristic=ext.extraction_heuristic,
-                    repository=repo_key,
+                if not local_repo.exists():
+                    log.warning("repo_missing", label=label, path=str(local_repo))
+                    continue
+
+                # Resolver commit via votação
+                try:
+                    mapping = engine.resolve(
+                        repo_path=local_repo,
+                        version=ext.version,
+                        timestamp=ext.timestamp,
+                        label=label,
+                        release_name=release_name,
+                        simrel_date=simrel_date,
+                    )
+                    mapping.extraction_heuristic = ext.extraction_heuristic
+                    mappings[label] = mapping
+                except Exception as exc:
+                    log.error(
+                        "resolve_error",
+                        label=label,
+                        version=ext.version,
+                        error=str(exc),
+                    )
+                    mappings[label] = MappingResult(
+                        version=ext.version,
+                        timestamp=ext.timestamp,
+                        status="NOT FOUND",
+                        extraction_heuristic=ext.extraction_heuristic,
+                        repository=repo_key,
                 )
 
     output = ReleaseOutput(

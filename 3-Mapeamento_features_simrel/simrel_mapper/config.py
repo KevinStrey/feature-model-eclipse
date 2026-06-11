@@ -33,6 +33,8 @@ OUTPUT_DIR: Path = Path(
 REPOSITORIES: dict[str, str] = {
     # chave = label usado no simrel, valor = nome da pasta dentro de BASE_PATH
     "simrel.build":      "simrel.build",
+    "jdt":               "eclipse.jdt.core",
+    "pde":               "eclipse.pde",
     "cdt":               "cdt",
     "gef-classic":       "gef-classic",
     "gef":               "gef-classic",          # mesmo repo, label diferente
@@ -42,13 +44,27 @@ REPOSITORIES: dict[str, str] = {
     "eclipselink":       "eclipselink",
     "egit":              "egit",
     "gmf-runtime":       "gmf-runtime",
+    "gmf runtime":       "gmf-runtime",
     "org.eclipse.mylyn": "org.eclipse.mylyn",
     "org.eclipse.rap":   "org.eclipse.rap",
     "ptp":               "ptp",
     "scout.rt":          "scout.rt",
     "webtools.javaee":   "webtools.javaee",
+    "webtools":          "webtools.javaee",
+    "web tools":         "webtools.javaee",
     "windowbuilder":     "windowbuilder",
+    "window builder":    "windowbuilder",
     "m2e-core":          "m2e-core",
+    "m2e":               "m2e-core",
+    "scout":             "scout.rt",
+    "emf":               "org.eclipse.emf",
+    "mylyn":             "org.eclipse.mylyn",
+    "rap":               "org.eclipse.rap",
+    "cvs":               "eclipse.cvs",
+    "subversive":        "subclipse",
+    "emf (core)":        "org.eclipse.emf",
+    "rap tools":         "org.eclipse.rap",
+    "rap runtime":       "org.eclipse.rap",
 }
 
 
