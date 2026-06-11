@@ -6,6 +6,7 @@ o commit vencedor com base nos pesos acumulados.
 from __future__ import annotations
 
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 
 import git
@@ -15,10 +16,11 @@ from heuristics.base import HeuristicVote
 from heuristics.h0_timestamp import H0TimestampTravel
 from heuristics.h1_tag_match import H1TagMatch
 from heuristics.h4_branch_travel import H4BranchTravel
+from heuristics.h5_simrel_fallback import H5SimrelFallback
 from models import MappingResult
 
 # Ordem de execução das heurísticas
-HEURISTIC_CLASSES = [H1TagMatch, H4BranchTravel, H0TimestampTravel]
+HEURISTIC_CLASSES = [H1TagMatch, H4BranchTravel, H0TimestampTravel, H5SimrelFallback]
 
 
 class VotingEngine:
@@ -35,6 +37,7 @@ class VotingEngine:
         timestamp: str | None,
         label: str,
         release_name: str = "",
+        simrel_date: datetime | None = None,
     ) -> MappingResult:
         """Resolve o commit para uma feature usando votação por heurísticas.
 
@@ -67,7 +70,7 @@ class VotingEngine:
         for HClass in HEURISTIC_CLASSES:
             h = HClass(repo)
             try:
-                votes = h.vote(version=version, timestamp=timestamp)
+                votes = h.vote(version=version, timestamp=timestamp, simrel_date=simrel_date)
                 for v in votes:
                     log.info(
                         "heuristic_vote",

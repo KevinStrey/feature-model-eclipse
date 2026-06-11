@@ -31,15 +31,15 @@
     "DataTools": {
       "version": "1.14.102",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "94b8f95c45d0d9e4444af2d9244a5fd065a469e3",
       "extraction_heuristic": "A2",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2018-09-12 23:41:01",
       "repository": "datatools",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     },
     "EGit": {
       "version": "5.1.0.201809111528-r",
@@ -83,28 +83,28 @@
     "PTP": {
       "version": "9.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "40bcb0ece8e4c271effedb728392f39b0dfeff5f",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2018-09-12 23:41:01",
       "repository": "ptp",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     },
     "Window Builder": {
       "version": "1.9.1",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "571dc2a308dd38f285f46e4e3479c57c5dff781a",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2018-09-12 23:41:01",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }

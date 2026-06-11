@@ -70,28 +70,28 @@
     "PTP": {
       "version": "9.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "047aee100c989827894a95821587119c4e9740c6",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2019-03-14 11:49:08",
       "repository": "ptp",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     },
     "Window Builder": {
       "version": "1.9.2",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "17700c4f6133fabb544b314d44a5e7fb724b9c5a",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2019-03-14 11:49:08",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }

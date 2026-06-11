@@ -26,7 +26,7 @@
       "matched_value": "CDT_9_4_3",
       "repository": "cdt",
       "vote_total_weight": 10,
-      "vote_candidates": 1
+      "vote_candidates": 2
     },
     "DataTools": {
       "version": "1.14.1.201712071719",
@@ -91,20 +91,20 @@
       "matched_value": "PTP_9_1_0",
       "repository": "ptp",
       "vote_total_weight": 10,
-      "vote_candidates": 1
+      "vote_candidates": 2
     },
     "Window Builder": {
       "version": "1.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "47e9177ee99229551055602303376566e933b136",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2018-03-07 15:34:06",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }

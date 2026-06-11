@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import difflib
 import re
+from datetime import datetime
 
 import git
 
@@ -42,6 +43,7 @@ class H1TagMatch(Heuristic):
         self,
         version: str,
         timestamp: str | None = None,
+        simrel_date: datetime | None = None,
     ) -> list[HeuristicVote]:
         """Vota em commits cujas tags correspondem à versão.
 

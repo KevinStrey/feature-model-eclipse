@@ -13,6 +13,7 @@ import re
 from datetime import datetime, timezone
 
 import git
+from datetime import datetime
 
 from heuristics.base import Heuristic, HeuristicVote, version_digits
 
@@ -57,6 +58,7 @@ class H4BranchTravel(Heuristic):
         self,
         version: str,
         timestamp: str | None = None,
+        simrel_date: datetime | None = None,
     ) -> list[HeuristicVote]:
         """Vota no commit mais recente antes do timestamp em branches de manutenção.
 

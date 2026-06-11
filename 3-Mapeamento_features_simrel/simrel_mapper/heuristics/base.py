@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import re
 from abc import ABC, abstractmethod
+from datetime import datetime
 
 import git
 
@@ -27,6 +28,7 @@ class Heuristic(ABC):
         self,
         version: str,
         timestamp: str | None = None,
+        simrel_date: datetime | None = None,
     ) -> list[HeuristicVote]:
         """Retorna lista de votos (pode ser vazia se nenhum candidato encontrado).
 

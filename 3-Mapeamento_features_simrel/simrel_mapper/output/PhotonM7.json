@@ -35,10 +35,10 @@
       "commit": "21692cc092dda37df2142942101fbaff423eebc4",
       "extraction_heuristic": "A2",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
+      "heuristic_description": "VOTE(H1-exact(10) + H5-simrel-fallback(5))",
       "matched_value": "1.14.100.201805031905",
       "repository": "datatools",
-      "vote_total_weight": 10,
+      "vote_total_weight": 15,
       "vote_candidates": 1
     },
     "EGit": {
@@ -83,28 +83,28 @@
     "PTP": {
       "version": "9.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "1248d7cd8c939570c08fe0090ee4185e3cf8c17b",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2018-05-17 23:47:22",
       "repository": "ptp",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     },
     "Window Builder": {
       "version": "1.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "571dc2a308dd38f285f46e4e3479c57c5dff781a",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2018-05-17 23:47:22",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }

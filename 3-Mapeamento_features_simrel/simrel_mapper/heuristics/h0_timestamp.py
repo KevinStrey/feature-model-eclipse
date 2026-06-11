@@ -9,16 +9,19 @@ Requer timestamp disponível (A1 ou A3).
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from __future__ import annotations
+
+import datetime
+from datetime import timezone
 
 import git
 
 from heuristics.base import Heuristic, HeuristicVote
 
 
-def _parse_timestamp(ts: str) -> datetime:
+def _parse_timestamp(ts: str) -> datetime.datetime:
     """Converte um timestamp de 12 dígitos para datetime UTC."""
-    return datetime.strptime(ts[:12], "%Y%m%d%H%M").replace(tzinfo=timezone.utc)
+    return datetime.datetime.strptime(ts[:12], "%Y%m%d%H%M").replace(tzinfo=timezone.utc)
 
 
 class H0TimestampTravel(Heuristic):
@@ -28,6 +31,7 @@ class H0TimestampTravel(Heuristic):
         self,
         version: str,
         timestamp: str | None = None,
+        simrel_date: datetime.datetime | None = None,
     ) -> list[HeuristicVote]:
         """Vota no commit mais recente global antes do timestamp.
 

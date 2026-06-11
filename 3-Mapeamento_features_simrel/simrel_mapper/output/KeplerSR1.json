@@ -52,7 +52,7 @@
       "matched_value": "2.5.1",
       "repository": "eclipselink",
       "vote_total_weight": 100,
-      "vote_candidates": 1
+      "vote_candidates": 2
     },
     "EGit": {
       "version": "3.0.3.201309161630-r",
@@ -78,20 +78,20 @@
       "matched_value": "PTP_7_0_3",
       "repository": "ptp",
       "vote_total_weight": 10,
-      "vote_candidates": 1
+      "vote_candidates": 2
     },
     "Window Builder": {
       "version": "1.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "bcad4d9af4e1747f0ff87da3f42166a27b3a52c5",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2013-09-23 20:03:10",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }

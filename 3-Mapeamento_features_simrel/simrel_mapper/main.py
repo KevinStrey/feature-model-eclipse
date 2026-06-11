@@ -11,6 +11,7 @@ Subcomandos:
 from __future__ import annotations
 
 import argparse
+import git
 import json
 import subprocess
 import sys
@@ -96,6 +97,15 @@ def _process_release(
 
     log.info("processing_release", commit=simrel_commit[:12])
 
+    try:
+        simrel_repo_obj = git.Repo(str(simrel_repo_path()))
+        simrel_date = simrel_repo_obj.commit(simrel_commit).committed_datetime
+    except Exception as e:
+        with open('debug_simrel_date.txt', 'w') as f:
+            f.write(f"Exception: {type(e).__name__} - {str(e)}\n")
+        log.error("simrel_date_error", error=str(e), commit=simrel_commit)
+        simrel_date = None
+
     mappings: dict[str, MappingResult] = {}
     seen_labels: set[str] = set()
 
@@ -151,6 +161,7 @@ def _process_release(
                     timestamp=ext.timestamp,
                     label=ext.label,
                     release_name=release_name,
+                    simrel_date=simrel_date,
                 )
                 mapping.extraction_heuristic = ext.extraction_heuristic
                 mappings[ext.label] = mapping

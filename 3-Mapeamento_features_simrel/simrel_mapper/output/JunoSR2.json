@@ -52,7 +52,7 @@
       "matched_value": "2.4.1",
       "repository": "eclipselink",
       "vote_total_weight": 100,
-      "vote_candidates": 1
+      "vote_candidates": 2
     },
     "EGit": {
       "version": "2.2.0.201212191850-r",
@@ -96,15 +96,15 @@
     "Window Builder": {
       "version": "1.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "10e53bb9c4dc0189d9f1741272751f00a1c6a55d",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2013-02-24 15:20:43",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }

@@ -18,15 +18,15 @@
     "CDT": {
       "version": "9.4",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "8618c34e5f526cced6b62e78549680edd28923a6",
       "extraction_heuristic": "A2",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2017-12-15 17:50:12",
       "repository": "cdt",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     },
     "DataTools": {
       "version": "1.14.1.201712071719",
@@ -91,20 +91,20 @@
       "matched_value": "PTP_9_1_0",
       "repository": "ptp",
       "vote_total_weight": 10,
-      "vote_candidates": 1
+      "vote_candidates": 2
     },
     "Window Builder": {
       "version": "1.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "682be225c3fa9d71e8e8fc64cce2c772c66b4bcc",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2017-12-15 17:50:12",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }

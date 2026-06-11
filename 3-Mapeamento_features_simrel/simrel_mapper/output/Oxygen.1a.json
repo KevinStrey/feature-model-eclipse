@@ -78,20 +78,20 @@
       "matched_value": "PTP_9_1_0",
       "repository": "ptp",
       "vote_total_weight": 10,
-      "vote_candidates": 1
+      "vote_candidates": 2
     },
     "Window Builder": {
       "version": "1.2.0",
       "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
+      "status": "NEEDS REVIEW",
+      "commit": "0d2bbc94cebd268721e3d34ac4f2f798dd70952f",
       "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
+      "heuristic_id": "H5",
+      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
+      "matched_value": "simrel_date=2017-10-05 15:33:59",
       "repository": "windowbuilder",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
+      "vote_total_weight": 5,
+      "vote_candidates": 1
     }
   }
 }
