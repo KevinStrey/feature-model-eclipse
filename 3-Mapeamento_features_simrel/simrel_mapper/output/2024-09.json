@@ -15,7 +15,7 @@
       "vote_total_weight": 16,
       "vote_candidates": 1
     },
-    "DataTools 1.16.0": {
+    "DataTools": {
       "version": "1.16.1",
       "timestamp": null,
       "status": "NEEDS REVIEW",
@@ -41,7 +41,7 @@
       "vote_total_weight": 114,
       "vote_candidates": 1
     },
-    "EMF CDO": {
+    "EMF": {
       "version": null,
       "timestamp": null,
       "status": "NEEDS REVIEW",
@@ -52,97 +52,6 @@
       "matched_value": "simrel_date=2024-09-06 20:00:28",
       "repository": "org.eclipse.emf",
       "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMF Compare": {
-      "version": "3.3",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "9f0715b47a3f11042205ae599bf776a0fc785747",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2024-09-06 20:00:28",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMF RAP (Runtime)": {
-      "version": "2.39.0",
-      "timestamp": null,
-      "status": "SUCCESS",
-      "commit": "268292da4d36f4281056e01a20fc37b2389d92e3",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "R2_39_0",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 10,
-      "vote_candidates": 2
-    },
-    "EMF (Core)": {
-      "version": "2.39.0",
-      "timestamp": null,
-      "status": "SUCCESS",
-      "commit": "268292da4d36f4281056e01a20fc37b2389d92e3",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "R2_39_0",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 10,
-      "vote_candidates": 2
-    },
-    "EMF Parsley": {
-      "version": "1.18.0",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "9f0715b47a3f11042205ae599bf776a0fc785747",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2024-09-06 20:00:28",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMF Services": {
-      "version": null,
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "9f0715b47a3f11042205ae599bf776a0fc785747",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2024-09-06 20:00:28",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMFT Ecore Tools 3.5.1 for SimRel 2024-06": {
-      "version": "3.5.1",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "9f0715b47a3f11042205ae599bf776a0fc785747",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2024-09-06 20:00:28",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMFT MWE for 2024-09": {
-      "version": "1.13.0.v20240823-1107",
-      "timestamp": "202408231107",
-      "status": "SUCCESS",
-      "commit": "1f4a532ae41515e10122e75e280f7cd180787945",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H0",
-      "heuristic_description": "VOTE(H0-timestamp(6))",
-      "matched_value": "timestamp=202408231107",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 6,
       "vote_candidates": 1
     },
     "JDT": {
@@ -249,20 +158,7 @@
       "vote_total_weight": 5,
       "vote_candidates": 1
     },
-    "RAP Tools": {
-      "version": "4.0",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "1fbb6fb105c12a76d27cbc71c882d0a7e603e1d7",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2024-09-06 20:00:28",
-      "repository": "org.eclipse.rap",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "RAP Runtime": {
+    "RAP": {
       "version": "4.0",
       "timestamp": null,
       "status": "NEEDS REVIEW",
@@ -288,7 +184,7 @@
       "vote_total_weight": 85,
       "vote_candidates": 3
     },
-    "Web Tools Platform": {
+    "WebTools": {
       "version": "3.35",
       "timestamp": null,
       "status": "NEEDS REVIEW",

@@ -94,6 +94,8 @@ class VotingEngine:
             timestamp=timestamp,
             repo_name=repo_path.name,
             log=log,
+            repo=repo,
+            simrel_date=simrel_date,
         )
 
     def _aggregate(
@@ -104,6 +106,8 @@ class VotingEngine:
         timestamp: str | None,
         repo_name: str,
         log,
+        repo: git.Repo = None,
+        simrel_date: datetime | None = None,
     ) -> MappingResult:
         """Agrega votos e determina o commit vencedor."""
         if not votes:
@@ -121,19 +125,49 @@ class VotingEngine:
         for v in votes:
             tally[v.commit_sha] += v.weight
 
-        winner_sha = max(tally, key=lambda k: tally[k])
+        max_weight = max(tally.values())
+        tied_shas = [sha for sha, w in tally.items() if w == max_weight]
+        
+        winner_sha = None
+        tiebroken_by_date = False
+
+        if len(tied_shas) > 1 and repo and simrel_date:
+            best_diff = None
+            for sha in tied_shas:
+                try:
+                    c = repo.commit(sha)
+                    # Convert commit date to match timezone of simrel_date or treat as naive
+                    # Using simple timestamp diff
+                    c_date = c.committed_datetime
+                    if c_date <= simrel_date:
+                        diff = (simrel_date - c_date).total_seconds()
+                        if best_diff is None or diff < best_diff:
+                            best_diff = diff
+                            winner_sha = sha
+                except Exception:
+                    pass
+            if winner_sha:
+                tiebroken_by_date = True
+
+        if not winner_sha:
+            winner_sha = tied_shas[0]
+
         winner_votes = [v for v in votes if v.commit_sha == winner_sha]
         vote_candidates = len(tally)
-        vote_total_weight = tally[winner_sha]
+        vote_total_weight = max_weight
 
         # Descrição legível das heurísticas vencedoras
         desc = " + ".join(
             f"{v.heuristic_variant}({v.weight})" for v in winner_votes
         )
+        if tiebroken_by_date:
+            desc += " + TIEBREAKER(date)"
         heuristic_description = f"VOTE({desc})"
 
         # Determinar status
-        if vote_candidates > 5 or vote_total_weight < 6:
+        if vote_total_weight < 6:
+            status = "NEEDS REVIEW"
+        elif len(tied_shas) > 1 and not tiebroken_by_date:
             status = "NEEDS REVIEW"
         else:
             status = "SUCCESS"

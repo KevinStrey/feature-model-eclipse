@@ -67,6 +67,32 @@ REPOSITORIES: dict[str, str] = {
     "rap runtime":       "org.eclipse.rap",
 }
 
+# ---------------------------------------------------------------------------
+# Mapeamento pasta do repositório local → Nome de exibição consolidado
+# ---------------------------------------------------------------------------
+
+DISPLAY_NAMES: dict[str, str] = {
+    "eclipse.jdt.core":  "JDT",
+    "eclipse.pde":       "PDE",
+    "cdt":               "CDT",
+    "gef-classic":       "GEF",
+    "org.eclipse.emf":   "EMF",
+    "birt":              "BIRT",
+    "datatools":         "DataTools",
+    "eclipselink":       "EclipseLink",
+    "egit":              "EGit",
+    "gmf-runtime":       "GMF Runtime",
+    "org.eclipse.mylyn": "Mylyn",
+    "org.eclipse.rap":   "RAP",
+    "ptp":               "PTP",
+    "scout.rt":          "Scout",
+    "webtools.javaee":   "WebTools",
+    "windowbuilder":     "Window Builder",
+    "m2e-core":          "m2e",
+    "eclipse.cvs":       "CVS",
+    "subclipse":         "Subversive"
+}
+
 
 def repo_path(name: str) -> Path:
     """Retorna o caminho absoluto do repositório local para o label dado.

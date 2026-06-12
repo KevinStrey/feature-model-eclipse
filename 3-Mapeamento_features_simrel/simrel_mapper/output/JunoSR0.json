@@ -42,17 +42,17 @@
       "vote_candidates": 2
     },
     "EclipseLink": {
-      "version": "3.4.0RC4",
-      "timestamp": "201206121747",
+      "version": "2.4.0.v20120613-r11652",
+      "timestamp": null,
       "status": "SUCCESS",
       "commit": "12d3cb06146fc611d39d3a449621859a3677851a",
-      "extraction_heuristic": "A3",
+      "extraction_heuristic": "A1",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-sim(80.0%)(80))",
+      "heuristic_description": "VOTE(H1-sim(100.0%)(100))",
       "matched_value": "2.4.0",
       "repository": "eclipselink",
-      "vote_total_weight": 80,
-      "vote_candidates": 3
+      "vote_total_weight": 100,
+      "vote_candidates": 2
     },
     "EGit": {
       "version": "2.0.0.201206130900-r",
@@ -67,33 +67,7 @@
       "vote_total_weight": 100,
       "vote_candidates": 2
     },
-    "EMF CDO": {
-      "version": null,
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "b419d880e1a3c8f03c9e033d2cf5133f19142313",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMF COMPARE": {
-      "version": "1.3",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "b419d880e1a3c8f03c9e033d2cf5133f19142313",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMF (Core)": {
+    "EMF": {
       "version": "2.8.0.v20120608-0554",
       "timestamp": "201206080554",
       "status": "SUCCESS",
@@ -105,110 +79,6 @@
       "repository": "org.eclipse.emf",
       "vote_total_weight": 14,
       "vote_candidates": 3
-    },
-    "EMF QUERY": {
-      "version": "1.6.0.v20120328-0001-67T-95GFz05DNIrNLOSNK_NPj507",
-      "timestamp": "201203280001",
-      "status": "SUCCESS",
-      "commit": "b5bd40c9dfd7ee6e10087a470871d18c55385dc6",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H0",
-      "heuristic_description": "VOTE(H0-timestamp(6))",
-      "matched_value": "timestamp=201203280001",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 6,
-      "vote_candidates": 1
-    },
-    "EMF Query2": {
-      "version": "0.7.0",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "b419d880e1a3c8f03c9e033d2cf5133f19142313",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMF TRANSACTION": {
-      "version": "1.6.0.v20120328-0001-777Z-9A_WsZmcPluNecyPkvrPKlH",
-      "timestamp": "201203280001",
-      "status": "SUCCESS",
-      "commit": "b5bd40c9dfd7ee6e10087a470871d18c55385dc6",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H0",
-      "heuristic_description": "VOTE(H0-timestamp(6))",
-      "matched_value": "timestamp=201203280001",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 6,
-      "vote_candidates": 1
-    },
-    "EMF VALIDATION": {
-      "version": "1.6.0.v20120328-0001-67T-96SGR75UNqZNTdeQnghI6uFA",
-      "timestamp": "201203280001",
-      "status": "SUCCESS",
-      "commit": "b5bd40c9dfd7ee6e10087a470871d18c55385dc6",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H0",
-      "heuristic_description": "VOTE(H0-timestamp(6))",
-      "matched_value": "timestamp=201203280001",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 6,
-      "vote_candidates": 1
-    },
-    "EMFT Ecore Tools": {
-      "version": "1.0.0",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "b419d880e1a3c8f03c9e033d2cf5133f19142313",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMFT EGF": {
-      "version": null,
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "b419d880e1a3c8f03c9e033d2cf5133f19142313",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMF Facet": {
-      "version": "0.2.0",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "b419d880e1a3c8f03c9e033d2cf5133f19142313",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
-    },
-    "EMFT MWE": {
-      "version": "1.2.1",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "b419d880e1a3c8f03c9e033d2cf5133f19142313",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
     },
     "JDT": {
       "version": "4.2",
@@ -275,23 +145,10 @@
       "vote_total_weight": 100,
       "vote_candidates": 2
     },
-    "Jubula": {
-      "version": "1.2.1",
-      "timestamp": null,
-      "status": "NOT FOUND",
-      "commit": null,
-      "extraction_heuristic": "A1",
-      "heuristic_id": null,
-      "heuristic_description": null,
-      "matched_value": null,
-      "repository": "jubula",
-      "vote_total_weight": 0,
-      "vote_candidates": 0
-    },
     "m2e": {
       "version": "1.1.0",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
+      "status": "SUCCESS",
       "commit": "e7272b873d23f894be7c0642ae1ddc7b9f5d7c5c",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
@@ -301,7 +158,7 @@
       "vote_total_weight": 20,
       "vote_candidates": 8
     },
-    "Mylyn Intent (Incubation)": {
+    "Mylyn": {
       "version": "0.7.0",
       "timestamp": null,
       "status": "SUCCESS",
@@ -313,19 +170,6 @@
       "repository": "org.eclipse.mylyn",
       "vote_total_weight": 10,
       "vote_candidates": 2
-    },
-    "Mylyn": {
-      "version": "5.3.0",
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "33d1bc473f3e49e246dcb804e2b9bbaf8412239a",
-      "extraction_heuristic": "A1",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2012-08-03 23:51:33",
-      "repository": "org.eclipse.mylyn",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
     },
     "PTP": {
       "version": "6.0.0.201205252205",
@@ -343,11 +187,11 @@
     "RAP": {
       "version": "1.5",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
+      "status": "SUCCESS",
       "commit": "34464a1177f0e1ee540467768fcb4cab3a1bd35d",
       "extraction_heuristic": "A2",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-date-suffix(9))",
+      "heuristic_description": "VOTE(H1-date-suffix(9) + TIEBREAKER(date))",
       "matched_value": "1.5.0-20120612",
       "repository": "org.eclipse.rap",
       "vote_total_weight": 9,
@@ -356,12 +200,12 @@
     "Scout": {
       "version": "3.8.0",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "5533b837ff76e70e66266cc0a35d44c3a1174ed6",
+      "status": "SUCCESS",
+      "commit": "e185964435dcc317127890350f2538f42f5d7612",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "2011-12-12_S-3.8.0M4",
+      "heuristic_description": "VOTE(H1-exact(10) + TIEBREAKER(date))",
+      "matched_value": "2012-06-13_S-3.8.0RC4",
       "repository": "scout.rt",
       "vote_total_weight": 10,
       "vote_candidates": 9
@@ -383,11 +227,11 @@
       "version": "3.4.0RC4",
       "timestamp": "201206121747",
       "status": "SUCCESS",
-      "commit": "138c14c29ae077feb54a7b8bce5e1095c1da9be6",
+      "commit": "a7654afabc1062de2a6e878bf0f77bb3dda1b9f3",
       "extraction_heuristic": "A3",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "R3_4_0",
+      "heuristic_description": "VOTE(H1-exact(10) + TIEBREAKER(date))",
+      "matched_value": "Root_R3_4_0_patches",
       "repository": "webtools.javaee",
       "vote_total_weight": 10,
       "vote_candidates": 4

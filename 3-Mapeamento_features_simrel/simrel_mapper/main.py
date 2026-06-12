@@ -22,7 +22,7 @@ from rich.console import Console
 from rich.table import Table
 
 from audit.logger import configure_logging, get_logger
-from config import OUTPUT_DIR, REPOSITORIES, repo_path, simrel_repo_path
+from config import OUTPUT_DIR, REPOSITORIES, DISPLAY_NAMES, repo_path, simrel_repo_path
 from heuristics.engine import VotingEngine
 from ingestion.aggrcon_parser import parse_aggrcon
 from ingestion.simrel_reader import (
@@ -112,6 +112,10 @@ def _process_release(
     mappings: dict[str, MappingResult] = {}
     seen_labels: set[str] = set()
 
+    from collections import defaultdict
+    import copy
+    repo_extractions = defaultdict(list)
+
     for filename, xml_content in iter_aggrcon_blobs(tree):
         try:
             extractions = parse_aggrcon(xml_content, filename)
@@ -126,9 +130,9 @@ def _process_release(
 
             if ext.version is None:
                 log.warning("no_version", filename=filename, label=ext.label)
-                # NOT CONTINUE! Allow heuristics to fallback or find other ways.
+                # We do not skip here, because we want to collect it just in case no other file has a version
 
-            # Evitar duplicação de labels (pegar a primeira ocorrência com versão)
+            # Evitar duplicação de labels
             if ext.label in seen_labels:
                 continue
             seen_labels.add(ext.label)
@@ -152,44 +156,78 @@ def _process_release(
                 # Encontrar repositório local correspondente
                 repo_key = _find_repo_key(label)
                 if repo_key is None:
-                    # Silenciosamente pular features sem repo local (conforme decisão do usuário)
                     continue
 
-                try:
-                    local_repo = repo_path(repo_key)
-                except KeyError:
+                folder_name = REPOSITORIES.get(repo_key)
+                if not folder_name:
                     continue
 
-                if not local_repo.exists():
-                    log.warning("repo_missing", label=label, path=str(local_repo))
-                    continue
+                new_ext = copy.copy(ext)
+                new_ext.label = label
+                repo_extractions[folder_name].append((repo_key, new_ext, filename))
 
-                # Resolver commit via votação
-                try:
-                    mapping = engine.resolve(
-                        repo_path=local_repo,
-                        version=ext.version,
-                        timestamp=ext.timestamp,
-                        label=label,
-                        release_name=release_name,
-                        simrel_date=simrel_date,
-                    )
-                    mapping.extraction_heuristic = ext.extraction_heuristic
-                    mappings[label] = mapping
-                except Exception as exc:
-                    log.error(
-                        "resolve_error",
-                        label=label,
-                        version=ext.version,
-                        error=str(exc),
-                    )
-                    mappings[label] = MappingResult(
-                        version=ext.version,
-                        timestamp=ext.timestamp,
-                        status="NOT FOUND",
-                        extraction_heuristic=ext.extraction_heuristic,
-                        repository=repo_key,
-                )
+    # Processar cada repositório uma única vez, preferindo extrações com versão
+    for folder_name, ext_tuples in repo_extractions.items():
+        best_tuple = None
+        
+        # Regra específica solicitada: sempre priorizar emf-emf para o EMF
+        if folder_name == "org.eclipse.emf":
+            for t in ext_tuples:
+                if "emf-emf" in t[2].lower():
+                    best_tuple = t
+                    break
+
+        if best_tuple is None:
+            for t in ext_tuples:
+                if t[1].version is not None:
+                    best_tuple = t
+                    break
+                    
+        if best_tuple is None:
+            best_tuple = ext_tuples[0]
+
+        repo_key, best_ext, filename = best_tuple
+        label = best_ext.label
+
+        try:
+            local_repo = repo_path(repo_key)
+        except KeyError:
+            continue
+
+        if not local_repo.exists():
+            log.warning("repo_missing", label=label, path=str(local_repo))
+            continue
+
+        # Determinar o nome de exibição consolidado
+        display_name = DISPLAY_NAMES.get(folder_name, folder_name)
+
+        # Resolver commit via votação
+        try:
+            mapping = engine.resolve(
+                repo_path=local_repo,
+                version=best_ext.version,
+                timestamp=best_ext.timestamp,
+                label=label,
+                release_name=release_name,
+                simrel_date=simrel_date,
+            )
+            mapping.extraction_heuristic = best_ext.extraction_heuristic
+            mapping.repository = folder_name
+            mappings[display_name] = mapping
+        except Exception as exc:
+            log.error(
+                "resolve_error",
+                label=label,
+                version=best_ext.version,
+                error=str(exc),
+            )
+            mappings[display_name] = MappingResult(
+                version=best_ext.version,
+                timestamp=best_ext.timestamp,
+                status="NOT FOUND",
+                extraction_heuristic=best_ext.extraction_heuristic,
+                repository=folder_name,
+            )
 
     output = ReleaseOutput(
         release=release_name,
