@@ -29,7 +29,7 @@ public class CsvExporter implements AutoCloseable {
         String filePath = dirPath + "/" + feature + "_history.csv";
         this.writer = new CSVWriter(new FileWriter(filePath));
         String[] header = {
-            "project", "release", "commitHash", "methodId", "BOM", "TACH", "FCH", "LCH",
+            "project", "release", "commit_index", "commitHash", "methodId", "BOM", "TACH", "CHD", "FCH", "LCH",
             "FRCH", "WCH", "WCD", "CSB", "CSBS", "ACDF", "LOC"
         };
         writer.writeNext(header);
@@ -39,10 +39,12 @@ public class CsvExporter implements AutoCloseable {
         String[] row = {
             feature,
             release,
+            String.valueOf(currentCommitIndex),
             commitHash,
             state.getMethodId(),
             String.valueOf(state.bom),
             String.valueOf(state.lca), // TACH: lines changed in this commit
+            String.format("%.4f", state.lcd), // CHD: TACH / LOC
             String.valueOf(state.fch),
             String.valueOf(state.lch),
             String.valueOf(state.frch),

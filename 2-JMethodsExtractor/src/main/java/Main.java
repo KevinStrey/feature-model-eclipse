@@ -45,7 +45,7 @@ public class Main {
         REPO_URL_MAP.put("webtools.javaee", "https://github.com/eclipse-jeetools/webtools.javaee.git");
         REPO_URL_MAP.put("windowbuilder", "https://github.com/eclipse-windowbuilder/windowbuilder.git");
         REPO_URL_MAP.put("m2e-core", "https://github.com/eclipse-m2e/m2e-core.git");
-        REPO_URL_MAP.put("eclipse.cvs", "https://github.com/eclipse-platform/eclipse.platform.cvs.git");
+        REPO_URL_MAP.put("eclipse.cvs", "https://github.com/JAndrassy/org.eclipse.team.cvs.git");
         REPO_URL_MAP.put("subclipse", "https://github.com/subclipse/subclipse.git");
     }
 

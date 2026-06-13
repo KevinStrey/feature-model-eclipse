@@ -55,17 +55,17 @@
       "vote_candidates": 3
     },
     "EMF": {
-      "version": null,
-      "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "07251512fbc7467334a97a8d838d7d93ae3556f6",
-      "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2017-09-13 23:19:16",
+      "version": "2.13.0.v20170609-0928",
+      "timestamp": "201706090928",
+      "status": "SUCCESS",
+      "commit": "39e89bbc44bb3c2535b713848961e07e0087d754",
+      "extraction_heuristic": "A1",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10) + TIEBREAKER(date))",
+      "matched_value": "R2_13_0",
       "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
+      "vote_total_weight": 10,
+      "vote_candidates": 3
     },
     "JDT": {
       "version": "4.7.1",
@@ -187,12 +187,12 @@
     "Scout": {
       "version": "7.0.100",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "8865f4dd2fe92e487c8ca95171495c7c05396814",
+      "status": "SUCCESS",
+      "commit": "645450bbffcc49ef10efed5ea76e9cac4e7bae40",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "7.0.100.010_M1",
+      "heuristic_description": "VOTE(H1-exact(10) + TIEBREAKER(date))",
+      "matched_value": "7.0.100.017_Oxygen_1",
       "repository": "scout.rt",
       "vote_total_weight": 10,
       "vote_candidates": 10

@@ -135,7 +135,7 @@
     "m2e": {
       "version": "1.4.1",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
+      "status": "SUCCESS",
       "commit": "769483cdf1dc1a0eb221b3999e108751e262b5ae",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
@@ -187,12 +187,12 @@
     "Scout": {
       "version": "8.0.0",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "09390780d490afb74dcd65b74d0a420d89100636",
+      "status": "SUCCESS",
+      "commit": "a9a3017402e1dd53356253e9c56f2bc8ecfd209e",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "8.0.0.001_preview",
+      "heuristic_description": "VOTE(H1-exact(10) + TIEBREAKER(date))",
+      "matched_value": "8.0.0.031_Simrel_2018_12",
       "repository": "scout.rt",
       "vote_total_weight": 10,
       "vote_candidates": 44

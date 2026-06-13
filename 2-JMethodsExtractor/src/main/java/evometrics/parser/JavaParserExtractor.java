@@ -45,7 +45,10 @@ public class JavaParserExtractor {
                     try {
                         String sig = method.getSignature().asString();
                         String methodId = filePath + "::" + sig;
-                        methods.put(methodId, method.toString());
+                        String code = method.getTokenRange().isPresent() ? 
+                                      method.getTokenRange().get().toString() : 
+                                      method.toString();
+                        methods.put(methodId, code);
                     } catch (Exception e) {
                         log.debug("[PARSE_WARN] Failed to extract a specific method signature in file: {}", filePath);
                     }

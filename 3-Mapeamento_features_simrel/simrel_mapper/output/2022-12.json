@@ -42,7 +42,7 @@
       "vote_candidates": 3
     },
     "EMF": {
-      "version": null,
+      "version": "2.32",
       "timestamp": null,
       "status": "NEEDS REVIEW",
       "commit": "ca4d09588ddf01f895fb498b6a9989f238dd739e",
@@ -175,11 +175,11 @@
       "version": "12.0.41",
       "timestamp": null,
       "status": "SUCCESS",
-      "commit": "14f6c51559a35d6e2bfda84edd4351d621b50d2b",
+      "commit": "8f0218aad472172b458027e1275e02385dba010d",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-sim(85.7%)(85))",
-      "matched_value": "10.0.41",
+      "heuristic_description": "VOTE(H1-sim(85.7%)(85) + TIEBREAKER(date))",
+      "matched_value": "22.0.41",
       "repository": "scout.rt",
       "vote_total_weight": 85,
       "vote_candidates": 4

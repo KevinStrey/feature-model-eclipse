@@ -135,7 +135,7 @@
     "m2e": {
       "version": "1.4.0",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
+      "status": "SUCCESS",
       "commit": "769483cdf1dc1a0eb221b3999e108751e262b5ae",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
@@ -187,12 +187,12 @@
     "Scout": {
       "version": "8.0.0",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "09390780d490afb74dcd65b74d0a420d89100636",
+      "status": "SUCCESS",
+      "commit": "b128615c6a54a73de8f5146a1c75d6a8a69849bd",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "8.0.0.001_preview",
+      "heuristic_description": "VOTE(H1-exact(10) + TIEBREAKER(date))",
+      "matched_value": "8.0.0.003_Photon_M7",
       "repository": "scout.rt",
       "vote_total_weight": 10,
       "vote_candidates": 44

@@ -1,0 +1,6 @@
+project;release;commit_index;commitHash;methodId;BOM;TACH;CHD;FCH;LCH;FRCH;WCH;WCD;CSB;CSBS;ACDF;LOC
+CVS;JunoSR0;2;38e480688b0cf58b2d3c6dc9b39c51c8313b75d8;bundles/org.eclipse.compare/compare/org/eclipse/compare/EditionSelectionDialog.java::createButtonsForButtonBar(Composite);2;0;0;0;0;0;0;0;0;0;0;6
+CVS;JunoSR0;16;b7e89158d039071f06a304453c21d185db422f3a;bundles/org.eclipse.compare/compare/org/eclipse/compare/EditionSelectionDialog.java::createButtonsForButtonBar(Composite);2;2;0,3333;16;16;1;2;0,3333;2;0,3333;0,3333;6
+CVS;JunoSR0;78;d79cb6c6d6cf3d813fc3d1c3d197de551123a133;bundles/org.eclipse.compare/compare/org/eclipse/compare/EditionSelectionDialog.java::createButtonsForButtonBar(Composite);2;2;0,3333;16;78;2;2;0,3333;4;0,6667;0,3333;6
+CVS;JunoSR0;196;f45a2e068ac35e8a4e42f7b5e1c666460e18f66a;bundles/org.eclipse.compare/compare/org/eclipse/compare/EditionSelectionDialog.java::createButtonsForButtonBar(Composite);2;12;1,2;16;196;3;12;1,2;16;2,6667;0,6222;10
+CVS;JunoSR0;2091;683e50d84e3a7929db11daa5e1f751444c4d34ae;bundles/org.eclipse.compare/compare/org/eclipse/compare/EditionSelectionDialog.java::createButtonsForButtonBar(Composite);2;0;0;16;2091;4;0;0;16;2,6667;0,4667;10

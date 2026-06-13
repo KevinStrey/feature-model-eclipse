@@ -55,7 +55,7 @@
       "vote_candidates": 2
     },
     "EMF": {
-      "version": null,
+      "version": "2.22",
       "timestamp": null,
       "status": "NEEDS REVIEW",
       "commit": "7c53c3835f97b8625467b8c6a791db0a39f7c604",

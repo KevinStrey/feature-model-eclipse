@@ -42,17 +42,17 @@
       "vote_candidates": 2
     },
     "EMF": {
-      "version": null,
+      "version": "2.33.0",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "823d27818c87aebcddec36707925cccbb5ad0dda",
+      "status": "SUCCESS",
+      "commit": "3295732ab0a2d3a4cfa31daa80993b5014e03f96",
       "extraction_heuristic": "A2",
-      "heuristic_id": "H5",
-      "heuristic_description": "VOTE(H5-simrel-fallback(5))",
-      "matched_value": "simrel_date=2023-03-29 18:40:27",
+      "heuristic_id": "H1",
+      "heuristic_description": "VOTE(H1-exact(10))",
+      "matched_value": "R2_33_0",
       "repository": "org.eclipse.emf",
-      "vote_total_weight": 5,
-      "vote_candidates": 1
+      "vote_total_weight": 10,
+      "vote_candidates": 2
     },
     "JDT": {
       "version": "4.27",

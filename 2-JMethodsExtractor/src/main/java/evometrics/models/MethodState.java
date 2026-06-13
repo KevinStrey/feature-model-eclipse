@@ -1,7 +1,7 @@
 package evometrics.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MethodState {
     private final String methodId;
@@ -15,8 +15,8 @@ public class MethodState {
     public int csbsBase = 0;
     public double acdfSum = 0.0;
 
-    public List<Integer> tachHist = new ArrayList<>();
-    public List<Double> chdHist = new ArrayList<>();
+    public Map<Integer, Integer> tachPerCommit = new HashMap<>();
+    public Map<Integer, Double> chdPerCommit = new HashMap<>();
 
     public int lca = 0;
     public double lcd = 0.0;
@@ -52,14 +52,8 @@ public class MethodState {
 
         double chd = (locCurrent > 0) ? ((double) tach / locCurrent) : 0.0;
 
-        int idx = commitIndex - this.bom;
-        if (idx < 0) idx = 0;
-
-        ensureCapacity(this.tachHist, idx + 1, 0);
-        ensureCapacity(this.chdHist, idx + 1, 0.0);
-
-        this.tachHist.set(idx, tach);
-        this.chdHist.set(idx, chd);
+        tachPerCommit.put(commitIndex, tachPerCommit.getOrDefault(commitIndex, 0) + tach);
+        chdPerCommit.put(commitIndex, chdPerCommit.getOrDefault(commitIndex, 0.0) + chd);
 
         this.lca = tach;
         this.lcd = chd;
@@ -67,30 +61,13 @@ public class MethodState {
         this.loc = locCurrent;
     }
 
-    public void onNoChange(int commitIndex) {
-        int idx = commitIndex - this.bom;
-        if (idx < 0) return;
-
-        ensureCapacity(this.tachHist, idx + 1, 0);
-        ensureCapacity(this.chdHist, idx + 1, 0.0);
-
-        this.tachHist.set(idx, 0);
-        this.chdHist.set(idx, 0.0);
-    }
-
-    private <T> void ensureCapacity(List<T> list, int size, T defaultValue) {
-        while (list.size() < size) {
-            list.add(defaultValue);
-        }
-    }
-
     public double getWch(int currentCommitIndex) {
         double wch = 0.0;
-        for (int r = this.bom + 1; r <= currentCommitIndex; r++) {
-            int idx = r - this.bom;
-            if (idx < this.tachHist.size()) {
+        for (Map.Entry<Integer, Integer> entry : tachPerCommit.entrySet()) {
+            int r = entry.getKey();
+            if (r > this.bom && r <= currentCommitIndex) {
                 double w = Math.pow(2, r - currentCommitIndex);
-                wch += this.tachHist.get(idx) * w;
+                wch += entry.getValue() * w;
             }
         }
         return wch;
@@ -98,11 +75,11 @@ public class MethodState {
 
     public double getWcd(int currentCommitIndex) {
         double wcd = 0.0;
-        for (int r = this.bom + 1; r <= currentCommitIndex; r++) {
-            int idx = r - this.bom;
-            if (idx < this.chdHist.size()) {
+        for (Map.Entry<Integer, Double> entry : chdPerCommit.entrySet()) {
+            int r = entry.getKey();
+            if (r > this.bom && r <= currentCommitIndex) {
                 double w = Math.pow(2, r - currentCommitIndex);
-                wcd += this.chdHist.get(idx) * w;
+                wcd += entry.getValue() * w;
             }
         }
         return wcd;

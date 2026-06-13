@@ -55,7 +55,7 @@
       "vote_candidates": 3
     },
     "EMF": {
-      "version": null,
+      "version": "2.17",
       "timestamp": null,
       "status": "NEEDS REVIEW",
       "commit": "77d979cf8559a26ca05db28af555bc3e7fcf2c71",
@@ -135,7 +135,7 @@
     "m2e": {
       "version": "1.4.1",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
+      "status": "SUCCESS",
       "commit": "769483cdf1dc1a0eb221b3999e108751e262b5ae",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
@@ -187,12 +187,12 @@
     "Scout": {
       "version": "9.0.0",
       "timestamp": null,
-      "status": "NEEDS REVIEW",
-      "commit": "46fde4a9f3f37d9ffc1744befbadccc4e08ed7df",
+      "status": "SUCCESS",
+      "commit": "26589d90e76e6227f9682324455cfb43c1abce05",
       "extraction_heuristic": "A1",
       "heuristic_id": "H1",
-      "heuristic_description": "VOTE(H1-exact(10))",
-      "matched_value": "9.0.0.001_Simrel_2019_03_M1",
+      "heuristic_description": "VOTE(H1-exact(10) + TIEBREAKER(date))",
+      "matched_value": "9.0.0.009_Simrel_2019_03",
       "repository": "scout.rt",
       "vote_total_weight": 10,
       "vote_candidates": 45

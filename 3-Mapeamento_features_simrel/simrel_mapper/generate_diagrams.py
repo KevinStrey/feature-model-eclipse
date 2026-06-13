@@ -8,7 +8,7 @@ NODE_JSON_KEYS = {
     "PDE": ["PDE"],
     "Scout": ["Scout"],
     "Maven": ["m2e", "m2e-core"],
-    "EMF": ["EMF (Core)", "org.eclipse.emf"],
+    "EMF": ["EMF", "EMF (Core)", "org.eclipse.emf"],
     "GMF": ["GMF Runtime", "gmf-runtime"],
     "Datatools": ["DataTools", "datatools"],
     "BIRT": ["BIRT", "birt"],
@@ -19,7 +19,6 @@ NODE_JSON_KEYS = {
     "SVN": ["Subversive", "SVN"],
     "Mylyn": ["Mylyn", "org.eclipse.mylyn"],
     "PTP": ["PTP", "ptp"],
-    "Jubula": ["Jubula"],
     "RAP": ["RAP Tools", "RAP Runtime", "RAP"],
     "EGit": ["EGit", "egit"],
     "EclipseLink": ["EclipseLink", "eclipselink"],
@@ -28,7 +27,6 @@ NODE_JSON_KEYS = {
 
 def is_retired(feature: str, release_name: str) -> bool:
     """Verifica se a feature já estava descontinuada na release atual."""
-    if feature == "Jubula": return True
     if not release_name.startswith("20"):
         # Releases velhas (Juno, Kepler, etc)
         if feature == "CVS" and "Neon" in release_name: return True # Aproximado
@@ -92,7 +90,6 @@ DOT_TEMPLATE = """digraph G {
     RCP_Platform -> SVN [arrowhead=odot];
     RCP_Platform -> Mylyn [arrowhead=odot];
     RCP_Platform -> PTP [arrowhead=odot];
-    RCP_Platform -> Jubula [arrowhead=odot];
     RCP_Platform -> RAP [arrowhead=odot];
     RCP_Platform -> EGit [arrowhead=odot];
     RCP_Platform -> EclipseLink [arrowhead=odot];
@@ -109,40 +106,23 @@ DOT_TEMPLATE = """digraph G {
     Datatools -> BIRT [arrowhead=odot];
     
     // Laying out elements to align horizontally
-    { rank=same; JDT; EMF; GEF; CDT; CVS; WebTools; SVN; Mylyn; PTP; Jubula; RAP; EGit; EclipseLink; WindowBuilder; }
+    { rank=same; JDT; EMF; GEF; CDT; CVS; WebTools; SVN; Mylyn; PTP; RAP; EGit; EclipseLink; WindowBuilder; }
     { rank=same; PDE; Maven; GMF; Datatools; }
     { rank=same; Scout; BIRT; }
 }
 """
 
-def extract_version_from_json(mappings: dict, possible_keys: list) -> str:
-    """Busca a versão no JSON mapeado, testando as chaves exatas e também por prefixo."""
+def extract_info_from_json(mappings: dict, possible_keys: list) -> dict:
+    """Busca as infos no JSON mapeado e retorna o dicionário com os dados."""
     for key in possible_keys:
-        # Match exato
         if key in mappings:
-            info = mappings[key]
-            version = info.get("version")
-            if version is None:
-                version = "UNKNOWN"
-            timestamp = info.get("timestamp")
-            if timestamp and timestamp not in version:
-                return f"v{version}.{timestamp}"
-            elif version:
-                return f"v{version}"
-                
-        # Match por prefixo (ex: "WebTools 3.12 for Simrel 2018-12" -> "WebTools")
+            return mappings[key]
+            
         key_lower = key.lower()
         for json_key, info in mappings.items():
             if json_key.lower().startswith(key_lower):
-                version = info.get("version")
-                if version is None:
-                    version = "UNKNOWN"
-                timestamp = info.get("timestamp")
-                if timestamp and timestamp not in version:
-                    return f"v{version}.{timestamp}"
-                elif version:
-                    return f"v{version}"
-    return "NOT FOUND"
+                return info
+    return None
 
 def main():
     base_path = Path(r"c:\Users\Kevin Strey\Desktop\Feature-models\3-Mapeamento_features_simrel\simrel_mapper")
@@ -167,12 +147,35 @@ def main():
         feature_nodes_str = ""
         node_lines = []
         for node_name, keys in NODE_JSON_KEYS.items():
-            version_str = extract_version_from_json(mappings, keys)
+            info = extract_info_from_json(mappings, keys)
             
-            if version_str != "NOT FOUND":
-                label = f"{node_name}\\n({version_str})"
-                fillcolor = "#C8E6C9"
-                node_lines.append(f'    {node_name} [label="{label}", fillcolor="{fillcolor}"];')
+            if info is not None:
+                version = info.get("version")
+                timestamp = info.get("timestamp")
+                status = info.get("status")
+                commit = info.get("commit")
+                
+                if version is None:
+                    # Version is missing, check if it needs review to display commit
+                    if status == "NEEDS REVIEW" and commit:
+                        label = f"{node_name}\\n(commit:{commit[:8]})"
+                        fillcolor = "#FFF59D" # Yellow
+                        node_lines.append(f'    {node_name} [label="{label}", fillcolor="{fillcolor}"];')
+                    else:
+                        label = f"{node_name}\\n(UNKNOWN)"
+                        fillcolor = "#C8E6C9"
+                        node_lines.append(f'    {node_name} [label="{label}", fillcolor="{fillcolor}"];')
+                else:
+                    version_str = f"v{version}"
+                    if timestamp:
+                        ts_clean = timestamp.replace("-", "").replace(".", "")
+                        ver_clean = version.replace("-", "").replace(".", "")
+                        if ts_clean not in ver_clean:
+                            version_str = f"v{version}.{timestamp}"
+                            
+                    label = f"{node_name}\\n({version_str})"
+                    fillcolor = "#C8E6C9"
+                    node_lines.append(f'    {node_name} [label="{label}", fillcolor="{fillcolor}"];')
             else:
                 # Pinta de vermelho e muda a label se for erro, ou cinza tracejado se aposentado
                 if is_retired(node_name, release):

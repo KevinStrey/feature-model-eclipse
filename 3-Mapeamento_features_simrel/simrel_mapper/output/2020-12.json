@@ -42,7 +42,7 @@
       "vote_candidates": 3
     },
     "EMF": {
-      "version": null,
+      "version": "2.24",
       "timestamp": null,
       "status": "NEEDS REVIEW",
       "commit": "5a81b9548a1e4696fe41374d532fdd2b2e7f87fa",

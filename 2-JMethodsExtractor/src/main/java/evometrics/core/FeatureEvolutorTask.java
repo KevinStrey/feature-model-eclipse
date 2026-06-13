@@ -77,7 +77,9 @@ public class FeatureEvolutorTask implements Runnable {
                 String previousTargetCommit = null;
 
                 try (CsvExporter csvExporter = new CsvExporter(featureName)) {
+                    int releaseIndex = 0;
                     for (String release : orderedReleases) {
+                        releaseIndex++;
                         String targetCommitHash = releaseToCommitMap.get(release);
                         if (targetCommitHash == null || targetCommitHash.isEmpty() || targetCommitHash.equals("null")) {
                             log.info("[{}] Release {} has no valid commit mapped. Skipping.", featureName, release);
@@ -94,7 +96,7 @@ public class FeatureEvolutorTask implements Runnable {
                             if (globalCommitIndex % 50 == 0) {
                                 ProgressTracker.updateStatus(featureName, "Processing release " + release + " (" + globalCommitIndex + " commits)");
                             }
-                            processCommit(repo, commit, globalCommitIndex, release, csvExporter);
+                            processCommit(repo, commit, globalCommitIndex, release, releaseIndex, csvExporter);
                         }
 
                         previousTargetCommit = targetCommitHash;
@@ -114,7 +116,7 @@ public class FeatureEvolutorTask implements Runnable {
         }
     }
 
-    private void processCommit(Repository repo, RevCommit commit, int commitIndex, String release, CsvExporter csvExporter) {
+    private void processCommit(Repository repo, RevCommit commit, int commitIndex, String release, int releaseIndex, CsvExporter csvExporter) {
         List<String> modifiedJavaFiles = GitEngine.getModifiedJavaFiles(repo, commit);
         String commitHash = commit.getName();
         Set<String> processedMethodsInCommit = new HashSet<>();
