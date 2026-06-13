@@ -84,12 +84,12 @@ def load_all_aggregated_data():
         feature = os.path.basename(f).replace("_history.csv", "")
         try:
             # Lemos apenas as colunas necessárias para não estourar a memória (RAM)
-            df = pd.read_csv(f, usecols=['release', 'LOC', 'TACH', 'FCH', 'methodId'])
+            df = pd.read_csv(f, usecols=['release', 'LOC', 'TACH', 'FRCH', 'methodId'])
             agg = df.groupby('release').agg(
                 total_loc=('LOC', 'sum'),
                 avg_loc=('LOC', 'mean'),
                 avg_tach=('TACH', 'mean'),
-                avg_fch=('FCH', 'mean'),
+                avg_frch=('FRCH', 'mean'),
                 total_methods=('methodId', 'count')
             ).reset_index()
             agg['feature'] = feature
@@ -109,6 +109,8 @@ df_timeline = load_timeline()
 available_features = [f.replace("_history.csv", "") for f in os.listdir(csv_dir) if f.endswith("_history.csv")]
 
 st.sidebar.header("Filtros e Configurações")
+plot_height = st.sidebar.slider("↕ Altura dos Gráficos (px)", min_value=300, max_value=1200, value=600, step=50)
+
 analysis_type = st.sidebar.radio(
     "Tipo de Análise",
     ["🔍 Específica por Feature", "🌍 Global (Comparação de Features)"]
@@ -126,7 +128,7 @@ if analysis_type == "🔍 Específica por Feature":
         # 1. Série Temporal (Line Chart)
         st.subheader("1. Gráfico de Linhas: Evolução Temporal")
         st.markdown("Acompanhe como uma métrica evolui através de todas as versões. Ideal para ver tendências de crescimento ou refatoração.")
-        metric_line = st.selectbox("Selecione a métrica:", ['LOC (Soma Total do Tamanho)', 'TACH (Média de Mudanças)', 'FCH (Média de Frequência)'])
+        metric_line = st.selectbox("Selecione a métrica:", ['LOC (Soma Total do Tamanho)', 'TACH (Média de Mudanças)', 'FRCH (Média de Frequência)'])
         
         if metric_line.startswith('LOC'):
             df_agg = df_feature.groupby('release')['LOC'].sum().reset_index()
@@ -135,25 +137,29 @@ if analysis_type == "🔍 Específica por Feature":
             df_agg = df_feature.groupby('release')['TACH'].mean().reset_index()
             y_col = 'TACH'
         else:
-            df_agg = df_feature.groupby('release')['FCH'].mean().reset_index()
-            y_col = 'FCH'
+            df_agg = df_feature.groupby('release')['FRCH'].mean().reset_index()
+            y_col = 'FRCH'
             
         fig1 = px.line(df_agg, x='release', y=y_col, markers=True, color_discrete_sequence=['#1f77b4'])
-        st.plotly_chart(fig1, use_container_width=True)
+        fig1.update_layout(height=plot_height)
+        with st.container(border=True):
+            st.plotly_chart(fig1, use_container_width=True)
         
         # 2. Boxplot / Violin
         st.subheader("2. Boxplot / Violino: Distribuição de Métodos")
         st.markdown("Veja como os métodos variam dentro de cada release. Os pontos indicam outliers (métodos 'deus' com extrema complexidade/tamanho).")
         
         col_box1, col_box2 = st.columns(2)
-        metric_box = col_box1.selectbox("Métrica para o eixo Y:", ['LOC', 'TACH', 'FCH', 'CHD', 'CSB'])
+        metric_box = col_box1.selectbox("Métrica para o eixo Y:", ['LOC', 'TACH', 'FRCH', 'CHD', 'CSB'])
         last_n = col_box2.slider("Mostrar as últimas N releases:", 5, len(df_feature['release'].unique()), 15)
         
         recent_releases = sorted(df_feature['release'].unique())[-last_n:]
         df_box = df_feature[df_feature['release'].isin(recent_releases)]
         
         fig2 = px.box(df_box, x='release', y=metric_box, points="outliers", color_discrete_sequence=['#ff7f0e'])
-        st.plotly_chart(fig2, use_container_width=True)
+        fig2.update_layout(height=plot_height)
+        with st.container(border=True):
+            st.plotly_chart(fig2, use_container_width=True)
         
         # 3. Scatter Plot (Bolhas)
         st.subheader("3. Gráfico de Dispersão com Bolhas: Matriz de Risco")
@@ -165,18 +171,20 @@ if analysis_type == "🔍 Específica por Feature":
         df_scatter = df_scatter.fillna(0)
         
         fig3 = px.scatter(
-            df_scatter, x='FCH', y='LOC', size='LOC', color='TACH', 
+            df_scatter, x='FRCH', y='LOC', size='LOC', color='TACH', 
             hover_data=['methodId'], size_max=40, opacity=0.6,
             color_continuous_scale='Turbo'
         )
         
         # Adicionar médias para formar quadrantes
         mean_loc = df_scatter['LOC'].mean()
-        mean_fch = df_scatter['FCH'].mean()
+        mean_frch = df_scatter['FRCH'].mean()
         fig3.add_hline(y=mean_loc, line_dash="dot", line_color="green", annotation_text="Média LOC")
-        fig3.add_vline(x=mean_fch, line_dash="dot", line_color="red", annotation_text="Média FCH")
+        fig3.add_vline(x=mean_frch, line_dash="dot", line_color="red", annotation_text="Média FRCH")
         
-        st.plotly_chart(fig3, use_container_width=True)
+        fig3.update_layout(height=plot_height)
+        with st.container(border=True):
+            st.plotly_chart(fig3, use_container_width=True)
         
     else:
         st.error("Não foi possível carregar os dados desta feature.")
@@ -192,7 +200,7 @@ else: # Análise Global
         st.subheader("4. Mapa de Calor (Heatmap) de Evolução")
         st.markdown("Ideal para encontrar 'hotspots' (em vermelho) onde uma feature teve um pico extremo de complexidade ou manutenção em determinada release.")
         metric_heat = st.selectbox("Métrica para o Mapa de Calor:", 
-                                   ['total_loc (Soma de LOC)', 'avg_loc (Média de LOC)', 'avg_tach (Média de Mudanças)', 'avg_fch (Freq. de Mudanças)'])
+                                   ['total_loc (Soma de LOC)', 'avg_loc (Média de LOC)', 'avg_tach (Média de Mudanças)', 'avg_frch (Freq. de Mudanças)'])
         
         metric_col = metric_heat.split(" ")[0]
         df_pivot = df_all.pivot(index='feature', columns='release', values=metric_col).fillna(0)
@@ -203,7 +211,9 @@ else: # Análise Global
             color_continuous_scale='Reds',
             labels=dict(x="Release", y="Feature", color=metric_col)
         )
-        st.plotly_chart(fig4, use_container_width=True)
+        fig4.update_layout(height=plot_height)
+        with st.container(border=True):
+            st.plotly_chart(fig4, use_container_width=True)
         
         # 5. Stacked Area
         st.subheader("5. Gráfico de Área Empilhada (Stacked Area)")
@@ -228,7 +238,9 @@ else: # Análise Global
         # 3. Forçar o Plotly a não tentar converter "2018-09" em data e usar nossa ordem
         fig5.update_xaxes(type='category', categoryorder='array', categoryarray=release_order)
         
-        st.plotly_chart(fig5, use_container_width=True)
+        fig5.update_layout(height=plot_height)
+        with st.container(border=True):
+            st.plotly_chart(fig5, use_container_width=True)
         
     else:
         st.warning("Nenhum dado agregado encontrado.")
