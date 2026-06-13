@@ -1,0 +1,81 @@
+digraph G {
+    rankdir=TB;
+    splines=false;
+    nodesep=0.15;
+    ranksep=0.4;
+    
+    node [
+        shape=box,
+        style="filled,rounded",
+        fontname="Arial",
+        fontsize=10,
+        color="#707070",
+        fillcolor="#FFFFFF",
+        height=0.3,
+        width=1.0
+    ];
+    
+    edge [
+        fontname="Arial",
+        fontsize=8,
+        arrowsize=0.8,
+        color="#707070"
+    ];
+    
+    // Core structure nodes
+    EclipseIDE [label="EclipseIDE", fillcolor="#E3F2FD", fontname="Arial bold", fontsize=11];
+    RCP_Platform [label="RCP_Platform", fillcolor="#FFF9C4", fontname="Arial bold", fontsize=11];
+    
+    // Feature nodes
+    JDT [label="JDT\n(vI20160911-2015)", fillcolor="#C8E6C9"];
+    PDE [label="PDE\n(vY20160908-1000)", fillcolor="#C8E6C9"];
+    Scout [label="Scout\n(v6.1.0.M2)", fillcolor="#C8E6C9"];
+    Maven [label="Maven\n(vmilestones/1.8/1.8.0.20170516-2043)", fillcolor="#C8E6C9"];
+    EMF [label="EMF\n(vR2_13_0)", fillcolor="#C8E6C9"];
+    GMF [label="GMF\n(vR1_10)", fillcolor="#C8E6C9"];
+    Datatools [label="Datatools\n(vDTP_1_14_1_Release)", fillcolor="#C8E6C9"];
+    BIRT [label="BIRT\n(vBIRT_4_7_0_Release_201706222054)", fillcolor="#C8E6C9"];
+    GEF [label="GEF\n(vR_3_14)", fillcolor="#C8E6C9"];
+    CDT [label="CDT\n(commit:bb019068)", fillcolor="#C8E6C9"];
+    CVS [label="CVS\n(v2023RC1)", fillcolor="#C8E6C9"];
+    WebTools [label="WebTools\n(vR3_8_1)", fillcolor="#C8E6C9"];
+    SVN [label="SVN\n(v4.2.0)", fillcolor="#C8E6C9"];
+    Mylyn [label="Mylyn\n(vR_3_21_0)", fillcolor="#C8E6C9"];
+    PTP [label="PTP\n(commit:5159d58c)", fillcolor="#C8E6C9"];
+    RAP [label="RAP\n(v3.2.0-M2)", fillcolor="#C8E6C9"];
+    EGit [label="EGit\n(vv4.5.0.201609210915-r)", fillcolor="#C8E6C9"];
+    EclipseLink [label="EclipseLink\n(v2.7.0-RC1)", fillcolor="#C8E6C9"];
+    WindowBuilder [label="WindowBuilder\n(vV1.10.0)", fillcolor="#C8E6C9"];
+    
+    // Edges (Feature model constraints)
+    EclipseIDE -> RCP_Platform [arrowhead=dot];
+    
+    RCP_Platform -> JDT [arrowhead=odot];
+    RCP_Platform -> EMF [arrowhead=odot];
+    RCP_Platform -> GEF [arrowhead=odot];
+    RCP_Platform -> CDT [arrowhead=odot];
+    RCP_Platform -> CVS [arrowhead=odot];
+    RCP_Platform -> WebTools [arrowhead=odot];
+    RCP_Platform -> SVN [arrowhead=odot];
+    RCP_Platform -> Mylyn [arrowhead=odot];
+    RCP_Platform -> PTP [arrowhead=odot];
+    RCP_Platform -> RAP [arrowhead=odot];
+    RCP_Platform -> EGit [arrowhead=odot];
+    RCP_Platform -> EclipseLink [arrowhead=odot];
+    RCP_Platform -> WindowBuilder [arrowhead=odot];
+    
+    JDT -> PDE [arrowhead=odot];
+    JDT -> Maven [arrowhead=odot];
+    
+    PDE -> Scout [arrowhead=odot];
+    
+    EMF -> GMF [arrowhead=odot];
+    EMF -> Datatools [arrowhead=odot];
+    
+    Datatools -> BIRT [arrowhead=odot];
+    
+    // Laying out elements to align horizontally
+    { rank=same; JDT; EMF; GEF; CDT; CVS; WebTools; SVN; Mylyn; PTP; RAP; EGit; EclipseLink; WindowBuilder; }
+    { rank=same; PDE; Maven; GMF; Datatools; }
+    { rank=same; Scout; BIRT; }
+}

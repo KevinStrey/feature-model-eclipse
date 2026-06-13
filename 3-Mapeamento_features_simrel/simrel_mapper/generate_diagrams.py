@@ -127,7 +127,7 @@ def extract_info_from_json(mappings: dict, possible_keys: list) -> dict:
 def main():
     base_path = Path(r"c:\Users\Kevin Strey\Desktop\Feature-models\3-Mapeamento_features_simrel\simrel_mapper")
     output_dir = base_path / "output"
-    diagrams_dir = Path(r"c:\Users\Kevin Strey\Desktop\Feature-models\releases\diagramas")
+    diagrams_dir = Path(r"c:\Users\Kevin Strey\Desktop\Feature-models\diagramas")
     
     diagrams_dir.mkdir(parents=True, exist_ok=True)
     
@@ -156,15 +156,12 @@ def main():
                 commit = info.get("commit")
                 
                 if version is None:
-                    # Version is missing, check if it needs review to display commit
-                    if status == "NEEDS REVIEW" and commit:
+                    if commit:
                         label = f"{node_name}\\n(commit:{commit[:8]})"
-                        fillcolor = "#FFF59D" # Yellow
-                        node_lines.append(f'    {node_name} [label="{label}", fillcolor="{fillcolor}"];')
                     else:
                         label = f"{node_name}\\n(UNKNOWN)"
-                        fillcolor = "#C8E6C9"
-                        node_lines.append(f'    {node_name} [label="{label}", fillcolor="{fillcolor}"];')
+                    fillcolor = "#C8E6C9"
+                    node_lines.append(f'    {node_name} [label="{label}", fillcolor="{fillcolor}"];')
                 else:
                     version_str = f"v{version}"
                     if timestamp:
