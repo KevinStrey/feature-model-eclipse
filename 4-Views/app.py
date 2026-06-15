@@ -164,8 +164,15 @@ if analysis_type == "🔍 Específica por Feature":
         # 3. Scatter Plot (Bolhas)
         st.subheader("3. Gráfico de Dispersão com Bolhas: Matriz de Risco")
         st.markdown("Identifica os métodos críticos. Quadrante superior direito = Alta frequência de mudanças e Alto tamanho.")
-        target_release = st.selectbox("Selecione a Release:", sorted(df_feature['release'].unique(), reverse=True))
-        df_scatter = df_feature[df_feature['release'] == target_release]
+        release_order = df_timeline['release'].unique().tolist()
+        valid_feature_releases = [r for r in release_order if r in df_feature['release'].unique()]
+        target_release = st.selectbox("Selecione a Release:", list(reversed(valid_feature_releases)))
+        
+        target_idx = release_order.index(target_release)
+        allowed_releases = release_order[:target_idx+1]
+        
+        df_history = df_feature[df_feature['release'].isin(allowed_releases)]
+        df_scatter = df_history.drop_duplicates(subset=['methodId'], keep='last')
         
         # Tratamento caso tamanho passe dos limites ou tenha nulos
         df_scatter = df_scatter.fillna(0)
@@ -185,6 +192,27 @@ if analysis_type == "🔍 Específica por Feature":
         fig3.update_layout(height=plot_height)
         with st.container(border=True):
             st.plotly_chart(fig3, use_container_width=True)
+            
+        # 4. Bar Chart: Top Methods by CSB
+        st.subheader("4. Ranking de Mudanças: Changes Since Birth (CSB)")
+        st.markdown(f"Mostra os 20 métodos com a maior quantidade acumulada de mudanças (refatorações/correções) até a release **{target_release}**.")
+        
+        df_csb = df_scatter.sort_values(by='CSB', ascending=False).head(20)
+        df_csb = df_csb.sort_values(by='CSB', ascending=True)
+        
+        fig_csb = px.bar(
+            df_csb, x='CSB', y='methodId', orientation='h', 
+            color='CSB', color_continuous_scale='Reds',
+            text='CSB', hover_data=['LOC', 'TACH', 'FRCH']
+        )
+        
+        # Simplifica o eixo Y para mostrar apenas Arquivo::Metodo ao invés do caminho completo
+        short_names = [m.split('/')[-1] if '/' in m else m for m in df_csb['methodId']]
+        fig_csb.update_yaxes(tickvals=df_csb['methodId'], ticktext=short_names)
+        
+        fig_csb.update_layout(height=plot_height)
+        with st.container(border=True):
+            st.plotly_chart(fig_csb, use_container_width=True)
         
     else:
         st.error("Não foi possível carregar os dados desta feature.")
@@ -196,8 +224,8 @@ else: # Análise Global
     df_all = load_all_aggregated_data()
     
     if not df_all.empty:
-        # 4. Heatmap
-        st.subheader("4. Mapa de Calor (Heatmap) de Evolução")
+        # 5. Heatmap
+        st.subheader("5. Mapa de Calor (Heatmap) de Evolução")
         st.markdown("Ideal para encontrar 'hotspots' (em vermelho) onde uma feature teve um pico extremo de complexidade ou manutenção em determinada release.")
         metric_heat = st.selectbox("Métrica para o Mapa de Calor:", 
                                    ['total_loc (Soma de LOC)', 'avg_loc (Média de LOC)', 'avg_tach (Média de Mudanças)', 'avg_frch (Freq. de Mudanças)'])
@@ -215,8 +243,8 @@ else: # Análise Global
         with st.container(border=True):
             st.plotly_chart(fig4, use_container_width=True)
         
-        # 5. Stacked Area
-        st.subheader("5. Gráfico de Área Empilhada (Stacked Area)")
+        # 6. Stacked Area
+        st.subheader("6. Gráfico de Área Empilhada (Stacked Area)")
         st.markdown("Mostra o quanto cada feature contribui para o tamanho total do sistema ao longo do tempo.")
         
         # Filtrar top features para o gráfico não ficar ilegível
