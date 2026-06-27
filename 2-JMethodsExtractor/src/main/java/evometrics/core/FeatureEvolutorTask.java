@@ -78,6 +78,8 @@ public class FeatureEvolutorTask implements Runnable {
 
                 try (CsvExporter csvExporter = new CsvExporter(featureName)) {
                     int releaseIndex = 0;
+                    Set<String> visitedCommits = new HashSet<>();
+                    
                     for (String release : orderedReleases) {
                         releaseIndex++;
                         String targetCommitHash = releaseToCommitMap.get(release);
@@ -92,6 +94,9 @@ public class FeatureEvolutorTask implements Runnable {
 
                         currentRelease = release;
                         for (RevCommit commit : commitsToProcess) {
+                            if (!visitedCommits.add(commit.getName())) {
+                                continue;
+                            }
                             globalCommitIndex++;
                             if (globalCommitIndex % 50 == 0) {
                                 ProgressTracker.updateStatus(featureName, "Processing release " + release + " (" + globalCommitIndex + " commits)");
@@ -116,25 +121,55 @@ public class FeatureEvolutorTask implements Runnable {
         }
     }
 
-    private void processCommit(Repository repo, RevCommit commit, int commitIndex, String release, int releaseIndex, CsvExporter csvExporter) {
-        List<String> modifiedJavaFiles = GitEngine.getModifiedJavaFiles(repo, commit);
-        String commitHash = commit.getName();
-        Set<String> processedMethodsInCommit = new HashSet<>();
+    private final Map<String, Set<String>> fileToMethods = new HashMap<>();
 
-        for (String filePath : modifiedJavaFiles) {
+    private void processCommit(Repository repo, RevCommit commit, int commitIndex, String release, int releaseIndex, CsvExporter csvExporter) {
+        List<GitEngine.FileChange> modifiedJavaFiles = GitEngine.getModifiedJavaFiles(repo, commit);
+        String commitHash = commit.getName();
+
+        for (GitEngine.FileChange fileChange : modifiedJavaFiles) {
+            String filePath = fileChange.path;
+
+            if (fileChange.type != null && fileChange.type.name().equals("DELETE")) {
+                Set<String> existingMethods = fileToMethods.get(filePath);
+                if (existingMethods != null) {
+                    for (String methodId : existingMethods) {
+                        MethodState state = globalMethodStates.get(methodId);
+                        if (state != null) {
+                            state.onChange(commitIndex, 1, 0);
+                            csvExporter.writeMethodState(state, commitIndex, commitHash, release, 0);
+                            globalMethodStates.remove(methodId);
+                        }
+                    }
+                    fileToMethods.remove(filePath);
+                }
+                continue;
+            }
+
             String sourceCode = GitEngine.getFileContent(repo, commit, filePath);
-            if (sourceCode == null) continue; // Could be deleted file or unreadable
+            if (sourceCode == null) continue;
 
             Map<String, String> currentMethods = JavaParserExtractor.extractMethods(filePath, sourceCode);
+            Set<String> previousMethods = fileToMethods.getOrDefault(filePath, new HashSet<>());
+            Set<String> currentMethodIds = currentMethods.keySet();
+
+            for (String oldMethodId : previousMethods) {
+                if (!currentMethodIds.contains(oldMethodId)) {
+                    MethodState state = globalMethodStates.get(oldMethodId);
+                    if (state != null) {
+                        state.onChange(commitIndex, 1, 0);
+                        csvExporter.writeMethodState(state, commitIndex, commitHash, release, 0);
+                        globalMethodStates.remove(oldMethodId);
+                    }
+                }
+            }
 
             for (Map.Entry<String, String> entry : currentMethods.entrySet()) {
                 String methodId = entry.getKey();
                 String methodCode = entry.getValue();
-                processedMethodsInCommit.add(methodId);
 
                 MethodState state = globalMethodStates.get(methodId);
                 if (state == null) {
-                    // Method seen for the first time (created)
                     state = new MethodState(methodId);
                     int loc = MethodDiffEngine.countLines(methodCode);
                     state.onSeen(commitIndex, loc);
@@ -143,7 +178,6 @@ public class FeatureEvolutorTask implements Runnable {
                     csvExporter.writeMethodState(state, commitIndex, commitHash, release, loc);
                 } else {
                     if (!state.currentCode.equals(methodCode)) {
-                        // Method was modified in this commit
                         MethodDiffEngine.DiffResult diff = MethodDiffEngine.computeDiff(state.currentCode, methodCode);
                         int loc = MethodDiffEngine.countLines(methodCode);
                         state.onChange(commitIndex, diff.tach, loc);
@@ -152,8 +186,8 @@ public class FeatureEvolutorTask implements Runnable {
                     }
                 }
             }
+            
+            fileToMethods.put(filePath, new HashSet<>(currentMethodIds));
         }
-
-        // Methods not in modified files are simply skipped (sparse history — only record changes)
     }
 }

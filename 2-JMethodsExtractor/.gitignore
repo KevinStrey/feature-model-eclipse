@@ -27,3 +27,4 @@ hs_err_pid*
 .settings/
 jacoco.exec
 
+!/2-JMethodsExtractor/target/JMethodsExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar

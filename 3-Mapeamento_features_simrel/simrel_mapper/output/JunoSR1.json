@@ -1,5 +1,6 @@
 {
   "release": "JunoSR1",
+  "date": "2012-09-19T16:09:38-04:00",
   "simrel_commit": "2dae0f6fd1efc56057188cb7a94be3aa267f67fd",
   "mappings": {
     "JDT": {

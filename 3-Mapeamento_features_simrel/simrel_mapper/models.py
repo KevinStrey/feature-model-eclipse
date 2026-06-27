@@ -46,6 +46,7 @@ class ReleaseOutput(BaseModel):
     """Saída completa de uma release — serializada para JSON."""
 
     release: str = Field(..., description="Nome da release (tag)")
+    date: str | None = Field(None, description="Data do commit no simrel")
     simrel_commit: str = Field(
         ..., description="SHA do commit do simrel.build para reprodutibilidade"
     )

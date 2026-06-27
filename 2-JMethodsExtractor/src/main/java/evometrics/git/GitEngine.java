@@ -106,8 +106,17 @@ public class GitEngine {
         return commits;
     }
 
-    public static List<String> getModifiedJavaFiles(Repository repo, RevCommit currentCommit) {
-        List<String> modifiedFiles = new ArrayList<>();
+    public static class FileChange {
+        public String path;
+        public DiffEntry.ChangeType type;
+        public FileChange(String path, DiffEntry.ChangeType type) {
+            this.path = path;
+            this.type = type;
+        }
+    }
+
+    public static List<FileChange> getModifiedJavaFiles(Repository repo, RevCommit currentCommit) {
+        List<FileChange> modifiedFiles = new ArrayList<>();
         try (RevWalk rw = new RevWalk(repo);
              DiffFormatter df = new DiffFormatter(DisabledOutputStream.INSTANCE)) {
             
@@ -126,19 +135,25 @@ public class GitEngine {
                     tw.addTree(currentCommit.getTree());
                     tw.setFilter(PathSuffixFilter.create(".java"));
                     while (tw.next()) {
-                        modifiedFiles.add(tw.getPathString());
+                        modifiedFiles.add(new FileChange(tw.getPathString(), DiffEntry.ChangeType.ADD));
                     }
                 }
                 return modifiedFiles;
             }
 
             for (DiffEntry diff : diffs) {
-                if (diff.getChangeType() == DiffEntry.ChangeType.DELETE) {
-                    continue; // Skip deleted files, we can't parse them.
+                DiffEntry.ChangeType type = diff.getChangeType();
+                if (type == DiffEntry.ChangeType.DELETE || type == DiffEntry.ChangeType.RENAME) {
+                    String oldPath = diff.getOldPath();
+                    if (oldPath.endsWith(".java")) {
+                        modifiedFiles.add(new FileChange(oldPath, DiffEntry.ChangeType.DELETE));
+                    }
                 }
-                String newPath = diff.getNewPath();
-                if (newPath.endsWith(".java")) {
-                    modifiedFiles.add(newPath);
+                if (type != DiffEntry.ChangeType.DELETE) {
+                    String newPath = diff.getNewPath();
+                    if (newPath.endsWith(".java")) {
+                        modifiedFiles.add(new FileChange(newPath, type));
+                    }
                 }
             }
         } catch (Exception e) {

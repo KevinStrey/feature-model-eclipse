@@ -118,6 +118,7 @@ def _process_release(
 
     output = ReleaseOutput(
         release=release_name,
+        date=simrel_date.isoformat(),
         simrel_commit=simrel_commit,
         mappings=mappings,
     )

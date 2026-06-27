@@ -58,18 +58,6 @@ public class Main {
         // Other repositories use the default cost of 2 GB
     }
 
-    // Hardcoded release order extracted from simrel.build tags
-    private static final List<String> ORDERED_RELEASES = Arrays.asList(
-            "JunoSR0", "JunoSR1", "JunoSR2", "KeplerPostRC4", "KeplerSR0", "KeplerSR1",
-            "LunaSR0", "z20140805-2300", "z20140806", "LunaRC4", "LunaSR2", "S201504150911",
-            "Mars.1", "Neon", "OxygenPreRienaRemoval_9-8-2016", "Neon.1", "Neon.1a", "Neon.2",
-            "Neon.3", "Neon.3_respin", "Oxygen", "Oxygen.1", "Oxygen.1a_respin", "Oxygen.1a",
-            "Oxygen.3", "Oxygen.2", "Oxygen.2_respin", "PhotonM7", "PhotonRC4", "Photon.0",
-            "2018-09", "2018-12", "2019-03", "2019-06", "2019-09", "2019-12", "2020-03",
-            "2020-06", "2020-09", "2020-12", "2021-03", "2021-06", "2021-09", "2021-12",
-            "2022-03", "2022-06", "2022-09", "2022-12", "2023-03", "2023-06", "2023-09",
-            "2023-12", "2024-03", "2024-06", "2024-09", "2024-12", "2025-03", "2025-06",
-            "2025-09", "2025-12", "2026-03");
 
     // ─────────────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
@@ -98,8 +86,17 @@ public class Main {
         MappingLoader loader = new MappingLoader();
         Map<String, ReleaseMapping> allMappings = loader.loadAllMappings(mappingsDirPath);
 
+        List<String> orderedReleases = new java.util.ArrayList<>(allMappings.keySet());
+        orderedReleases.sort((r1, r2) -> {
+            String d1 = allMappings.get(r1).getDate();
+            String d2 = allMappings.get(r2).getDate();
+            if (d1 == null) d1 = "";
+            if (d2 == null) d2 = "";
+            return d1.compareTo(d2);
+        });
+
         // ── Show configuration GUI ─────────────────────────────────────────────
-        CollectionConfig config = CollectorConfigDialog.show(ORDERED_RELEASES, allMappings);
+        CollectionConfig config = CollectorConfigDialog.show(orderedReleases, allMappings);
 
         if (config == null) {
             log.info("User cancelled. Exiting.");
