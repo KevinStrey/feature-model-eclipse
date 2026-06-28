@@ -124,6 +124,9 @@ df_metrics = pd.DataFrame(feature_metrics)
 df_metrics['Normalized LOC'] = df_metrics.groupby('feature')['Total LOC'].transform(
     lambda x: ((x - x.min()) / (x.max() - x.min())) * 100 if x.max() > x.min() else 0.0
 )
+df_metrics['Normalized Mean LOC'] = df_metrics.groupby('feature')['Mean LOC'].transform(
+    lambda x: ((x - x.min()) / (x.max() - x.min())) * 100 if x.max() > x.min() else 0.0
+)
 
 # Identificar Features Grandes e Pequenas (Critério: LOC total na primeira release presente > 500k)
 feature_initial_loc = {}
@@ -143,7 +146,7 @@ def plot_subset(df_subset, subset_name, filename_suffix, scale='linear', log_nor
     subset_features = df_subset['feature'].unique()
     
     print(f"Gerando gráficos para a categoria {subset_name} (Scale: {scale}, LogNorm: {log_norm})...")
-    fig, axes = plt.subplots(4, 1, sharex=True, figsize=(14, 22))
+    fig, axes = plt.subplots(5, 1, sharex=True, figsize=(14, 28))
     
     palette = sns.color_palette("tab20", n_colors=len(subset_features))
     
@@ -151,6 +154,10 @@ def plot_subset(df_subset, subset_name, filename_suffix, scale='linear', log_nor
     if log_norm:
         df_subset['Log Total LOC'] = np.log1p(df_subset['Total LOC'])
         df_subset['Normalized LOC'] = df_subset.groupby('feature')['Log Total LOC'].transform(
+            lambda x: ((x - x.min()) / (x.max() - x.min())) * 100 if x.max() > x.min() else 0.0
+        )
+        df_subset['Log Mean LOC'] = np.log1p(df_subset['Mean LOC'])
+        df_subset['Normalized Mean LOC'] = df_subset.groupby('feature')['Log Mean LOC'].transform(
             lambda x: ((x - x.min()) / (x.max() - x.min())) * 100 if x.max() > x.min() else 0.0
         )
     
@@ -170,22 +177,28 @@ def plot_subset(df_subset, subset_name, filename_suffix, scale='linear', log_nor
     axes[2].set_title(f'Média de LOC por Método Ativo {subset_name}', fontsize=14)
     axes[2].set_ylabel('Média')
     
-    # Subplot 4: Median LOC
-    sns.lineplot(data=df_subset, x='release', y='Median LOC', hue='feature', ax=axes[3], marker='^', palette=palette, linewidth=1.5, legend=False)
-    axes[3].set_title(f'Mediana de LOC por Método Ativo {subset_name}', fontsize=14)
-    axes[3].set_ylabel('Mediana')
+    # Subplot 4: Normalized Mean LOC
+    sns.lineplot(data=df_subset, x='release', y='Normalized Mean LOC', hue='feature', ax=axes[3], marker='s', palette=palette, linewidth=1.5, legend=False)
+    axes[3].set_title(f'Média de LOC Normalizada (0-100) por Método Ativo {subset_name}' + (' [Base Log]' if log_norm else ''), fontsize=14)
+    axes[3].set_ylabel('Média Normalizada')
+    
+    # Subplot 5: Median LOC
+    sns.lineplot(data=df_subset, x='release', y='Median LOC', hue='feature', ax=axes[4], marker='^', palette=palette, linewidth=1.5, legend=False)
+    axes[4].set_title(f'Mediana de LOC por Método Ativo {subset_name}', fontsize=14)
+    axes[4].set_ylabel('Mediana')
     
     if scale == 'log':
         axes[0].set_yscale('symlog')
         axes[2].set_yscale('symlog')
-        axes[3].set_yscale('symlog')
+        axes[4].set_yscale('symlog')
         if not log_norm:
             axes[1].set_yscale('symlog')
+            axes[3].set_yscale('symlog')
     
     # Formatando Eixo X
-    axes[3].set_xticks(range(len(release_order)))
-    axes[3].set_xticklabels(release_order, rotation=90)
-    axes[3].set_xlabel('Release', fontsize=12)
+    axes[4].set_xticks(range(len(release_order)))
+    axes[4].set_xticklabels(release_order, rotation=90)
+    axes[4].set_xlabel('Release', fontsize=12)
     
     for ax in axes:
         ax.grid(True, linestyle='--', alpha=0.7)
