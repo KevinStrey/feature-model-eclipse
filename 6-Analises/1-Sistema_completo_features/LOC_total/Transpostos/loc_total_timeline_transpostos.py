@@ -1,8 +1,8 @@
 """
-Média de CSB por Método por Feature ao longo das Releases do EclipseIDE.
+LOC Total por Feature ao longo das Releases do EclipseIDE.
 
-Gera gráfico de linha do tempo com a média de CSB (Changes Since Birth) por método ativo
-de cada feature ao longo de todas as versões. Cada feature é uma linha no gráfico.
+Gera gráfico de linha do tempo com o LOC total acumulado de cada feature
+ao longo de todas as versões. Cada feature é representada por uma linha.
 Saída em PDF para uso em artigos acadêmicos.
 """
 
@@ -11,9 +11,12 @@ import os
 import glob
 import json
 import numpy as np
+# pyrefly: ignore [missing-import]
 import matplotlib
 matplotlib.use('Agg')
+# pyrefly: ignore [missing-import]
 import matplotlib.pyplot as plt
+# pyrefly: ignore [missing-import]
 import matplotlib.ticker as mticker
 import warnings
 
@@ -23,7 +26,7 @@ warnings.filterwarnings('ignore')
 base_dir = r"c:\Users\Kevin Strey\Desktop\Feature-models"
 json_dir = os.path.join(base_dir, r"3-Mapeamento_features_simrel\simrel_mapper\output")
 csv_dir  = os.path.join(base_dir, r"2-JMethodsExtractor\target\results")
-out_dir  = os.path.join(base_dir, r"6-Analises\1-Sistema_completo_features\CSB_media")
+out_dir  = os.path.join(base_dir, r"6-Analises\1-Sistema_completo_features\LOC_total\Transpostos")
 
 os.makedirs(out_dir, exist_ok=True)
 
@@ -48,7 +51,7 @@ plt.rcParams.update({
     'lines.markersize':   3,
     'axes.spines.top':    False,
     'axes.spines.right':  False,
-    'pdf.fonttype':       42,   # TrueType fonts no PDF
+    'pdf.fonttype':       42,   # TrueType fonts no PDF (exigência de conferências)
     'ps.fonttype':        42,
 })
 
@@ -98,13 +101,6 @@ for feat_file in available_features:
     try:
         df = pd.read_csv(csv_file, low_memory=False)
         df['feature'] = feat_file.replace("_history.csv", "")
-        # Assegurar formato numérico
-        if 'CSB' not in df.columns:
-            print(f"  Aviso: coluna 'CSB' não encontrada em {feat_file}")
-            continue
-        
-        df['CSB'] = pd.to_numeric(df['CSB'], errors='coerce').fillna(0)
-        df['LOC'] = pd.to_numeric(df['LOC'], errors='coerce').fillna(0)
         all_features_data.append(df)
     except Exception as e:
         print(f"  Erro lendo {feat_file}: {e}")
@@ -133,42 +129,30 @@ for r in release_order:
         for feat in feat_names:
             df_feat = last_states[last_states['feature'] == feat]
             if not df_feat.empty:
-                updates = df_feat.set_index('global_method_id')[['LOC', 'CSB']].to_dict('index')
+                updates = df_feat.set_index('global_method_id')[['LOC']].to_dict('index')
                 current_state[feat].update(updates)
 
     for feat in feat_names:
-        active_csbs = [v['CSB'] for v in current_state[feat].values() if v['LOC'] > 0]
-        mean_csb = float(np.mean(active_csbs)) if active_csbs else 0.0
+        active_locs = [v['LOC'] for v in current_state[feat].values() if v['LOC'] > 0]
+        total_loc = int(np.sum(active_locs)) if active_locs else 0
         feature_metrics.append({
             'release': r,
             'feature': feat,
-            'Mean CSB': mean_csb,
+            'Total LOC': total_loc,
         })
 
 df_metrics = pd.DataFrame(feature_metrics)
 
-# Calcular Mean CSB Normalizado (0-100) por feature
-df_metrics['Normalized Mean CSB'] = df_metrics.groupby('feature')['Mean CSB'].transform(
+# Calcular LOC Normalizado (0-100) por feature
+df_metrics['Normalized LOC'] = df_metrics.groupby('feature')['Total LOC'].transform(
     lambda x: ((x - x.min()) / (x.max() - x.min())) * 100 if x.max() > x.min() else 0.0
 )
 
 # ── 4. Separar features grandes e pequenas ───────────────────────────────────
-# Usando o mesmo critério do LOC inicial > 500k
-current_state_check = {feat: {} for feat in feat_names}
 feature_initial_loc = {}
-for r in release_order:
-    if r in groups.groups:
-        df_r = groups.get_group(r)
-        last_states = df_r.drop_duplicates('global_method_id', keep='last')
-        for feat in feat_names:
-            df_feat = last_states[last_states['feature'] == feat]
-            if not df_feat.empty:
-                updates = df_feat.set_index('global_method_id')[['LOC']].to_dict('index')
-                current_state_check[feat].update(updates)
-    if r == release_order[0]:
-        for feat in feat_names:
-            active_locs = [v['LOC'] for v in current_state_check[feat].values() if v['LOC'] > 0]
-            feature_initial_loc[feat] = int(np.sum(active_locs)) if active_locs else 0
+for feat in df_metrics['feature'].unique():
+    feat_data = df_metrics[df_metrics['feature'] == feat]
+    feature_initial_loc[feat] = feat_data.iloc[0]['Total LOC']
 
 THRESHOLD = 500_000
 large_features = sorted([f for f, loc in feature_initial_loc.items() if loc > THRESHOLD])
@@ -180,6 +164,7 @@ print(f"  {len(small_features)} features pequenas (<={THRESHOLD//1000}k LOC)")
 # ── 5. Funções de plotagem ────────────────────────────────────────────────────
 
 def _get_palette(n):
+    """Retorna uma paleta de cores distintas para n séries."""
     if n <= 10:
         cmap = matplotlib.colormaps['tab10'].resampled(10)
     elif n <= 20:
@@ -188,82 +173,100 @@ def _get_palette(n):
         cmap = matplotlib.colormaps['turbo'].resampled(n)
     return [cmap(i) for i in range(n)]
 
-def plot_mean_csb(df_sub, features_list, title_suffix, filename):
+
+def plot_loc_total(df_sub, features_list, title_suffix, filename, yscale='linear'):
+    """
+    Plota Total LOC ao longo das releases para um subconjunto de features.
+    """
     n = len(features_list)
     colors = _get_palette(n)
 
-    fig, ax = plt.subplots(figsize=(12.0, 4.0))
+    fig, ax = plt.subplots(figsize=(7.16, 4.0))  # largura padrão de coluna dupla IEEE
 
     x_indices = list(range(len(release_order)))
 
     for i, feat in enumerate(features_list):
         feat_data = df_sub[df_sub['feature'] == feat].set_index('release')
-        y_vals = [feat_data.loc[r, 'Mean CSB'] if r in feat_data.index else np.nan
+        y_vals = [feat_data.loc[r, 'Total LOC'] if r in feat_data.index else np.nan
                   for r in release_order]
 
-        ax.plot(x_indices, y_vals,
+        ax.plot(y_vals, x_indices,
                 label=feat,
                 color=colors[i],
                 linewidth=1.0,
                 alpha=0.85)
 
-    ax.set_xlabel('Release')
-    ax.set_ylabel('Mean CSB per Method')
-    ax.set_title(f'Mean CSB per Method per Feature Over Releases {title_suffix}')
+    ax.set_ylabel('Release')
+    ax.set_xlabel('Total LOC (Lines of Code)')
+    ax.set_title(f'Total LOC per Feature Over Releases {title_suffix}')
 
-    ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.2f'))
+    ax.xaxis.set_major_formatter(mticker.FuncFormatter(
+        lambda x, _: f'{x/1e6:.1f}M' if abs(x) >= 1e6
+        else f'{x/1e3:.0f}k' if abs(x) >= 1e3
+        else f'{x:.0f}'))
+
+    if yscale == 'log':
+        ax.set_xscale('symlog')
 
     truncated_labels = [label[:14] + '...' if len(label) > 17 else label for label in release_order]
-    ax.set_xticks(x_indices)
-    ax.set_xticklabels(truncated_labels, rotation=45, ha='right', fontsize=9)
+    ax.set_yticks(x_indices)
+    ax.set_yticklabels(truncated_labels, fontsize=7)
 
     ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1.0),
               borderaxespad=0, frameon=True, fancybox=False,
               edgecolor='#cccccc', ncol=1)
 
     ax.grid(True, linestyle='--', alpha=0.3, linewidth=0.5)
+    # Increase height to accommodate many releases on Y axis
+    fig.set_size_inches(7.16, max(4.0, len(release_order)*0.15))
     fig.tight_layout()
 
     save_path = os.path.join(out_dir, filename)
     fig.savefig(save_path, format='pdf', bbox_inches='tight')
     plt.close(fig)
     print(f"  Salvo: {save_path}")
+
 
 def plot_normalized(df_sub, features_list, title_suffix, filename):
+    """
+    Plota LOC Normalizado (0-100) ao longo das releases.
+    """
     n = len(features_list)
     colors = _get_palette(n)
 
-    fig, ax = plt.subplots(figsize=(12.0, 4.0))
+    fig, ax = plt.subplots(figsize=(7.16, 4.0))
 
     x_indices = list(range(len(release_order)))
 
     for i, feat in enumerate(features_list):
         feat_data = df_sub[df_sub['feature'] == feat].set_index('release')
-        y_vals = [feat_data.loc[r, 'Normalized Mean CSB'] if r in feat_data.index else np.nan
+        y_vals = [feat_data.loc[r, 'Normalized LOC'] if r in feat_data.index else np.nan
                   for r in release_order]
 
-        ax.plot(x_indices, y_vals,
+        ax.plot(y_vals, x_indices,
                 label=feat,
                 color=colors[i],
                 linewidth=1.0,
                 alpha=0.85)
 
-    ax.set_xlabel('Release')
-    ax.set_ylabel('Normalized Mean CSB (0-100)')
-    ax.set_title(f'Normalized Mean CSB per Method Over Releases {title_suffix}')
+    ax.set_ylabel('Release')
+    ax.set_xlabel('Normalized LOC (0-100)')
+    ax.set_title(f'Normalized LOC per Feature Over Releases {title_suffix}')
 
-    ax.set_ylim(-5, 105)
-    ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f'))
+    ax.set_xlim(-5, 105)
+    ax.xaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f'))
 
     truncated_labels = [label[:14] + '...' if len(label) > 17 else label for label in release_order]
-    ax.set_xticks(x_indices)
-    ax.set_xticklabels(truncated_labels, rotation=45, ha='right', fontsize=9)
+    ax.set_yticks(x_indices)
+    ax.set_yticklabels(truncated_labels, fontsize=7)
 
     ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1.0),
               borderaxespad=0, frameon=True, fancybox=False,
               edgecolor='#cccccc', ncol=1)
 
     ax.grid(True, linestyle='--', alpha=0.3, linewidth=0.5)
+    # Increase height to accommodate many releases on Y axis
+    fig.set_size_inches(7.16, max(4.0, len(release_order)*0.15))
     fig.tight_layout()
 
     save_path = os.path.join(out_dir, filename)
@@ -272,35 +275,41 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
     print(f"  Salvo: {save_path}")
 
 
-# ── 6. Gerar todos os graficos ───────────────────────────────────────────────
+# ── 6. Gerar todos os gráficos ───────────────────────────────────────────────
 print("\nGerando graficos...")
 
-# Todas as features -- absoluto
-plot_mean_csb(df_metrics, sorted(feat_names),
-              '(All Features)', 'mean_csb_all_features.pdf')
+# Todas as features — absoluto
+plot_loc_total(df_metrics, sorted(feat_names),
+               '(All Features)', 'loc_total_all_features.pdf')
+plot_loc_total(df_metrics, sorted(feat_names),
+               '(All Features — Log Scale)', 'loc_total_all_features_log.pdf', yscale='log')
 
-# Todas as features -- normalizado
+# Todas as features — normalizado
 plot_normalized(df_metrics, sorted(feat_names),
-                '(All Features)', 'mean_csb_all_features_normalized.pdf')
+                '(All Features)', 'loc_total_all_features_normalized.pdf')
 
-# Features grandes -- absoluto e normalizado
+# Features grandes — absoluto e normalizado
 if large_features:
     df_large = df_metrics[df_metrics['feature'].isin(large_features)]
-    plot_mean_csb(df_large, large_features,
-                  '(Large Features)', 'mean_csb_large_features.pdf')
+    plot_loc_total(df_large, large_features,
+                   '(Large Features)', 'loc_total_large_features.pdf')
+    plot_loc_total(df_large, large_features,
+                   '(Large Features — Log Scale)', 'loc_total_large_features_log.pdf', yscale='log')
     plot_normalized(df_large, large_features,
-                    '(Large Features)', 'mean_csb_large_features_normalized.pdf')
+                    '(Large Features)', 'loc_total_large_features_normalized.pdf')
 
-# Features pequenas -- absoluto e normalizado
+# Features pequenas — absoluto e normalizado
 if small_features:
     df_small = df_metrics[df_metrics['feature'].isin(small_features)]
-    plot_mean_csb(df_small, small_features,
-                  '(Small Features)', 'mean_csb_small_features.pdf')
+    plot_loc_total(df_small, small_features,
+                   '(Small Features)', 'loc_total_small_features.pdf')
+    plot_loc_total(df_small, small_features,
+                   '(Small Features — Log Scale)', 'loc_total_small_features_log.pdf', yscale='log')
     plot_normalized(df_small, small_features,
-                    '(Small Features)', 'mean_csb_small_features_normalized.pdf')
+                    '(Small Features)', 'loc_total_small_features_normalized.pdf')
 
 # Exportar dados processados para CSV
-csv_out = os.path.join(out_dir, 'mean_csb_per_method_per_feature.csv')
+csv_out = os.path.join(out_dir, 'loc_total_per_feature.csv')
 df_metrics.to_csv(csv_out, index=False)
 print(f"  Dados exportados: {csv_out}")
 

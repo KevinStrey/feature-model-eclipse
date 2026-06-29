@@ -174,14 +174,14 @@ def _get_palette(n):
     return [cmap(i) for i in range(n)]
 
 
-def plot_loc_total(df_sub, features_list, title_suffix, filename):
+def plot_loc_total(df_sub, features_list, title_suffix, filename, yscale='linear'):
     """
     Plota Total LOC ao longo das releases para um subconjunto de features.
     """
     n = len(features_list)
     colors = _get_palette(n)
 
-    fig, ax = plt.subplots(figsize=(7.16, 4.0))  # largura padrão de coluna dupla IEEE
+    fig, ax = plt.subplots(figsize=(12.0, 4.0))  # largura aumentada para espaçar as legendas X
 
     x_indices = list(range(len(release_order)))
 
@@ -205,8 +205,12 @@ def plot_loc_total(df_sub, features_list, title_suffix, filename):
         else f'{x/1e3:.0f}k' if abs(x) >= 1e3
         else f'{x:.0f}'))
 
+    if yscale == 'log':
+        ax.set_yscale('symlog')
+
+    truncated_labels = [label[:14] + '...' if len(label) > 17 else label for label in release_order]
     ax.set_xticks(x_indices)
-    ax.set_xticklabels(release_order, rotation=90, ha='center')
+    ax.set_xticklabels(truncated_labels, rotation=45, ha='right', fontsize=9)
 
     ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1.0),
               borderaxespad=0, frameon=True, fancybox=False,
@@ -228,7 +232,7 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
     n = len(features_list)
     colors = _get_palette(n)
 
-    fig, ax = plt.subplots(figsize=(7.16, 4.0))
+    fig, ax = plt.subplots(figsize=(12.0, 4.0))
 
     x_indices = list(range(len(release_order)))
 
@@ -250,8 +254,9 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
     ax.set_ylim(-5, 105)
     ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f'))
 
+    truncated_labels = [label[:14] + '...' if len(label) > 17 else label for label in release_order]
     ax.set_xticks(x_indices)
-    ax.set_xticklabels(release_order, rotation=90, ha='center')
+    ax.set_xticklabels(truncated_labels, rotation=45, ha='right', fontsize=9)
 
     ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1.0),
               borderaxespad=0, frameon=True, fancybox=False,
@@ -272,6 +277,8 @@ print("\nGerando graficos...")
 # Todas as features — absoluto
 plot_loc_total(df_metrics, sorted(feat_names),
                '(All Features)', 'loc_total_all_features.pdf')
+plot_loc_total(df_metrics, sorted(feat_names),
+               '(All Features — Log Scale)', 'loc_total_all_features_log.pdf', yscale='log')
 
 # Todas as features — normalizado
 plot_normalized(df_metrics, sorted(feat_names),
@@ -282,6 +289,8 @@ if large_features:
     df_large = df_metrics[df_metrics['feature'].isin(large_features)]
     plot_loc_total(df_large, large_features,
                    '(Large Features)', 'loc_total_large_features.pdf')
+    plot_loc_total(df_large, large_features,
+                   '(Large Features — Log Scale)', 'loc_total_large_features_log.pdf', yscale='log')
     plot_normalized(df_large, large_features,
                     '(Large Features)', 'loc_total_large_features_normalized.pdf')
 
@@ -290,6 +299,8 @@ if small_features:
     df_small = df_metrics[df_metrics['feature'].isin(small_features)]
     plot_loc_total(df_small, small_features,
                    '(Small Features)', 'loc_total_small_features.pdf')
+    plot_loc_total(df_small, small_features,
+                   '(Small Features — Log Scale)', 'loc_total_small_features_log.pdf', yscale='log')
     plot_normalized(df_small, small_features,
                     '(Small Features)', 'loc_total_small_features_normalized.pdf')
 

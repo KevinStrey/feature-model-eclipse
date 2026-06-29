@@ -190,7 +190,7 @@ def plot_bom_count(df_sub, features_list, title_suffix, filename, yscale='linear
     n = len(features_list)
     colors = _get_palette(n)
 
-    fig, ax = plt.subplots(figsize=(7.16, 4.0))
+    fig, ax = plt.subplots(figsize=(12.0, 4.0))
 
     x_indices = list(range(len(release_order)))
 
@@ -221,8 +221,9 @@ def plot_bom_count(df_sub, features_list, title_suffix, filename, yscale='linear
             else f'{x/1e3:.0f}k' if abs(x) >= 1e3
             else f'{x:.0f}'))
 
+    truncated_labels = [label[:14] + '...' if len(label) > 17 else label for label in release_order]
     ax.set_xticks(x_indices)
-    ax.set_xticklabels(release_order, rotation=90, ha='center')
+    ax.set_xticklabels(truncated_labels, rotation=45, ha='right', fontsize=9)
 
     ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1.0),
               borderaxespad=0, frameon=True, fancybox=False,
@@ -240,7 +241,7 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
     n = len(features_list)
     colors = _get_palette(n)
 
-    fig, ax = plt.subplots(figsize=(7.16, 4.0))
+    fig, ax = plt.subplots(figsize=(12.0, 4.0))
 
     x_indices = list(range(len(release_order)))
 
@@ -262,8 +263,9 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
     ax.set_ylim(-5, 105)
     ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f'))
 
+    truncated_labels = [label[:14] + '...' if len(label) > 17 else label for label in release_order]
     ax.set_xticks(x_indices)
-    ax.set_xticklabels(release_order, rotation=90, ha='center')
+    ax.set_xticklabels(truncated_labels, rotation=45, ha='right', fontsize=9)
 
     ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1.0),
               borderaxespad=0, frameon=True, fancybox=False,
