@@ -208,8 +208,7 @@ def plot_mean_csb(df_sub, features_list, title_suffix, filename):
                 alpha=0.85)
 
     ax.set_xlabel('Release')
-    ax.set_ylabel('Mean CSB per Method')
-    ax.set_title(f'Mean CSB per Method per Feature Over Releases {title_suffix}')
+    ax.set_ylabel('Média de CSB por Método')
 
     ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.2f'))
 
@@ -249,8 +248,7 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
                 alpha=0.85)
 
     ax.set_xlabel('Release')
-    ax.set_ylabel('Normalized Mean CSB (0-100)')
-    ax.set_title(f'Normalized Mean CSB per Method Over Releases {title_suffix}')
+    ax.set_ylabel('Média de CSB Normalizada (0-100)')
 
     ax.set_ylim(-5, 105)
     ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f'))

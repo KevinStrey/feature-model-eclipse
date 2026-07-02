@@ -206,8 +206,7 @@ def plot_bom_count(df_sub, features_list, title_suffix, filename, yscale='linear
                 alpha=0.85)
 
     ax.set_xlabel('Release')
-    ax.set_ylabel('Number of Methods Born (BOM)')
-    ax.set_title(f'Methods Born per Feature Over Releases {title_suffix}')
+    ax.set_ylabel('Número de Métodos Nascidos (BOM)')
 
     if yscale == 'log':
         ax.set_yscale('symlog', linthresh=10)
@@ -257,8 +256,7 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
                 alpha=0.85)
 
     ax.set_xlabel('Release')
-    ax.set_ylabel('Normalized BOM Count (0-100)')
-    ax.set_title(f'Normalized Methods Born per Feature Over Releases {title_suffix}')
+    ax.set_ylabel('Contagem BOM Normalizada (0-100)')
 
     ax.set_ylim(-5, 105)
     ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f'))

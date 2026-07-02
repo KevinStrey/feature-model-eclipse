@@ -197,8 +197,7 @@ def plot_loc_total(df_sub, features_list, title_suffix, filename, yscale='linear
                 alpha=0.85)
 
     ax.set_xlabel('Release')
-    ax.set_ylabel('Total LOC (Lines of Code)')
-    ax.set_title(f'Total LOC per Feature Over Releases {title_suffix}')
+    ax.set_ylabel('Total de LOC (Linhas de Código)')
 
     ax.yaxis.set_major_formatter(mticker.FuncFormatter(
         lambda x, _: f'{x/1e6:.1f}M' if abs(x) >= 1e6
@@ -248,8 +247,7 @@ def plot_normalized(df_sub, features_list, title_suffix, filename):
                 alpha=0.85)
 
     ax.set_xlabel('Release')
-    ax.set_ylabel('Normalized LOC (0-100)')
-    ax.set_title(f'Normalized LOC per Feature Over Releases {title_suffix}')
+    ax.set_ylabel('LOC Normalizado (0-100)')
 
     ax.set_ylim(-5, 105)
     ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f'))
