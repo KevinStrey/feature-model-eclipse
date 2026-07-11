@@ -13,17 +13,17 @@ Neste estudo, o projeto rastreia métricas de duas categorias distintas para per
 ### 📈 1.1 Métricas Evolutivas (Históricas de Mudança)
 Estas métricas são extraídas pela ferramenta `2-JMethodsExtractor`, que minera o histórico do Git, e medem como um método muda (sofre *churn*) ao longo do tempo:
 
-- **BOM (*Born on Commit/Month*)**: O índice cronológico do *commit* onde o método apareceu pela primeira vez no histórico do projeto (nascimento do método).
-- **TACH (*Total Added/Changed History per Commit*)**: Quantidade absoluta de linhas que foram adicionadas ou modificadas em um determinado método dentro de um *commit* específico.
-- **CHD (*Churn Density*)**: Densidade da mudança (TACH dividido pelo tamanho atual em LOC do método durante o *commit*).
+- **BOM (*Birth Of Method*)**: O índice cronológico do *commit* onde o método apareceu pela primeira vez no histórico do projeto (nascimento do método).
+- **TACH (*Total Amount Of Change*)**: Quantidade absoluta de linhas que foram adicionadas ou modificadas em um determinado método dentro de um *commit* específico.
+- **CHD (*Change Density*)**: Densidade da mudança (TACH dividido pelo tamanho atual em LOC do método durante o *commit*).
 - **FCH (*First Change*)**: O índice do primeiro *commit* onde o método sofreu alguma alteração após ter sido criado.
 - **LCH (*Last Change*)**: O índice do *commit* em que ocorreu a alteração mais recente e conhecida no método.
 - **FRCH (*Frequency of Changes*)**: O número total de vezes (frequência) que o método foi modificado em sua história de vida.
-- **WCH (*Weighted Churn History*)**: Soma do *churn* ponderado temporalmente por uma curva de decaimento (alterações mais recentes recebem peso maior no cálculo da fragilidade do que alterações muito antigas).
-- **WCD (*Weighted Churn Density*)**: Uma versão ponderada pelo tempo do CHD (Densidade do churn).
+- **WCH (*Weighted Change*)**: Soma do *churn* ponderado temporalmente por uma curva de decaimento (alterações mais recentes recebem peso maior no cálculo da fragilidade do que alterações muito antigas).
+- **WCD (*Weighted Change Density*)**: Uma versão ponderada pelo tempo do CHD (Densidade do churn).
 - **CSB (*Changes Since Birth*)**: A quantidade absoluta e cumulativa de linhas alteradas desde o momento de criação do método.
-- **CSBS (*Changes Since Birth Size*)**: A razão do total de linhas alteradas (CSB) dividido pelo tamanho inicial em LOC que o método possuía no seu momento de "nascimento".
-- **ACDF (*Average Churn Density per Frequency*)**: Média de densidade de *churn*. Representa a soma total das densidades calculadas dividida pela frequência de modificação (FRCH).
+- **CSBS (*Changes Since Birth normalized by initial Size*)**: A razão do total de linhas alteradas (CSB) dividido pelo tamanho inicial em LOC que o método possuía no seu momento de "nascimento".
+- **ACDF (*Average Change Density per Frequency*)**: Média de densidade de *churn*. Representa a soma total das densidades calculadas dividida pela frequência de modificação (FRCH).
 - **LOC (*Lines of Code - Evolutivo*)**: A contagem de linhas de código do método gravadas de forma evolutiva em cada passo do histórico.
 
 ### 🏗️ 1.2 Métricas Estruturais (Estáticas CK)
