@@ -303,6 +303,8 @@ if large_features:
     plot_normalized(df_large, large_features,
                     '(Large Features)', 'bom_count_large_features_normalized.pdf')
 
+
+
 # Features pequenas -- absoluto e normalizado
 if small_features:
     df_small = df_metrics[df_metrics['feature'].isin(small_features)]
