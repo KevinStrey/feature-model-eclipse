@@ -78,3 +78,11 @@ plt.legend()
 save_path = os.path.join(out_dir, "elbow_method.png")
 plt.savefig(save_path, bbox_inches='tight', dpi=300)
 print(f"Gráfico salvo em: {save_path}")
+
+# Adicionar os valores WCSS no gráfico e salvar como novo arquivo
+for i, wcss in enumerate(wcss_values):
+    plt.annotate(f"{wcss:.2f}", (k_values[i], wcss_values[i]), textcoords="offset points", xytext=(0,10), ha='center', fontsize=9, color='darkblue')
+
+save_path_values = os.path.join(out_dir, "elbow_method_with_values.png")
+plt.savefig(save_path_values, bbox_inches='tight', dpi=300)
+print(f"Gráfico com valores salvo em: {save_path_values}")
