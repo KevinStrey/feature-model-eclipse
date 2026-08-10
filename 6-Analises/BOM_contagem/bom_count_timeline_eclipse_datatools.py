@@ -20,9 +20,9 @@ plt.rcParams.update({
     'font.size':          9,
     'axes.titlesize':     10,
     'axes.labelsize':     10,  # Aumentado em 1 (era 9)
-    'xtick.labelsize':    8,   # Aumentado em 1 (era 7)
+    'xtick.labelsize':    9,   # Aumentado em 2 (era 7)
     'ytick.labelsize':    9,   # Aumentado em 1 (era 8)
-    'legend.fontsize':    7,
+    'legend.fontsize':    8,   # Aumentado em 2 (era 7)
     'figure.dpi':         300,
     'savefig.dpi':        300,
     'savefig.bbox':       'tight',
@@ -51,8 +51,8 @@ def plot_bom_count(df_sub, features_list, filename, release_order, yscale='linea
     n = len(features_list)
     colors = _get_palette(n)
 
-    # Reduzindo a altura em 3px (3/300 polegadas = 0.01). O original era (12.0, 4.0)
-    fig, ax = plt.subplots(figsize=(12.0, 3))
+    # Reduzindo a altura. O original era (12.0, 4.0)
+    fig, ax = plt.subplots(figsize=(12.0, 2.5))
 
     x_indices = list(range(len(release_order)))
 
@@ -81,8 +81,8 @@ def plot_bom_count(df_sub, features_list, filename, release_order, yscale='linea
     ax.set_xticks(x_indices)
     ax.set_xticklabels(truncated_labels, rotation=45, ha='right')
 
-    ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1.0),
-              borderaxespad=0, frameon=True, fancybox=False,
+    ax.legend(loc='upper right',
+              borderaxespad=0.5, frameon=True, fancybox=False,
               edgecolor='#cccccc', ncol=1)
 
     ax.grid(True, linestyle='--', alpha=0.3, linewidth=0.5)
